@@ -1033,6 +1033,17 @@ Next.js와 Notion을 활용하여 무료로 개인 블로그를 만드는 방법
 |----------|------|------|------|------|
 | **SiteTitle** | Text | ✅ | 사이트 제목 | Your Name — Blog |
 | **SiteDescription** | Text | ✅ | 사이트 설명 | Notion-powered personal blog |
+| **OGImage** | Files | ❌ | Open Graph 기본 이미지 (1200x630px) | 링크 공유 시 표시될 이미지 |
+| **TwitterHandle** | Text | ❌ | Twitter 계정 (@포함) | @your_twitter |
+| **Author** | Text | ❌ | 기본 작성자 이름 | Your Name |
+
+**SEO & Social Media 설정:**
+- **OGImage**: 링크를 SNS에 공유할 때 표시되는 이미지입니다
+  - 권장 사이즈: 1200x630px (Open Graph 표준)
+  - Notion에 이미지를 업로드하면 자동으로 사용됩니다
+  - 포스트별 커버 이미지가 있으면 우선 사용됩니다
+- **TwitterHandle**: Twitter 카드에 표시될 계정명 (@포함)
+- **Author**: 포스트에 작성자가 없을 때 사용될 기본 작성자
 
 **Favicon 설정:**
 - Favicon은 이미지 파일로 관리합니다

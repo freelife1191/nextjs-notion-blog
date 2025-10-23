@@ -676,6 +676,11 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
             const siteTitle = props.SiteTitle?.rich_text ? getPlainText(props.SiteTitle.rich_text) : defaultConfig.siteTitle;
             const siteDescription = props.SiteDescription?.rich_text ? getPlainText(props.SiteDescription.rich_text) : defaultConfig.siteDescription;
 
+            // SEO & Social Media 설정
+            const ogImage = props.OGImage?.files?.[0]?.file?.url || props.OGImage?.files?.[0]?.external?.url || undefined;
+            const twitterHandle = props.TwitterHandle?.rich_text ? getPlainText(props.TwitterHandle.rich_text) : undefined;
+            const author = props.Author?.rich_text ? getPlainText(props.Author.rich_text) : undefined;
+
             // Google Analytics 4 설정
             const ga4MeasurementId = props.GA4MeasurementId?.rich_text ? getPlainText(props.GA4MeasurementId.rich_text) : undefined;
             const enableAnalytics = props.EnableAnalytics?.checkbox ?? defaultConfig.enableAnalytics;
@@ -688,6 +693,9 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
             return {
               siteTitle,
               siteDescription,
+              ogImage,
+              twitterHandle,
+              author,
               ga4MeasurementId,
               enableAnalytics,
               adsensePublisherId,

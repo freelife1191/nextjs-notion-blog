@@ -44,7 +44,10 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   const { slug } = await params
 
   try {
-    const post = await getPostBySlugMemo(slug)
+    const [post, siteConfig] = await Promise.all([
+      getPostBySlugMemo(slug),
+      getSiteConfigMemo(),
+    ])
 
     if (!post) {
       return { title: '포스트를 찾을 수 없습니다' }
@@ -57,6 +60,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       publishedTime: post.date,
       tags: post.tags,
       coverImage: post.coverImageUrl,
+      siteConfig,
     })
   } catch {
     return { title: '포스트를 찾을 수 없습니다' }
@@ -91,8 +95,9 @@ export default async function PostPage({ params }: PostPageProps) {
       image: post.coverImageUrl,
       publishedTime: post.date,
       modifiedTime: post.date,
-      author: post.author || '작성자',
+      author: post.author || siteConfig.author || '작성자',
       tags: post.tags,
+      siteConfig,
     })
 
     // BreadcrumbList JSON-LD 생성

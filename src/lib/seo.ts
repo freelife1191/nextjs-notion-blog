@@ -4,6 +4,7 @@
  */
 
 import type { Metadata } from 'next'
+import type { SiteConfig } from '@/services/notion/client'
 
 /**
  * 사이트 URL - 환경 변수에서 가져오거나 기본값 사용
@@ -11,16 +12,37 @@ import type { Metadata } from 'next'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
 
 /**
- * 기본 SEO 설정
+ * 기본 SEO 설정 (SiteConfig가 없을 때 fallback)
  */
-const defaultSEO = {
+const fallbackSEO = {
   title: '블로그 제목',
   description: 'Notion으로 관리하는 개인 블로그',
   url: SITE_URL,
   siteName: '블로그',
   author: '작성자',
   locale: 'ko_KR',
-  type: 'website',
+  type: 'website' as const,
+  ogImage: `${SITE_URL}/images/og-default.png`,
+  twitterHandle: '@your_twitter',
+}
+
+/**
+ * Notion SiteConfig를 기반으로 SEO 설정 생성
+ */
+function getDefaultSEO(siteConfig?: SiteConfig) {
+  if (!siteConfig) return fallbackSEO
+
+  return {
+    title: siteConfig.siteTitle || fallbackSEO.title,
+    description: siteConfig.siteDescription || fallbackSEO.description,
+    url: SITE_URL,
+    siteName: siteConfig.siteTitle || fallbackSEO.siteName,
+    author: siteConfig.author || fallbackSEO.author,
+    locale: 'ko_KR' as const,
+    type: 'website' as const,
+    ogImage: siteConfig.ogImage || fallbackSEO.ogImage,
+    twitterHandle: siteConfig.twitterHandle || fallbackSEO.twitterHandle,
+  }
 }
 
 /**
@@ -35,6 +57,7 @@ export function createMetadata({
   publishedTime,
   modifiedTime,
   tags = [],
+  siteConfig,
 }: {
   title?: string
   description?: string
@@ -44,14 +67,17 @@ export function createMetadata({
   publishedTime?: string
   modifiedTime?: string
   tags?: string[]
+  siteConfig?: SiteConfig
 } = {}): Metadata {
+  const defaultSEO = getDefaultSEO(siteConfig)
+
   const fullTitle = title ? `${title} — ${defaultSEO.siteName}` : defaultSEO.title
   const fullDescription = description || defaultSEO.description
   const fullUrl = `${defaultSEO.url}${path}`
 
   // Notion 커버 이미지가 있으면 우선 사용, 없으면 기본 이미지
   // Notion CDN 이미지는 HTTPS를 사용하므로 안전
-  const fullImage = image || `${defaultSEO.url}/images/og-default.png`
+  const fullImage = image || defaultSEO.ogImage
 
   const metadata: Metadata = {
     title: fullTitle,
@@ -77,7 +103,7 @@ export function createMetadata({
       title: fullTitle,
       description: fullDescription,
       images: [fullImage],
-      creator: '@your_twitter',
+      creator: defaultSEO.twitterHandle,
     },
     alternates: {
       canonical: fullUrl,
@@ -100,22 +126,29 @@ export function createMetadata({
 }
 
 /**
- * 홈페이지 메타데이터
+ * 홈페이지 메타데이터 생성
  */
-export const homeMetadata: Metadata = createMetadata({
-  title: defaultSEO.title,
-  description: defaultSEO.description,
-  path: '/',
-})
+export function createHomeMetadata(siteConfig?: SiteConfig): Metadata {
+  const defaultSEO = getDefaultSEO(siteConfig)
+  return createMetadata({
+    title: defaultSEO.title,
+    description: defaultSEO.description,
+    path: '/',
+    siteConfig,
+  })
+}
 
 /**
- * About 페이지 메타데이터
+ * About 페이지 메타데이터 생성
  */
-export const aboutMetadata: Metadata = createMetadata({
-  title: 'About',
-  description: 'Notion About 페이지를 설정하여 자신을 소개하세요',
-  path: '/about',
-})
+export function createAboutMetadata(siteConfig?: SiteConfig): Metadata {
+  return createMetadata({
+    title: 'About',
+    description: 'Notion About 페이지를 설정하여 자신을 소개하세요',
+    path: '/about',
+    siteConfig,
+  })
+}
 
 /**
  * 포스트 메타데이터 생성
@@ -128,6 +161,7 @@ export function createPostMetadata({
   modifiedTime,
   tags = [],
   coverImage,
+  siteConfig,
 }: {
   title: string
   description?: string
@@ -136,6 +170,7 @@ export function createPostMetadata({
   modifiedTime?: string
   tags?: string[]
   coverImage?: string
+  siteConfig?: SiteConfig
 }): Metadata {
   return createMetadata({
     title,
@@ -146,6 +181,7 @@ export function createPostMetadata({
     publishedTime,
     modifiedTime,
     tags,
+    siteConfig,
   })
 }
 
@@ -162,6 +198,7 @@ export function createJsonLd({
   modifiedTime,
   author,
   tags,
+  siteConfig,
 }: {
   type: 'WebSite' | 'Article' | 'Person' | 'Blog'
   title: string
@@ -172,7 +209,9 @@ export function createJsonLd({
   modifiedTime?: string
   author?: string
   tags?: string[]
+  siteConfig?: SiteConfig
 }) {
+  const defaultSEO = getDefaultSEO(siteConfig)
   const baseJsonLd: any = {
     '@context': 'https://schema.org',
     '@type': type,
@@ -196,7 +235,7 @@ export function createJsonLd({
         '@type': 'SearchAction',
         target: {
           '@type': 'EntryPoint',
-          urlTemplate: `${defaultSEO.url}/?q={search_term_string}`,
+          urlTemplate: `${SITE_URL}/?q={search_term_string}`,
         },
         'query-input': 'required name=search_term_string',
       },
@@ -302,24 +341,29 @@ export function generateSitemapUrls(posts: Array<{ slug: string; updatedAt: stri
 /**
  * RSS 피드 생성용 데이터
  */
-export function generateRssData(posts: Array<{
-  title: string
-  description: string
-  slug: string
-  publishedTime: string
-  content: string
-}>) {
+export function generateRssData(
+  posts: Array<{
+    title: string
+    description: string
+    slug: string
+    publishedTime: string
+    content: string
+  }>,
+  siteConfig?: SiteConfig
+) {
+  const defaultSEO = getDefaultSEO(siteConfig)
+
   return {
     title: defaultSEO.title,
     description: defaultSEO.description,
-    url: defaultSEO.url,
+    url: SITE_URL,
     language: 'ko',
     lastBuildDate: new Date().toUTCString(),
     items: posts.map((post) => ({
       title: post.title,
       description: post.description,
-      url: `${defaultSEO.url}/posts/${post.slug}`,
-      guid: `${defaultSEO.url}/posts/${post.slug}`,
+      url: `${SITE_URL}/posts/${post.slug}`,
+      guid: `${SITE_URL}/posts/${post.slug}`,
       pubDate: new Date(post.publishedTime).toUTCString(),
       content: post.content,
     })),

@@ -75,6 +75,10 @@ export type ProfileSettings = {
 export type SiteConfig = {
   siteTitle: string;
   siteDescription: string;
+  // SEO & Social Media
+  ogImage?: string; // Open Graph 기본 이미지 URL
+  twitterHandle?: string; // Twitter 계정 (@username)
+  author?: string; // 기본 작성자
   // Google Analytics 4
   ga4MeasurementId?: string;
   enableAnalytics?: boolean;
