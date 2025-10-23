@@ -98,9 +98,9 @@ flowchart TD
     CheckSlug -->|Yes| CheckIntegration{Integration<br/>초대됨?}
 
     CheckIntegration -->|No| FixIntegration[🔥 해결방법:<br/>포스트 페이지 Share<br/>→ Integration 초대]
-    CheckIntegration -->|Yes| CheckWait{10분<br/>기다림?}
+    CheckIntegration -->|Yes| CheckWait{1시간<br/>기다림?}
 
-    CheckWait -->|No| Wait[⏱️ 10분 대기 또는<br/>Actions에서 수동 실행]
+    CheckWait -->|No| Wait[⏱️ 1시간 대기 또는<br/>Actions에서 수동 실행]
     CheckWait -->|Yes| CheckCache{브라우저 캐시<br/>삭제?}
 
     CheckCache -->|No| ClearCache[🔄 해결방법:<br/>Ctrl+Shift+R<br/>또는 시크릿 모드]
@@ -144,7 +144,7 @@ flowchart TD
     CheckCover -->|No| FixCoverUpload[⚠️ 해결방법:<br/>외부 URL 대신<br/>Notion에 직접 업로드]
     CheckCover -->|Yes| CheckCoverExpired{URL 만료?<br/>1시간 이상 경과?}
 
-    CheckCoverExpired -->|Yes| FixCoverExpired[🔥 해결방법:<br/>10분 대기 또는<br/>수동 배포로 URL 갱신]
+    CheckCoverExpired -->|Yes| FixCoverExpired[🔥 해결방법:<br/>1시간 대기 또는<br/>수동 배포로 URL 갱신]
     CheckCoverExpired -->|No| CheckCoverFormat{이미지 형식?<br/>JPG/PNG?}
 
     CheckCoverFormat -->|SVG/WebP| FixCoverFormat[⚠️ 해결방법:<br/>JPG 또는 PNG로 변환]
@@ -485,8 +485,10 @@ NotionClientError: Rate limited. Please retry after some time
 1. **자동 재시도**: 코드에 재시도 로직이 있어 자동으로 재시도됩니다
 2. **수동 대기**: 1-2분 후 워크플로우 재실행
 3. **포스트 개수**: 포스트가 매우 많다면 (100개 이상) 정상입니다
-4. **빈도 조정**: 자동 배포 빈도를 10분에서 30분으로 변경 가능
+4. **빈도 조정**: 자동 배포 빈도를 1시간에서 2시간으로 변경 가능
    - `.github/workflows/gh-pages.yml` 파일의 cron 설정 수정
+   - **⚠️ 주의**: 2시간 이상 간격으로 설정하면 Notion 이미지가 1시간 후 깨짐
+   - **권장**: 1시간 간격 유지 (이미지 링크 만료 방지)
 
 ---
 
@@ -575,11 +577,12 @@ Workflows aren't being run on this forked repository
 - Integration 이름이 있는지 확인
 - **해결**: 없다면 Integration 초대
 
-#### 4. 10분 기다렸나요?
-- 자동 동기화는 10분마다 실행
+#### 4. 1시간 기다렸나요?
+- 자동 동기화는 1시간마다 실행
 - **해결**:
-  - 10분 대기하거나
+  - 1시간 대기하거나
   - GitHub Actions 탭에서 수동 실행
+- **⚠️ 중요**: 1시간 간격이 Notion 이미지 링크 만료를 방지하는 최적 설정
 
 #### 5. 캐시를 삭제했나요?
 - 브라우저 캐시 때문에 안 보일 수 있음
@@ -732,8 +735,9 @@ Warning: Multiple posts with same slug will overwrite each other
 **원인 및 해결**:
 
 #### 원인 1: Notion 이미지 URL 만료 (가장 흔함!)
-- Notion 이미지 URL은 **1시간** 후 만료됨
-- **해결**: 10분 대기 또는 수동 배포 (자동으로 최신 URL 가져옴)
+- Notion 이미지 URL은 **1시간** 후 만료되어 **이미지가 깨짐**
+- **해결**: 1시간 대기 또는 수동 배포 (자동으로 최신 URL 가져옴)
+- **⚠️ 중요**: 2시간 이상 간격으로 설정하면 1시간 후부터 이미지가 깨진 상태로 유지됨
 
 #### 원인 2: 외부 이미지 차단
 - 일부 사이트는 외부 링크를 차단
@@ -845,11 +849,11 @@ Warning: Multiple posts with same slug will overwrite each other
 ### 🔄 Notion에서 수정했는데 반영이 안 돼요
 
 **원인**:
-- 자동 동기화는 10분마다 실행
+- 자동 동기화는 1시간마다 실행
 - 또는 캐시 문제
 
 **해결**:
-1. **10분 대기**
+1. **1시간 대기**
 2. **즉시 반영하려면**:
    - GitHub → Actions 탭
    - Deploy to GitHub Pages 선택
@@ -1411,7 +1415,7 @@ git push origin --force --all
 1. RSS 리더에서 강제 새로고침
 2. 브라우저 캐시 삭제
 3. `https://your-blog/rss.xml` 직접 접속하여 확인
-4. 10분 대기 또는 수동 배포
+4. 1시간 대기 또는 수동 배포
 
 ---
 
@@ -1489,7 +1493,7 @@ git push origin --force --all
 ## 재현 방법
 1. Notion에 이미지 업로드
 2. Status를 Publish로 변경
-3. 10분 대기 후 블로그 확인
+3. 1시간 대기 후 블로그 확인
 4. 이미지가 깨진 아이콘으로 표시됨
 
 ## 에러 메시지

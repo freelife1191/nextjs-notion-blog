@@ -151,7 +151,7 @@ graph TD
 
 ```mermaid
 graph LR
-    A[📝 Notion<br/>글 작성] -->|자동 동기화| B[🔄 GitHub Actions<br/>10분마다 실행]
+    A[📝 Notion<br/>글 작성] -->|자동 동기화| B[🔄 GitHub Actions<br/>1시간마다 실행]
     B -->|글 가져오기| C[🏗️ 빌드<br/>HTML 생성]
     C -->|배포| D[🌐 GitHub Pages<br/>블로그 웹사이트]
     D -->|방문| E[👥 독자]
@@ -165,7 +165,7 @@ graph LR
 
 **간단 요약:**
 1. 📝 Notion에서 글 작성
-2. 🔄 10분마다 자동으로 확인
+2. 🔄 1시간마다 자동으로 확인
 3. 🏗️ 새 글이 있으면 블로그 생성
 4. 🌐 인터넷에 자동 공개
 5. 👥 독자가 블로그 방문
@@ -181,7 +181,7 @@ graph LR
 
 - ✅ 무료 블로그 웹사이트 (예: `https://your-name.github.io/blog`)
 - ✅ Notion에서 글만 쓰면 자동으로 블로그에 반영
-- ✅ 10분마다 자동 업데이트
+- ✅ 1시간마다 자동 업데이트
 - ✅ 커버 이미지, 태그, 카테고리 등 모든 기능
 
 ### 필요한 사전 준비물
@@ -1117,7 +1117,7 @@ graph TD
     Review -->|아니오| Edit[계속 수정]
     Edit --> Draft
     Review -->|예| Publish[Status: Publish로 변경]
-    Publish --> Wait[⏰ 10분 대기<br/>또는 수동 배포]
+    Publish --> Wait[⏰ 1시간 대기<br/>또는 수동 배포]
     Wait --> Live[🌐 블로그에 자동 반영]
     Live --> Update{수정 필요?}
     Update -->|예| ModifyNotion[Notion에서 수정]
@@ -1136,7 +1136,7 @@ graph TD
 **핵심 포인트:**
 1. 모든 작업은 **Notion에서만** 진행
 2. Status를 `Publish`로 변경하면 자동 공개
-3. 10분마다 자동 반영 (또는 즉시 수동 배포 가능)
+3. 1시간마다 자동 반영 (또는 즉시 수동 배포 가능)
 4. 수정/삭제도 Notion에서 처리
 
 ### 새 글 작성하기
@@ -1191,7 +1191,7 @@ graph TD
 3. **"Draft"를 클릭**하여 드롭다운 열기
 4. **"Publish"를 선택**합니다
 
-✅ **완료!** 10분 이내에 블로그에 자동으로 표시됩니다!
+✅ **완료!** 1시간 이내에 블로그에 자동으로 표시됩니다!
 
 💡 **팁**: 즉시 반영하고 싶다면 GitHub Actions에서 수동 배포를 실행하세요 (5단계 참고).
 
@@ -1200,7 +1200,7 @@ graph TD
 1. Notion에서 해당 글 열기
 2. 내용 수정
 3. 저장 (자동 저장됨)
-4. 10분 이내 자동 반영
+4. 1시간 이내 자동 반영
 
 ### 글 삭제하기
 
@@ -1220,7 +1220,7 @@ Profile Database를 만들었다면:
    - 이름, 프로필 사진
    - 자기소개, 직함
    - 소셜 미디어 링크
-4. 10분 이내 자동 반영
+4. 1시간 이내 자동 반영
 
 Site Database를 만들었다면:
 
@@ -1230,11 +1230,11 @@ Site Database를 만들었다면:
    - 사이트 제목, 설명
    - Google Analytics ID
    - Google AdSense Publisher ID
-4. 10분 이내 자동 반영
+4. 1시간 이내 자동 반영
 
 ### 즉시 배포하기 (선택사항)
 
-10분을 기다리지 않고 바로 반영하고 싶다면:
+1시간을 기다리지 않고 바로 반영하고 싶다면:
 
 1. GitHub 저장소 → **Actions** 탭
 2. **Deploy to GitHub Pages** 선택
@@ -1252,7 +1252,7 @@ graph TD
     Problem -->|404 오류| Fix404[Repository 이름 확인]
     Problem -->|배포 실패| FixDeploy[로그 확인]
     Problem -->|글이 안 보임| FixPost[Status & Slug 확인]
-    Problem -->|이미지 안 보임| FixImage[10분 대기 또는 재배포]
+    Problem -->|이미지 안 보임| FixImage[1시간 대기 또는 재배포]
 
     Fix404 --> Check404_1[next.config.ts 확인]
     Check404_1 --> Check404_2[GitHub Pages 설정 확인]
@@ -1272,11 +1272,11 @@ graph TD
     CheckPublish -->|예| CheckSlug{Slug 입력됨?}
     CheckSlug -->|아니오| AddSlug[Slug 입력]
     CheckSlug -->|예| CheckIntegration[Integration 초대 확인]
-    SetPublish --> WaitSync[10분 대기]
+    SetPublish --> WaitSync[1시간 대기]
     AddSlug --> WaitSync
     CheckIntegration --> WaitSync
 
-    FixImage --> WaitImage[10분 대기]
+    FixImage --> WaitImage[1시간 대기]
     WaitImage --> CheckImage{해결됨?}
     CheckImage -->|아니오| ManualDeploy[수동 배포 실행]
     CheckImage -->|예| Success
@@ -1338,7 +1338,7 @@ graph TD
 2. ✅ Slug가 입력되었나요?
 3. ✅ Integration이 페이지에 초대되었나요?
    - 페이지 우측 상단 **Share** 버튼 → Integration 이름 확인
-4. ✅ 10분 기다렸나요? 또는 수동 배포했나요?
+4. ✅ 1시간 기다렸나요? 또는 수동 배포했나요?
 5. ✅ 브라우저 캐시를 삭제했나요?
    - `Ctrl + Shift + R` (Windows)
    - `Cmd + Shift + R` (Mac)
@@ -1347,7 +1347,7 @@ graph TD
 
 **해결**:
 1. Notion 이미지 URL은 1시간 후 만료됩니다
-2. 10분 기다리거나 수동 배포하면 자동으로 최신 URL로 갱신됩니다
+2. 1시간 기다리거나 수동 배포하면 자동으로 최신 URL로 갱신됩니다
 3. 외부 이미지는 Notion에 직접 업로드하는 것을 권장합니다
 
 ---

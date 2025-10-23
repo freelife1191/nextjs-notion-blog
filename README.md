@@ -1,7 +1,7 @@
 # Next.js Notion Blog
 
 > **Next.js 15, shadcn/ui, Tailwind CSS**로 개발된 Notion 기반 자동화 블로그 서비스
-> Notion을 CMS로 사용하고 10분마다 GitHub Actions를 통해 자동 배포됩니다.
+> Notion을 CMS로 사용하고 1시간마다 GitHub Actions를 통해 자동 배포됩니다.
 
 <!--
 ⚠️ 중요: Fork 후 아래 배지 URL을 본인의 GitHub 정보로 변경하세요!
@@ -52,8 +52,8 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 <td width="50%">
 
 ### ⚡ **완전 자동 동기화**
-- **10분마다 자동으로** Notion 변경사항 감지
-- 글 작성 → 발행 상태 변경 → **10분 이내 자동 배포**
+- **2시간마다 자동으로** Notion 변경사항 감지
+- 글 작성 → 발행 상태 변경 → **2시간 이내 자동 배포**
 - GitHub Actions가 모든 과정을 자동화
 
 </td>
@@ -94,7 +94,7 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 ### 왜 이 프로젝트를 사용해야 하나요?
 
 - **노션만 알면 됩니다** - 별도의 블로그 관리 툴 없이 노션에서 글을 작성하고 관리
-- **완전 자동화** - 노션에서 글을 발행하면 10분 이내 자동으로 블로그에 반영
+- **완전 자동화** - 노션에서 글을 발행하면 1시간 이내 자동으로 블로그에 반영
 - **무료 호스팅** - GitHub Pages를 통해 완전 무료로 블로그 운영
 - **빠른 로딩** - Next.js Static Export로 정적 사이트 생성, CDN을 통한 빠른 전송
 - **SEO 최적화** - Open Graph, Twitter Cards, JSON-LD 등 완벽한 SEO 지원
@@ -152,7 +152,7 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 - GitHub Discussions 기반 무료 댓글
 - 스팸 방지 및 마크다운 지원
 - 다크 모드 자동 전환
-- 약 10분 소요
+- 약 1시간 소요
 
 ### 🔧 문제가 발생했나요?
 
@@ -200,7 +200,7 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 - **Notion API** - 콘텐츠 관리 시스템 (CMS)
   - `@notionhq/client` - 공식 Notion SDK
 - **GitHub Actions** - CI/CD 자동화
-  - Cron 스케줄링 (10분마다 자동 동기화)
+  - Cron 스케줄링 (2시간마다 자동 동기화)
   - 자동 빌드 및 배포
 - **GitHub Pages** - 정적 사이트 호스팅
 
@@ -230,7 +230,7 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 
 ### 📝 콘텐츠 관리
 - ✅ **노션 기반 글 작성** - 노션의 모든 블록 타입 지원
-- ✅ **자동 동기화** - 10분마다 GitHub Actions가 자동으로 노션에서 최신 콘텐츠 가져오기
+- ✅ **자동 동기화** - 1시간마다 GitHub Actions가 자동으로 노션에서 최신 콘텐츠 가져오기
 - ✅ **상태 관리** - Publish, Draft, Hidden, Wait 상태로 글 관리
 - ✅ **태그 & 카테고리** - 다중 태그 및 라벨 분류
 - ✅ **커버 이미지** - 노션 페이지 커버 또는 CoverImage 속성 지원
@@ -276,7 +276,7 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
          │ Notion API
          ▼
 ┌─────────────────┐
-│ GitHub Actions  │ ← 10분마다 자동 동기화
+│ GitHub Actions  │ ← 1시간마다 자동 동기화
 │  (Cron: */10)   │
 └────────┬────────┘
          │ Build & Deploy
@@ -297,7 +297,7 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 
 1. **콘텐츠 작성**: 노션 데이터베이스에 글 작성
 2. **상태 변경**: Status를 "Publish"로 설정
-3. **자동 동기화**: GitHub Actions가 10분마다 실행
+3. **자동 동기화**: GitHub Actions가 1시간마다 실행
 4. **데이터 가져오기**: Notion API를 통해 발행된 글 목록 조회
 5. **정적 빌드**: Next.js가 모든 페이지를 HTML로 사전 생성
 6. **자동 배포**: GitHub Pages에 빌드 결과물 업로드
@@ -425,7 +425,7 @@ Notion을 CMS(콘텐츠 관리 시스템)로 사용하기 위한 설정입니다
 **핵심 동작 방식:**
 - Notion에서 글을 작성하고 **Status를 "Publish"로 설정**하면 블로그에 표시됩니다
 - Draft, Hidden, Wait 상태는 모두 비공개로 처리됩니다
-- 10분마다 GitHub Actions가 자동으로 Notion 데이터를 가져와 배포합니다
+- 1시간마다 GitHub Actions가 자동으로 Notion 데이터를 가져와 배포합니다
 
 ---
 
@@ -737,7 +737,7 @@ npm run test:e2e:report   # 테스트 리포트 확인
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  2️⃣  GitHub Actions 자동 실행 (10분마다 또는 Push 시)                │
+│  2️⃣  GitHub Actions 자동 실행 (1시간마다 또는 Push 시)                │
 │     • Notion API로 최신 데이터 가져오기                              │
 │     • Next.js 정적 빌드 (HTML/CSS/JS 생성)                         │
 └────────────────────┬────────────────────────────────────────────┘
@@ -757,7 +757,7 @@ npm run test:e2e:report   # 테스트 리포트 확인
 
 **핵심 포인트:**
 - ✅ Notion에서 글만 쓰면 됩니다 (나머지는 자동)
-- ✅ 10분 이내 자동 배포 (기다리기만 하면 됨)
+- ✅ 1시간 이내 자동 배포 (기다리기만 하면 됨)
 - ✅ 코드 수정 시 즉시 배포 (git push만 하면 됨)
 
 ---
@@ -771,7 +771,7 @@ GitHub Actions가 어떻게 Notion 데이터를 가져와서 정적 사이트로
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                    GitHub Actions 트리거                         │
-│  • 10분마다 자동 실행 (Cron: */10 * * * *)                          │
+│  • 1시간마다 자동 실행 (Cron: 0 * * * *)                          │
 │  • main 브랜치에 Push                                             │
 │  • 수동 실행 (workflow_dispatch)                                  │
 └────────────────────┬────────────────────────────────────────────┘
@@ -895,12 +895,12 @@ export async function generateStaticParams() {
 
 다음 경우에 자동으로 배포됩니다:
 
-1. **10분마다 자동 동기화** (Cron)
+1. **1시간마다 자동 동기화** (Cron)
    ```yaml
    schedule:
-     - cron: '*/10 * * * *'  # 10분마다 실행
+     - cron: '0 * * * *'  # 1시간마다 실행
    ```
-   - GitHub Actions가 10분마다 자동 실행
+   - GitHub Actions가 1시간마다 자동 실행
    - Notion에서 최신 데이터 가져오기
    - 변경사항이 있으면 자동 빌드 및 배포
 
@@ -987,14 +987,14 @@ export async function generateStaticParams() {
 4. 행 클릭하여 페이지로 이동
 5. 본문 작성 (모든 Notion 블록 타입 지원)
 6. 작성 완료 후 **Status**를 `Publish`로 변경
-7. 최대 10분 이내 블로그에 자동 반영
+7. 최대 1시간 이내 블로그에 자동 반영
 
 ### 글 수정하기
 
 1. Notion에서 해당 포스트 페이지 열기
 2. 내용 수정
 3. 저장 (자동 저장됨)
-4. 최대 10분 이내 블로그에 자동 반영
+4. 최대 1시간 이내 블로그에 자동 반영
 
 ### 글 삭제/숨기기
 
@@ -1050,7 +1050,7 @@ export async function generateStaticParams() {
 - 지원 형식: `.ico`, `.png`, `.svg`
 - [Favicon Generator](https://favicon.io/)에서 이미지를 favicon으로 변환 가능
 
-변경 후 최대 10분 이내 자동으로 블로그에 반영됩니다.
+변경 후 최대 1시간 이내 자동으로 블로그에 반영됩니다.
 
 ### About 페이지 수정
 
@@ -1232,7 +1232,7 @@ https://your-blog.github.io/your-repo/?tag=Next.js
 - About: `src/app/about/page.tsx`
 
 **동기화 주기:**
-`.github/workflows/gh-pages.yml`에서 cron 설정 변경 (기본: 10분)
+`.github/workflows/gh-pages.yml`에서 cron 설정 변경 (기본: 1시간)
 
 **컴포넌트 개발:**
 - shadcn/ui 패턴 따르기
@@ -1257,7 +1257,7 @@ https://your-blog.github.io/your-repo/?tag=Next.js
 **글이 표시 안 됨:**
 - Status가 `Publish`인지 확인
 - Slug가 비어있지 않은지 확인
-- 10분 대기 또는 Actions에서 수동 배포
+- 1시간 대기 또는 Actions에서 수동 배포
 
 **이미지 깨짐:**
 - Notion에 이미지 직접 업로드 (외부 링크 차단 방지)
