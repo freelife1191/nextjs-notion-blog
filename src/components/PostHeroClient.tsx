@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { PostHero } from './PostHero'
 import { PostMeta } from './PostMeta'
 import { TagChips } from './TagChips'
@@ -61,8 +61,6 @@ export function PostHeroClient({
   contentHtml,
   adsensePublisherId,
 }: PostHeroClientProps) {
-  const router = useRouter()
-
   // 페이지 진입 시 스크롤을 맨 위로 이동
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -77,16 +75,18 @@ export function PostHeroClient({
         variants={pageVariants}
         {...usePageAnimation}
       >
-        {/* 뒤로가기 버튼 */}
+        {/* 목록으로 버튼 */}
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => router.back()}
           className="mb-4"
-          aria-label="뒤로가기"
+          aria-label="목록으로"
+          asChild
         >
-          <NavigationIcon direction="prev" size={16} className="mr-2" />
-          목록으로
+          <Link href="/" prefetch={true}>
+            <NavigationIcon direction="prev" size={16} className="mr-2" />
+            목록으로
+          </Link>
         </Button>
 
         {/* Breadcrumb navigation */}
