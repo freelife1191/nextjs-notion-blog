@@ -102,8 +102,8 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 
 ### 데모
 
-- **라이브 데모**: [https://freelife1191.github.io/nextjs-notion-blog](https://freelife1191.github.io/nextjs-notion-blog) - 실제 운영 중인 예시
-- **참고 디자인**: [https://hong-minji.github.io/works/](https://hong-minji.github.io/works/)
+- **라이브 데모**: https://notionblogsample.github.io/nextjs-notion-blog
+- **노션 데이터베이스 샘플**: https://www.notion.so/freelife/295573b3dc09809b9b4dc3c309399a97
 
 ### 버그 제보 및 기능 요청
 

@@ -264,7 +264,7 @@ export class NotionRenderer {
     // 일반 링크 처리 - 가장 나중에 처리
     else if (link) {
       const href = typeof link === 'string' ? link : link.url;
-      content = `<a href="${href}" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">${content}</a>`;
+      content = `<a href="${href}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">${content}</a>`;
     }
 
     return content;
@@ -671,7 +671,7 @@ export class NotionRenderer {
     if (!url) return '';
     
     return `<div class="file-download">
-      <a href="${url}" class="flex items-center">
+      <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex items-center">
         <div class="file-icon">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>

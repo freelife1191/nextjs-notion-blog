@@ -55,6 +55,7 @@ export type ProfileSettings = {
     kakao?: string;
     instagram?: string;
     blog?: string;
+    notion?: string;
     email?: string;
     github?: string;
     twitter?: string;

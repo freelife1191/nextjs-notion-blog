@@ -19,6 +19,7 @@ interface MobileMenuProps {
       instagram?: string
       email?: string
       github?: string
+      notion?: string
     }
   }
 }
@@ -167,6 +168,18 @@ export function MobileMenu({
                         aria-label="GitHub"
                       >
                         <SocialIcon platform="github" size={20} />
+                      </a>
+                    )}
+
+                    {profile.socialLinks.notion && (
+                      <a
+                        href={profile.socialLinks.notion}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+                        aria-label="Notion"
+                      >
+                        <SocialIcon platform="notion" size={20} />
                       </a>
                     )}
                   </div>

@@ -24,6 +24,7 @@ export const SocialLinksSchema = z.object({
   kakao: z.string().url().optional().or(z.literal('')),
   instagram: z.string().url().optional().or(z.literal('')),
   blog: z.string().url().optional().or(z.literal('')),
+  notion: z.string().url().optional().or(z.literal('')),
   email: z.string().email().optional().or(z.literal('')),
   github: z.string().url().optional().or(z.literal('')),
   twitter: z.string().url().optional().or(z.literal('')),

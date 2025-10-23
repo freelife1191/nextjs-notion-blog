@@ -228,6 +228,7 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
               kakao: props['Kakao']?.url ?? (props['Kakao']?.rich_text ? getPlainText(props['Kakao'].rich_text) : defaultSettings.socialLinks.kakao),
               instagram: props['Instagram']?.url ?? (props['Instagram']?.rich_text ? getPlainText(props['Instagram'].rich_text) : defaultSettings.socialLinks.instagram),
               blog: props['Blog']?.url ?? (props['Blog']?.rich_text ? getPlainText(props['Blog'].rich_text) : defaultSettings.socialLinks.blog),
+              notion: props['Notion']?.url ?? (props['Notion']?.rich_text ? getPlainText(props['Notion'].rich_text) : undefined),
               email: emailValue && !emailValue.startsWith('mailto:') ? `mailto:${emailValue}` : emailValue,
               github: props['GitHub']?.url ?? (props['GitHub']?.rich_text ? getPlainText(props['GitHub'].rich_text) : undefined),
               twitter: props['Twitter']?.url ?? (props['Twitter']?.rich_text ? getPlainText(props['Twitter'].rich_text) : undefined),

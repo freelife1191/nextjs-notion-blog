@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils'
 import { ThemeToggle } from './ThemeToggle'
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
 import { DevelopmentStatusModal } from './DevelopmentStatusModal'
+import { Markdown } from './Markdown'
 
 interface ProfileSidebarProps {
   profile?: {
@@ -64,11 +65,11 @@ export function ProfileSidebar({
 
   return (
     <motion.aside
-      className="container-sidebar"
+      className="container-sidebar w-full max-w-full overflow-hidden"
       variants={fadeVariants}
       {...useInViewAnimation}
     >
-      <div className="space-section">
+      <div className="space-section w-full">
         {/* 프로필 이미지 */}
         <div className="mb-6">
           <Avatar className="w-24 h-24 border-2 border-border">
@@ -104,13 +105,15 @@ export function ProfileSidebar({
         </motion.p>
 
         {/* 소개 */}
-        <motion.p
-          className="text-body text-foreground mb-8 leading-relaxed"
+        <motion.div
+          className="text-body text-foreground mb-8 leading-relaxed break-words"
           variants={fadeVariants}
           transition={{ delay: 0.3 }}
         >
-          {profile.bio}
-        </motion.p>
+          <Markdown className="[&>*]:text-body [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+            {profile.bio || ''}
+          </Markdown>
+        </motion.div>
 
         {/* 네비게이션 */}
         <motion.nav
@@ -141,7 +144,7 @@ export function ProfileSidebar({
 
         {/* 소셜 링크 */}
         <motion.div
-          className="flex justify-start gap-2 flex-wrap max-w-[280px]"
+          className="flex justify-start gap-2 flex-wrap w-full max-w-full overflow-hidden"
           variants={fadeVariants}
           transition={{ delay: 0.5 }}
         >
@@ -314,7 +317,7 @@ export function ProfileSidebar({
 
         {/* 저작권 & 개발 상태 */}
         <motion.div
-          className="flex items-center justify-between mt-8"
+          className="flex items-center justify-between mt-8 pr-2"
           variants={fadeVariants}
           transition={{ delay: 0.6 }}
         >

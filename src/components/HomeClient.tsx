@@ -11,6 +11,7 @@ import { EmptyState, ErrorState } from '@/components/states'
 import type { PostListItem } from '@/services/notion/client'
 import { NavigationIcon } from '@/lib/icons'
 import { useSearchParams } from 'next/navigation'
+import { Markdown } from './Markdown'
 
 interface HomeClientProps {
   posts: PostListItem[]
@@ -81,9 +82,11 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
           {settings.homeTitle}
         </h1>
-        <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-          {settings.homeDescription}
-        </p>
+        <div className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+          <Markdown className="[&>*]:text-lg lg:[&>*]:text-xl [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+            {settings.homeDescription || ''}
+          </Markdown>
+        </div>
 
         {/* 활성 필터 표시 */}
         {hasActiveFilters && (
