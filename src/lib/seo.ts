@@ -1,0 +1,327 @@
+/**
+ * SEO 메타데이터 헬퍼 함수
+ * 페이지별 SEO 최적화를 위한 중앙 집중식 관리
+ */
+
+import type { Metadata } from 'next'
+
+/**
+ * 사이트 URL - 환경 변수에서 가져오거나 기본값 사용
+ */
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
+
+/**
+ * 기본 SEO 설정
+ */
+const defaultSEO = {
+  title: '블로그 제목',
+  description: 'Notion으로 관리하는 개인 블로그',
+  url: SITE_URL,
+  siteName: '블로그',
+  author: '작성자',
+  locale: 'ko_KR',
+  type: 'website',
+}
+
+/**
+ * 기본 메타데이터 생성
+ */
+export function createMetadata({
+  title,
+  description,
+  path = '',
+  image,
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  tags = [],
+}: {
+  title?: string
+  description?: string
+  path?: string
+  image?: string
+  type?: 'website' | 'article'
+  publishedTime?: string
+  modifiedTime?: string
+  tags?: string[]
+} = {}): Metadata {
+  const fullTitle = title ? `${title} — ${defaultSEO.siteName}` : defaultSEO.title
+  const fullDescription = description || defaultSEO.description
+  const fullUrl = `${defaultSEO.url}${path}`
+
+  // Notion 커버 이미지가 있으면 우선 사용, 없으면 기본 이미지
+  // Notion CDN 이미지는 HTTPS를 사용하므로 안전
+  const fullImage = image || `${defaultSEO.url}/images/og-default.png`
+
+  const metadata: Metadata = {
+    title: fullTitle,
+    description: fullDescription,
+    openGraph: {
+      title: fullTitle,
+      description: fullDescription,
+      url: fullUrl,
+      siteName: defaultSEO.siteName,
+      images: [
+        {
+          url: fullImage,
+          width: 1200,
+          height: 630,
+          alt: fullTitle,
+        },
+      ],
+      locale: defaultSEO.locale,
+      type,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: fullTitle,
+      description: fullDescription,
+      images: [fullImage],
+      creator: '@your_twitter',
+    },
+    alternates: {
+      canonical: fullUrl,
+    },
+  }
+
+  // 아티클 타입인 경우 추가 메타데이터
+  if (type === 'article') {
+    metadata.openGraph = {
+      ...metadata.openGraph,
+      type: 'article',
+      publishedTime,
+      modifiedTime,
+      authors: [defaultSEO.author],
+      tags,
+    }
+  }
+
+  return metadata
+}
+
+/**
+ * 홈페이지 메타데이터
+ */
+export const homeMetadata: Metadata = createMetadata({
+  title: defaultSEO.title,
+  description: defaultSEO.description,
+  path: '/',
+})
+
+/**
+ * About 페이지 메타데이터
+ */
+export const aboutMetadata: Metadata = createMetadata({
+  title: 'About',
+  description: 'Notion About 페이지를 설정하여 자신을 소개하세요',
+  path: '/about',
+})
+
+/**
+ * 포스트 메타데이터 생성
+ */
+export function createPostMetadata({
+  title,
+  description,
+  slug,
+  publishedTime,
+  modifiedTime,
+  tags = [],
+  coverImage,
+}: {
+  title: string
+  description?: string
+  slug: string
+  publishedTime?: string
+  modifiedTime?: string
+  tags?: string[]
+  coverImage?: string
+}): Metadata {
+  return createMetadata({
+    title,
+    description: description || title,
+    path: `/posts/${slug}`,
+    image: coverImage,
+    type: 'article',
+    publishedTime,
+    modifiedTime,
+    tags,
+  })
+}
+
+/**
+ * JSON-LD 구조화된 데이터 생성
+ */
+export function createJsonLd({
+  type,
+  title,
+  description,
+  url,
+  image,
+  publishedTime,
+  modifiedTime,
+  author,
+  tags,
+}: {
+  type: 'WebSite' | 'Article' | 'Person' | 'Blog'
+  title: string
+  description: string
+  url: string
+  image?: string
+  publishedTime?: string
+  modifiedTime?: string
+  author?: string
+  tags?: string[]
+}) {
+  const baseJsonLd: any = {
+    '@context': 'https://schema.org',
+    '@type': type,
+    name: title,
+    description,
+    url,
+  }
+
+  if (image) {
+    baseJsonLd.image = image
+  }
+
+  if (type === 'WebSite') {
+    return {
+      ...baseJsonLd,
+      publisher: {
+        '@type': 'Organization',
+        name: defaultSEO.siteName,
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${defaultSEO.url}/?q={search_term_string}`,
+        },
+        'query-input': 'required name=search_term_string',
+      },
+    }
+  }
+
+  if (type === 'Blog') {
+    return {
+      ...baseJsonLd,
+      author: {
+        '@type': 'Person',
+        name: author || defaultSEO.author,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: defaultSEO.siteName,
+      },
+      inLanguage: 'ko-KR',
+    }
+  }
+
+  if (type === 'Article') {
+    return {
+      ...baseJsonLd,
+      headline: title,
+      datePublished: publishedTime,
+      dateModified: modifiedTime || publishedTime,
+      author: {
+        '@type': 'Person',
+        name: author || defaultSEO.author,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: defaultSEO.siteName,
+      },
+      keywords: tags?.join(', '),
+    }
+  }
+
+  if (type === 'Person') {
+    return {
+      ...baseJsonLd,
+      jobTitle: 'Developer & Designer',
+      worksFor: {
+        '@type': 'Organization',
+        name: defaultSEO.siteName,
+      },
+    }
+  }
+
+  return baseJsonLd
+}
+
+/**
+ * BreadcrumbList JSON-LD 생성
+ */
+export function createBreadcrumbJsonLd({
+  items,
+}: {
+  items: Array<{ name: string; url?: string }>
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      ...(item.url ? { item: item.url } : {}),
+    })),
+  }
+}
+
+/**
+ * 사이트맵 생성용 URL 목록
+ */
+export function generateSitemapUrls(posts: Array<{ slug: string; updatedAt: string }>) {
+  const staticPages = [
+    {
+      url: '',
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      priority: 1.0,
+    },
+    {
+      url: '/about',
+      lastmod: new Date().toISOString(),
+      changefreq: 'monthly',
+      priority: 0.8,
+    },
+  ]
+
+  const postPages = posts.map((post) => ({
+    url: `/posts/${post.slug}`,
+    lastmod: post.updatedAt,
+    changefreq: 'monthly',
+    priority: 0.6,
+  }))
+
+  return [...staticPages, ...postPages]
+}
+
+/**
+ * RSS 피드 생성용 데이터
+ */
+export function generateRssData(posts: Array<{
+  title: string
+  description: string
+  slug: string
+  publishedTime: string
+  content: string
+}>) {
+  return {
+    title: defaultSEO.title,
+    description: defaultSEO.description,
+    url: defaultSEO.url,
+    language: 'ko',
+    lastBuildDate: new Date().toUTCString(),
+    items: posts.map((post) => ({
+      title: post.title,
+      description: post.description,
+      url: `${defaultSEO.url}/posts/${post.slug}`,
+      guid: `${defaultSEO.url}/posts/${post.slug}`,
+      pubDate: new Date(post.publishedTime).toUTCString(),
+      content: post.content,
+    })),
+  }
+}

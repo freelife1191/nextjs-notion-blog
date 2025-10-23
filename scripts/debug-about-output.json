@@ -1,0 +1,2679 @@
+{
+  "title": "About 페이지",
+  "html": "<div class=\"callout\">\n      <div class=\"flex items-start gap-3\">\n        <span class=\"callout-icon text-2xl flex-shrink-0\">🎓</span>\n        <div class=\"callout-content flex-1\">\n          <div class=\"callout-text mb-2\"><strong>LEE HAI｜노션 컨설턴트 · 강사</strong></div>\n          <p class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-4\">노션 시스템 설계와 교육에 특화된 강사입니다. 실무형 템플릿과 커리큘럼을 설계해 개인과 팀이 더 명확하게 일하고 더 빠르게 실행하도록 돕습니다.</p>\n        </div>\n      </div>\n    </div>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\"><code class=\"bg-gray-100 px-1 py-0.5 rounded text-sm font-mono\">Notion Databases</code>  <code class=\"bg-gray-100 px-1 py-0.5 rounded text-sm font-mono\">Relation & Rollup</code>  <code class=\"bg-gray-100 px-1 py-0.5 rounded text-sm font-mono\">AI 자동 채우기</code>  <code class=\"bg-gray-100 px-1 py-0.5 rounded text-sm font-mono\">템플릿 제작</code>  <code class=\"bg-gray-100 px-1 py-0.5 rounded text-sm font-mono\">교육 커리큘럼 설계</code></li></ul>\n<hr class=\"my-8 border-gray-200 dark:border-gray-700\">\n<h2 id=\"\" class=\"text-2xl font-semibold text-gray-900 dark:text-white mb-4 mt-6\">경력</h2>\n<h3 id=\"-\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">노션하이 대표 · 노션 강사</h3>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">2022 - 현재</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">“노션하이 베이직 코스” 운영과 실습 중심 강의 진행</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">Day별 미션·워크북 템플릿 설계 및 수업 자료 제작</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">수강생 대시보드, 자료DB, 프로젝트DB 등 원본DB 체계 구축과 링크드 뷰 활용법 지도</li></ul>\n<h3 id=\"-\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">노션 컨설턴트</h3>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">2023 - 현재</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">기업·개인 맞춤형 업무 시스템 기획서 작성과 구현</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">관계형(Relation)·롤업(Rollup)·AI 자동 요약을 활용한 “자료 요약 자동화” 설계</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">세무사무소 등 B2B 클라이언트 프로젝트 컨설팅 및 내부 운영 템플릿 제공</li></ul>\n<hr class=\"my-8 border-gray-200 dark:border-gray-700\">\n<h2 id=\"-\" class=\"text-2xl font-semibold text-gray-900 dark:text-white mb-4 mt-6\">대표 교육·프로젝트</h2>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">베이직 코스 허브와 강의실 운영, 커리큘럼 고도화</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">Day 1–14 워크북 템플릿 세트 제작 및 배포</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">“자료DB ↔ 프로젝트DB” 연결, 요약 자동화 실습 시나리오 설계</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">세무사무소 전용 시스템(고객·신고·일정·레퍼런스) 스키마 컨설팅</li></ul>\n<hr class=\"my-8 border-gray-200 dark:border-gray-700\">\n<h2 id=\"\" class=\"text-2xl font-semibold text-gray-900 dark:text-white mb-4 mt-6\">역량</h2>\n<div class=\"column-layout grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6\">\n      <div class=\"column-card\">\n      <h3 id=\"-\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">시스템 설계</h3>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">원본DB/링크드 뷰 분리 전략</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">스키마 설계(Select·Multi-select·Status·Date 등)</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">관계형(Relation)과 롤업(Rollup) 요약 구조</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">대시보드 구성과 뷰 전략</li></ul>\n    </div><div class=\"column-card\">\n      <h3 id=\"\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">교육·콘텐츠</h3>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">커리큘럼 및 워크북 템플릿 제작</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">실습 과제와 체크리스트 설계</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">문서화와 가이드 작성</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">라이브 강의·VOD 운영 가이드</li></ul>\n    </div><div class=\"column-card\">\n      <h3 id=\"\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">자동화·브랜딩</h3>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">AI 자동 채우기 프롬프트 설계</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">자료 요약 자동화 플로우</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">블로그/사이트 연동 실험</li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\">품질 점검과 운영 규칙 정립</li></ul>\n    </div>\n    </div>\n<hr class=\"my-8 border-gray-200 dark:border-gray-700\">\n<h2 id=\"\" class=\"text-2xl font-semibold text-gray-900 dark:text-white mb-4 mt-6\">관심사</h2>\n<div class=\"column-layout grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6\">\n      <div class=\"column-card\">\n      <h3 id=\"-\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">교육 설계</h3>\n<p class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-4\">학습자의 행동 변화를 이끄는 실습형 커리큘럼과 평가 체계를 연구합니다.</p>\n    </div><div class=\"column-card\">\n      <h3 id=\"-\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">데이터 모델링</h3>\n<p class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-4\">업무 흐름을 반영하는 스키마와 관계 구조, 요약 규칙 최적화에 관심이 많습니다.</p>\n    </div><div class=\"column-card\">\n      <h3 id=\"-\" class=\"text-xl font-semibold text-gray-900 dark:text-white mb-3 mt-5\">지식 운영</h3>\n<p class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-4\">자료 관리 표준화, 태그 전략, 대시보드 UX 개선에 집중합니다.</p>\n    </div>\n    </div>\n<hr class=\"my-8 border-gray-200 dark:border-gray-700\">\n<h2 id=\"\" class=\"text-2xl font-semibold text-gray-900 dark:text-white mb-4 mt-6\">연락처</h2>\n<p class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-4\">프로젝트나 강의 의뢰가 필요하시면 언제든 연락해주세요.</p>\n<ul class=\"list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300\"><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\"><a href=\"mailto:000001romi@gmail.com\" class=\"text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline\">이메일 보내기</a></li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\"><a href=\"https://github.com/freelife1191\" class=\"text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline\">GitHub</a></li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\"><a href=\"https://blog.naver.com/designhi2749\" class=\"text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline\">블로그</a></li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\"><a href=\"https://open.kakao.com/o/gBMAVMjf\" class=\"text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline\">카카오 오픈채팅</a></li><li class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-2\"><a href=\"https://pf.kakao.com/_rYxchG\" class=\"text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline\">카카오 채널</a></li></ul>\n<p class=\"text-gray-700 dark:text-gray-300 leading-relaxed mb-4\"></p>",
+  "content": [
+    {
+      "object": "block",
+      "id": "0466f8e4-7445-46f0-8df8-6add36d2e4af",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": true,
+      "archived": false,
+      "in_trash": false,
+      "type": "callout",
+      "callout": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "LEE HAI｜노션 컨설턴트 · 강사",
+              "link": null
+            },
+            "annotations": {
+              "bold": true,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "LEE HAI｜노션 컨설턴트 · 강사",
+            "href": null
+          }
+        ],
+        "icon": {
+          "type": "emoji",
+          "emoji": "🎓"
+        },
+        "color": "gray_background",
+        "children": [
+          {
+            "object": "block",
+            "id": "efef7b6a-fcf8-4f8e-8c92-c32cdf38c9d0",
+            "parent": {
+              "type": "block_id",
+              "block_id": "0466f8e4-7445-46f0-8df8-6add36d2e4af"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:40:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": false,
+            "archived": false,
+            "in_trash": false,
+            "type": "paragraph",
+            "paragraph": {
+              "rich_text": [
+                {
+                  "type": "text",
+                  "text": {
+                    "content": "노션 시스템 설계와 교육에 특화된 강사입니다. 실무형 템플릿과 커리큘럼을 설계해 개인과 팀이 더 명확하게 일하고 더 빠르게 실행하도록 돕습니다.",
+                    "link": null
+                  },
+                  "annotations": {
+                    "bold": false,
+                    "italic": false,
+                    "strikethrough": false,
+                    "underline": false,
+                    "code": false,
+                    "color": "default"
+                  },
+                  "plain_text": "노션 시스템 설계와 교육에 특화된 강사입니다. 실무형 템플릿과 커리큘럼을 설계해 개인과 팀이 더 명확하게 일하고 더 빠르게 실행하도록 돕습니다.",
+                  "href": null
+                }
+              ],
+              "color": "default"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "id": "b0f96d96-01f1-412b-8bf5-8c8550620330",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Notion Databases",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "Notion Databases",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "  ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "  ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "Relation & Rollup",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "Relation & Rollup",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "  ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "  ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "AI 자동 채우기",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "AI 자동 채우기",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "  ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "  ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "템플릿 제작",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "템플릿 제작",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "  ",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "  ",
+            "href": null
+          },
+          {
+            "type": "text",
+            "text": {
+              "content": "교육 커리큘럼 설계",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": true,
+              "color": "default"
+            },
+            "plain_text": "교육 커리큘럼 설계",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "15266bcf-d892-4416-ac81-5b7a934db3f3",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "divider",
+      "divider": {}
+    },
+    {
+      "object": "block",
+      "id": "f43e3d06-b712-4da0-a2d9-226da0e8a4a2",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "경력",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "경력",
+            "href": null
+          }
+        ],
+        "is_toggleable": false,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "1d70f617-aafe-430a-99f2-8c7da8252e0e",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "노션하이 대표 · 노션 강사",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "노션하이 대표 · 노션 강사",
+            "href": null
+          }
+        ],
+        "is_toggleable": true,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "05ce4dbb-715d-4553-a6f8-0aeda517a2ea",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "2022 - 현재",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "2022 - 현재",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "c1bbaf27-8694-47a4-87b1-c81e8d498970",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "“노션하이 베이직 코스” 운영과 실습 중심 강의 진행",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "“노션하이 베이직 코스” 운영과 실습 중심 강의 진행",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "ef3ce94f-e439-4b2d-8a36-25ea8c30fa57",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Day별 미션·워크북 템플릿 설계 및 수업 자료 제작",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Day별 미션·워크북 템플릿 설계 및 수업 자료 제작",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "7ec0fe5d-ffde-4708-ac47-fbcb8b3e7756",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "수강생 대시보드, 자료DB, 프로젝트DB 등 원본DB 체계 구축과 링크드 뷰 활용법 지도",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "수강생 대시보드, 자료DB, 프로젝트DB 등 원본DB 체계 구축과 링크드 뷰 활용법 지도",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "bad0d5e3-a087-435f-b27f-01b7c6bf25b9",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_3",
+      "heading_3": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "노션 컨설턴트",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "노션 컨설턴트",
+            "href": null
+          }
+        ],
+        "is_toggleable": true,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "edf1b129-5aa6-4653-a6ff-88ff15080f32",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "2023 - 현재",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "2023 - 현재",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "bc9b597b-d498-4c68-bdf3-928f0e563f3b",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "기업·개인 맞춤형 업무 시스템 기획서 작성과 구현",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "기업·개인 맞춤형 업무 시스템 기획서 작성과 구현",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "8194eb0b-8b77-44f3-b668-7a970366f51a",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "관계형(Relation)·롤업(Rollup)·AI 자동 요약을 활용한 “자료 요약 자동화” 설계",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "관계형(Relation)·롤업(Rollup)·AI 자동 요약을 활용한 “자료 요약 자동화” 설계",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "6d3543db-98e0-4ab5-a4a8-4bb68b424309",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "세무사무소 등 B2B 클라이언트 프로젝트 컨설팅 및 내부 운영 템플릿 제공",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "세무사무소 등 B2B 클라이언트 프로젝트 컨설팅 및 내부 운영 템플릿 제공",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "2d69e65c-e749-4082-823a-e60812380fc5",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "divider",
+      "divider": {}
+    },
+    {
+      "object": "block",
+      "id": "748f4df4-ab6b-4ff6-bdec-42261e3aa033",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "대표 교육·프로젝트",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "대표 교육·프로젝트",
+            "href": null
+          }
+        ],
+        "is_toggleable": false,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "873827d1-f31d-4747-aa49-bb906231985a",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "베이직 코스 허브와 강의실 운영, 커리큘럼 고도화",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "베이직 코스 허브와 강의실 운영, 커리큘럼 고도화",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "727a1af8-c3d3-426c-90c1-3e2d3c4da29b",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "Day 1–14 워크북 템플릿 세트 제작 및 배포",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "Day 1–14 워크북 템플릿 세트 제작 및 배포",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "dcdb473b-2975-4576-bf75-bd429b92743b",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "“자료DB ↔ 프로젝트DB” 연결, 요약 자동화 실습 시나리오 설계",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "“자료DB ↔ 프로젝트DB” 연결, 요약 자동화 실습 시나리오 설계",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "b0f5c775-fabf-4444-94e0-504e104b8b26",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "세무사무소 전용 시스템(고객·신고·일정·레퍼런스) 스키마 컨설팅",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "세무사무소 전용 시스템(고객·신고·일정·레퍼런스) 스키마 컨설팅",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "a0e4373e-a410-4c2b-9870-8263f4254d68",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "divider",
+      "divider": {}
+    },
+    {
+      "object": "block",
+      "id": "6071a859-2eb5-490c-b0fe-1d3c23da3d13",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "역량",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "역량",
+            "href": null
+          }
+        ],
+        "is_toggleable": false,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "8df25bdf-0d3a-4c0e-8972-0063af9b15c5",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": true,
+      "archived": false,
+      "in_trash": false,
+      "type": "column_list",
+      "column_list": {
+        "children": [
+          {
+            "object": "block",
+            "id": "d0aa32b1-b8d7-4fe0-919b-16e4c496080c",
+            "parent": {
+              "type": "block_id",
+              "block_id": "8df25bdf-0d3a-4c0e-8972-0063af9b15c5"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:46:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": true,
+            "archived": false,
+            "in_trash": false,
+            "type": "column",
+            "column": {
+              "width_ratio": 1,
+              "children": [
+                {
+                  "object": "block",
+                  "id": "1535dac8-5947-4047-b191-9586e0787966",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "d0aa32b1-b8d7-4fe0-919b-16e4c496080c"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "heading_3",
+                  "heading_3": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "시스템 설계",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "시스템 설계",
+                        "href": null
+                      }
+                    ],
+                    "is_toggleable": false,
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "ee5a0d4e-3884-4296-a2a9-b728fb4024e8",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "d0aa32b1-b8d7-4fe0-919b-16e4c496080c"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "원본DB/링크드 뷰 분리 전략",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "원본DB/링크드 뷰 분리 전략",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "cef96922-3772-4a59-a6ab-c552178a3671",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "d0aa32b1-b8d7-4fe0-919b-16e4c496080c"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "스키마 설계(Select·Multi-select·Status·Date 등)",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "스키마 설계(Select·Multi-select·Status·Date 등)",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "c99024ad-c244-401e-8d0d-63aa4b4806b4",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "d0aa32b1-b8d7-4fe0-919b-16e4c496080c"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "관계형(Relation)과 롤업(Rollup) 요약 구조",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "관계형(Relation)과 롤업(Rollup) 요약 구조",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "be2251b7-edd2-43cc-8743-a9fff7c242ae",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "d0aa32b1-b8d7-4fe0-919b-16e4c496080c"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "대시보드 구성과 뷰 전략",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "대시보드 구성과 뷰 전략",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "id": "3d5924d5-af74-4993-b471-198ad6f2a263",
+            "parent": {
+              "type": "block_id",
+              "block_id": "8df25bdf-0d3a-4c0e-8972-0063af9b15c5"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:46:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": true,
+            "archived": false,
+            "in_trash": false,
+            "type": "column",
+            "column": {
+              "width_ratio": 1,
+              "children": [
+                {
+                  "object": "block",
+                  "id": "f5abb2eb-13ba-4157-88d8-77ce5e0b2fa1",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "3d5924d5-af74-4993-b471-198ad6f2a263"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "heading_3",
+                  "heading_3": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "교육·콘텐츠",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "교육·콘텐츠",
+                        "href": null
+                      }
+                    ],
+                    "is_toggleable": false,
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "12e8cd20-092f-4868-9be7-3186ca547506",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "3d5924d5-af74-4993-b471-198ad6f2a263"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "커리큘럼 및 워크북 템플릿 제작",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "커리큘럼 및 워크북 템플릿 제작",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "1b9609e9-bc5e-425b-8211-32c1746edba8",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "3d5924d5-af74-4993-b471-198ad6f2a263"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "실습 과제와 체크리스트 설계",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "실습 과제와 체크리스트 설계",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "49af0acf-6030-4f6f-8b17-d6a7c64d9972",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "3d5924d5-af74-4993-b471-198ad6f2a263"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "문서화와 가이드 작성",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "문서화와 가이드 작성",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "2e616080-4640-4787-95ac-8b722beee1fc",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "3d5924d5-af74-4993-b471-198ad6f2a263"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "라이브 강의·VOD 운영 가이드",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "라이브 강의·VOD 운영 가이드",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "id": "57b8bbb5-1fa0-498b-8e04-1764d2417d20",
+            "parent": {
+              "type": "block_id",
+              "block_id": "8df25bdf-0d3a-4c0e-8972-0063af9b15c5"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:46:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": true,
+            "archived": false,
+            "in_trash": false,
+            "type": "column",
+            "column": {
+              "width_ratio": 1,
+              "children": [
+                {
+                  "object": "block",
+                  "id": "935a03b3-8cf5-49fb-ac0f-6dc8b11abd39",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "57b8bbb5-1fa0-498b-8e04-1764d2417d20"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "heading_3",
+                  "heading_3": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "자동화·브랜딩",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "자동화·브랜딩",
+                        "href": null
+                      }
+                    ],
+                    "is_toggleable": false,
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "54b7975e-ce17-4421-98af-075bba54f7f2",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "57b8bbb5-1fa0-498b-8e04-1764d2417d20"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "AI 자동 채우기 프롬프트 설계",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "AI 자동 채우기 프롬프트 설계",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "3dd1bd32-ffdf-40b0-8516-4fc44f982a3e",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "57b8bbb5-1fa0-498b-8e04-1764d2417d20"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "자료 요약 자동화 플로우",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "자료 요약 자동화 플로우",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "7b3b78c8-2ed6-4ca6-9fbc-1c4a0242548f",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "57b8bbb5-1fa0-498b-8e04-1764d2417d20"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "블로그/사이트 연동 실험",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "블로그/사이트 연동 실험",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "4c456ffa-2c68-4159-bb43-09ae35d226d5",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "57b8bbb5-1fa0-498b-8e04-1764d2417d20"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "bulleted_list_item",
+                  "bulleted_list_item": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "품질 점검과 운영 규칙 정립",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "품질 점검과 운영 규칙 정립",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "id": "5a0f9189-fd12-483c-97c6-e81e8f9cb7be",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "divider",
+      "divider": {}
+    },
+    {
+      "object": "block",
+      "id": "8c3c658f-00db-42d5-a12a-aa73f02f4ccd",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "관심사",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "관심사",
+            "href": null
+          }
+        ],
+        "is_toggleable": false,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "41404f57-200a-4388-bf19-0a1343de1a7d",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": true,
+      "archived": false,
+      "in_trash": false,
+      "type": "column_list",
+      "column_list": {
+        "children": [
+          {
+            "object": "block",
+            "id": "c2a6b1eb-f8e6-4f44-804e-5d063d8669eb",
+            "parent": {
+              "type": "block_id",
+              "block_id": "41404f57-200a-4388-bf19-0a1343de1a7d"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:40:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": true,
+            "archived": false,
+            "in_trash": false,
+            "type": "column",
+            "column": {
+              "children": [
+                {
+                  "object": "block",
+                  "id": "8b67118a-0e26-49d5-8df6-8452f64e8b03",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "c2a6b1eb-f8e6-4f44-804e-5d063d8669eb"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "heading_3",
+                  "heading_3": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "교육 설계",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "교육 설계",
+                        "href": null
+                      }
+                    ],
+                    "is_toggleable": false,
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "06617927-5fb5-4029-8a4e-a44abffb0bf7",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "c2a6b1eb-f8e6-4f44-804e-5d063d8669eb"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "paragraph",
+                  "paragraph": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "학습자의 행동 변화를 이끄는 실습형 커리큘럼과 평가 체계를 연구합니다.",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "학습자의 행동 변화를 이끄는 실습형 커리큘럼과 평가 체계를 연구합니다.",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "id": "7c6b5f82-89b9-4d61-a11d-511c80713677",
+            "parent": {
+              "type": "block_id",
+              "block_id": "41404f57-200a-4388-bf19-0a1343de1a7d"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:40:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": true,
+            "archived": false,
+            "in_trash": false,
+            "type": "column",
+            "column": {
+              "children": [
+                {
+                  "object": "block",
+                  "id": "5d6e54ff-6100-4f88-a26b-45f4341937fe",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "7c6b5f82-89b9-4d61-a11d-511c80713677"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "heading_3",
+                  "heading_3": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "데이터 모델링",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "데이터 모델링",
+                        "href": null
+                      }
+                    ],
+                    "is_toggleable": false,
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "7cbefc8f-30b2-4f58-b49b-56e48d00f767",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "7c6b5f82-89b9-4d61-a11d-511c80713677"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "paragraph",
+                  "paragraph": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "업무 흐름을 반영하는 스키마와 관계 구조, 요약 규칙 최적화에 관심이 많습니다.",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "업무 흐름을 반영하는 스키마와 관계 구조, 요약 규칙 최적화에 관심이 많습니다.",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "object": "block",
+            "id": "b326127d-627a-4856-998f-6f46ba9fc147",
+            "parent": {
+              "type": "block_id",
+              "block_id": "41404f57-200a-4388-bf19-0a1343de1a7d"
+            },
+            "created_time": "2025-10-21T14:40:00.000Z",
+            "last_edited_time": "2025-10-21T14:40:00.000Z",
+            "created_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "last_edited_by": {
+              "object": "user",
+              "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+            },
+            "has_children": true,
+            "archived": false,
+            "in_trash": false,
+            "type": "column",
+            "column": {
+              "children": [
+                {
+                  "object": "block",
+                  "id": "7e311ecd-659b-4f11-be38-a4928ce63bf6",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "b326127d-627a-4856-998f-6f46ba9fc147"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "heading_3",
+                  "heading_3": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "지식 운영",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "지식 운영",
+                        "href": null
+                      }
+                    ],
+                    "is_toggleable": false,
+                    "color": "default"
+                  }
+                },
+                {
+                  "object": "block",
+                  "id": "c77d72e6-40a4-432e-b3b4-b3a04c7498d7",
+                  "parent": {
+                    "type": "block_id",
+                    "block_id": "b326127d-627a-4856-998f-6f46ba9fc147"
+                  },
+                  "created_time": "2025-10-21T14:40:00.000Z",
+                  "last_edited_time": "2025-10-21T14:40:00.000Z",
+                  "created_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "last_edited_by": {
+                    "object": "user",
+                    "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+                  },
+                  "has_children": false,
+                  "archived": false,
+                  "in_trash": false,
+                  "type": "paragraph",
+                  "paragraph": {
+                    "rich_text": [
+                      {
+                        "type": "text",
+                        "text": {
+                          "content": "자료 관리 표준화, 태그 전략, 대시보드 UX 개선에 집중합니다.",
+                          "link": null
+                        },
+                        "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                        },
+                        "plain_text": "자료 관리 표준화, 태그 전략, 대시보드 UX 개선에 집중합니다.",
+                        "href": null
+                      }
+                    ],
+                    "color": "default"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "object": "block",
+      "id": "c3284902-d7e0-45d3-a796-e02a6c42beed",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:40:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "divider",
+      "divider": {}
+    },
+    {
+      "object": "block",
+      "id": "70835530-538a-43d7-8a35-e3b1af22775d",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "heading_2",
+      "heading_2": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "연락처",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "연락처",
+            "href": null
+          }
+        ],
+        "is_toggleable": false,
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "0e964be5-f035-4eba-969e-968e56622239",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "프로젝트나 강의 의뢰가 필요하시면 언제든 연락해주세요.",
+              "link": null
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "프로젝트나 강의 의뢰가 필요하시면 언제든 연락해주세요.",
+            "href": null
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "28109982-041a-4196-aa3a-db5133433edb",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "이메일 보내기",
+              "link": {
+                "url": "mailto:000001romi@gmail.com"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "이메일 보내기",
+            "href": "mailto:000001romi@gmail.com"
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "9fd257ed-c663-40e4-ad4e-b39a5dec78a3",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "GitHub",
+              "link": {
+                "url": "https://github.com/freelife1191"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "GitHub",
+            "href": "https://github.com/freelife1191"
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "dd08f665-c068-4110-9b26-b819007379a2",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:40:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "블로그",
+              "link": {
+                "url": "https://blog.naver.com/designhi2749"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "블로그",
+            "href": "https://blog.naver.com/designhi2749"
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "24d345ac-ed2c-4883-98e4-10d035c585a7",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:41:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "카카오 오픈채팅",
+              "link": {
+                "url": "https://open.kakao.com/o/gBMAVMjf"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "카카오 오픈채팅",
+            "href": "https://open.kakao.com/o/gBMAVMjf"
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "5b93ff61-0bcd-42c4-ad86-000bb1bc0b42",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:41:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "bulleted_list_item",
+      "bulleted_list_item": {
+        "rich_text": [
+          {
+            "type": "text",
+            "text": {
+              "content": "카카오 채널",
+              "link": {
+                "url": "https://pf.kakao.com/_rYxchG"
+              }
+            },
+            "annotations": {
+              "bold": false,
+              "italic": false,
+              "strikethrough": false,
+              "underline": false,
+              "code": false,
+              "color": "default"
+            },
+            "plain_text": "카카오 채널",
+            "href": "https://pf.kakao.com/_rYxchG"
+          }
+        ],
+        "color": "default"
+      }
+    },
+    {
+      "object": "block",
+      "id": "293ac0e6-aa52-808a-bada-da9586b9bc81",
+      "parent": {
+        "type": "page_id",
+        "page_id": "293ac0e6-aa52-8050-ba67-f2a5f0f461b1"
+      },
+      "created_time": "2025-10-21T14:41:00.000Z",
+      "last_edited_time": "2025-10-21T14:41:00.000Z",
+      "created_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "last_edited_by": {
+        "object": "user",
+        "id": "34921162-f05c-4c49-aedc-a62daae13d5a"
+      },
+      "has_children": false,
+      "archived": false,
+      "in_trash": false,
+      "type": "paragraph",
+      "paragraph": {
+        "rich_text": [],
+        "color": "default"
+      }
+    }
+  ]
+}

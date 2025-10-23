@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>사이트 설정 DB의 SiteTitle 속성을 설정하세요</title>
+    <link>https://freelife1191.github.io/nextjs-notion-blog</link>
+    <description>사이트 설정 DB의 SiteDescription 속성을 설정하세요</description>
+    <language>ko</language>
+    <lastBuildDate>Wed, 22 Oct 2025 08:11:17 GMT</lastBuildDate>
+    <atom:link href="https://freelife1191.github.io/nextjs-notion-blog/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>테스트 블로그 (3)</title>
+      <link>https://freelife1191.github.io/nextjs-notion-blog/posts/test3</link>
+      <guid>https://freelife1191.github.io/nextjs-notion-blog/posts/test3</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+      <description>테스트 설명3</description>
+      <category>블로그</category>
+      <author>이하이</author>
+    </item>
+    <item>
+      <title>테스트 블로그 (4)</title>
+      <link>https://freelife1191.github.io/nextjs-notion-blog/posts/test4</link>
+      <guid>https://freelife1191.github.io/nextjs-notion-blog/posts/test4</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+      <description>테스트 설명4</description>
+      <category>노션하이</category>
+      <author>이하이</author>
+    </item>
+    <item>
+      <title>테스트 블로그 (5)</title>
+      <link>https://freelife1191.github.io/nextjs-notion-blog/posts/test5</link>
+      <guid>https://freelife1191.github.io/nextjs-notion-blog/posts/test5</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+      <description>테스트 설명5</description>
+      <category>테스트</category>
+      <author>이하이</author>
+    </item>
+    <item>
+      <title>테스트 블로그 (1)</title>
+      <link>https://freelife1191.github.io/nextjs-notion-blog/posts/test1</link>
+      <guid>https://freelife1191.github.io/nextjs-notion-blog/posts/test1</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+      <description>테스트 설명1</description>
+      <category>블로그</category>
+      <author>이하이</author>
+    </item>
+    <item>
+      <title>테스트 블로그 (2)</title>
+      <link>https://freelife1191.github.io/nextjs-notion-blog/posts/test2</link>
+      <guid>https://freelife1191.github.io/nextjs-notion-blog/posts/test2</guid>
+      <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+      <description>테스트 설명2</description>
+      <category>노션하이</category>
+      <author>이하이</author>
+    </item>
+    <item>
+      <title>테스트 블로그</title>
+      <link>https://freelife1191.github.io/nextjs-notion-blog/posts/test</link>
+      <guid>https://freelife1191.github.io/nextjs-notion-blog/posts/test</guid>
+      <pubDate>Mon, 20 Oct 2025 00:00:00 GMT</pubDate>
+      <description>테스트 설명</description>
+      <category>테스트</category>
+      <category>노션하이</category>
+      <author>이하이</author>
+    </item>
+  </channel>
+</rss>

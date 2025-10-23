@@ -1,0 +1,767 @@
+/* Prism.js 테마는 커스텀 스타일로 대체 */
+
+/* GitHub Markdown CSS Import */
+@import '../styles/github-markdown.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.625rem;
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+}
+
+.dark {
+  --background: 222.2 47% 11%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 210 40% 98%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: hsl(var(--background));
+}
+
+/* Typography 플러그인 기반 스타일 개선 */
+@layer components {
+  /* 기존 markdown 클래스는 Typography 플러그인으로 대체 */
+  .markdown {
+    @apply prose prose-gray max-w-none dark:prose-invert;
+  }
+
+  /* Typography 플러그인 커스터마이징 - CSS 변수 활용 */
+  .prose {
+    /* 라이트모드 색상 (기본값) */
+    --tw-prose-body: #374151;
+    --tw-prose-headings: #111827;
+    --tw-prose-links: #3b82f6; /* 브랜드 블루 */
+    --tw-prose-bold: #111827;
+    --tw-prose-counters: #6b7280;
+    --tw-prose-bullets: #d1d5db;
+    --tw-prose-hr: #e5e7eb;
+    --tw-prose-quotes: #111827;
+    --tw-prose-quote-borders: #3b82f6; /* 브랜드 블루 테두리 */
+    --tw-prose-captions: #6b7280;
+    --tw-prose-code: #111827;
+    --tw-prose-pre-code: #e5e7eb;
+    --tw-prose-pre-bg: #1f2937;
+    --tw-prose-th-borders: #d1d5db;
+    --tw-prose-td-borders: #e5e7eb;
+  }
+
+  /* 다크모드 색상 - prose-invert 클래스 사용 */
+  .prose-invert {
+    --tw-prose-body: #d1d5db;
+    --tw-prose-headings: #fff;
+    --tw-prose-links: #60a5fa; /* 밝은 브랜드 블루 */
+    --tw-prose-bold: #fff;
+    --tw-prose-counters: #9ca3af;
+    --tw-prose-bullets: #4b5563;
+    --tw-prose-hr: #374151;
+    --tw-prose-quotes: #f3f4f6;
+    --tw-prose-quote-borders: #60a5fa; /* 밝은 브랜드 블루 테두리 */
+    --tw-prose-captions: #9ca3af;
+    --tw-prose-code: #fff;
+    --tw-prose-pre-code: #d1d5db;
+    --tw-prose-pre-bg: #0f172a;
+    --tw-prose-th-borders: #4b5563;
+    --tw-prose-td-borders: #374151;
+  }
+
+  /* 특별한 컴포넌트들은 not-prose로 제외 - 최적화된 구조 */
+  .not-prose {
+    /* TOC 스타일 */
+    .toc {
+      @apply bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-6;
+    }
+
+    .toc h3 {
+      @apply text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100;
+    }
+
+    .toc ul {
+      @apply space-y-1;
+    }
+
+    .toc li {
+      @apply text-sm;
+    }
+
+    .toc a {
+      @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 no-underline hover:underline;
+    }
+
+    /* TOC 들여쓰기 스타일 - 계층적 구조 */
+    .toc ul ul {
+      @apply ml-4 mt-1;
+    }
+
+    .toc ul ul ul {
+      @apply ml-4 mt-1;
+    }
+
+    .toc ul ul ul ul {
+      @apply ml-4 mt-1;
+    }
+
+    .toc ul ul ul ul ul {
+      @apply ml-4 mt-1;
+    }
+
+    .toc ul ul ul ul ul ul {
+      @apply ml-4 mt-1;
+    }
+
+    /* TOC 레벨별 스타일 - 4칸(1rem) 단위 들여쓰기 */
+    .toc li[data-level="1"] {
+      @apply font-semibold text-base;
+    }
+
+    .toc li[data-level="2"] {
+      @apply text-sm ml-4;
+    }
+
+    .toc li[data-level="3"] {
+      @apply text-sm ml-8;
+    }
+
+    .toc li[data-level="4"] {
+      @apply text-xs ml-12;
+    }
+
+    .toc li[data-level="5"] {
+      @apply text-xs ml-16;
+    }
+
+    .toc li[data-level="6"] {
+      @apply text-xs ml-20;
+    }
+
+    /* 일반 북마크 스타일 - Notion 스타일 */
+    .regular-bookmark {
+      @apply my-4;
+      max-width: 100%;
+    }
+
+    .regular-bookmark-card {
+      @apply flex border border-gray-300 dark:border-gray-700 rounded-[10px] overflow-hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: background 20ms ease-in;
+      cursor: pointer;
+      min-width: 0;
+    }
+
+    .regular-bookmark-card:hover {
+      @apply bg-gray-50 dark:bg-gray-800;
+    }
+
+    .regular-bookmark-content {
+      padding: 12px 14px 14px;
+      overflow: hidden;
+      text-align: start;
+      flex: 1;
+    }
+
+    .regular-bookmark-title {
+      @apply text-gray-900 dark:text-gray-100;
+      font-size: 14px;
+      line-height: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-height: 24px;
+      margin-bottom: 2px;
+    }
+
+    .regular-bookmark-url {
+      @apply text-gray-700 dark:text-gray-400;
+      font-size: 12px;
+      line-height: 16px;
+      margin-top: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 링크 멘션 인라인 스타일 - 노션처럼 한 줄로 아이콘 + 저자 + 제목 */
+    .link-mention-inline {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .link-mention-inline-icon {
+      width: 14px !important;
+      height: 14px !important;
+      max-width: 14px !important;
+      max-height: 14px !important;
+      border-radius: 2px;
+      vertical-align: middle;
+      margin-right: 0.25em;
+      margin-bottom: 0.125em;
+      display: inline-block !important;
+      object-fit: contain !important;
+      flex-shrink: 0;
+    }
+
+    .link-mention-author-inline {
+      color: rgba(55, 53, 47, 0.65);
+      margin-right: 0.3em;
+    }
+
+    .dark .link-mention-author-inline {
+      color: rgba(255, 255, 255, 0.443);
+    }
+
+    .link-mention-title-inline {
+      text-decoration: underline;
+      text-decoration-thickness: 0.05em;
+      text-underline-offset: 10%;
+      font-weight: 500;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    /* YouTube 북마크 스타일 - 노션처럼 풍부한 카드 */
+    .youtube-bookmark {
+      @apply my-4;
+    }
+
+    .youtube-bookmark-card {
+      @apply flex border border-gray-300 dark:border-gray-700 overflow-hidden no-underline;
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 20ms ease-in;
+      cursor: pointer;
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .youtube-bookmark-card:hover {
+      @apply bg-gray-50 dark:bg-gray-800;
+    }
+
+    .youtube-bookmark-content {
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 8px 10px 10px;
+      overflow: hidden;
+      text-align: start;
+    }
+
+    .youtube-bookmark-title {
+      @apply text-gray-900 dark:text-gray-100;
+      font-size: 13px;
+      line-height: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+    }
+
+    .youtube-bookmark-description {
+      @apply text-gray-500 dark:text-gray-500;
+      font-size: 11px;
+      line-height: 15px;
+      max-height: 30px;
+      overflow: hidden;
+      white-space: pre-line;
+      margin-bottom: 4px;
+    }
+
+    .youtube-bookmark-footer {
+      @apply flex items-center;
+    }
+
+    .youtube-bookmark-icon {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-inline-end: 6px;
+    }
+
+    .youtube-bookmark-url {
+      @apply text-gray-900 dark:text-gray-100;
+      font-size: 12px;
+      line-height: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .youtube-bookmark-thumbnail {
+      width: 180px !important;
+      height: 101px !important;
+      min-width: 180px !important;
+      min-height: 101px !important;
+      flex-shrink: 0;
+      flex-grow: 0;
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .youtube-bookmark-thumbnail img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      display: block !important;
+    }
+
+    /* 파일 다운로드 스타일 */
+    .file-download {
+      @apply inline-flex items-center px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg my-4;
+      gap: 0.875rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .file-download:hover {
+      @apply bg-blue-50 dark:bg-blue-950 border-blue-300 dark:border-blue-500;
+      box-shadow: 0 2px 8px -2px rgba(59, 130, 246, 0.2);
+      transform: translateX(2px);
+    }
+
+    .file-download .file-icon {
+      @apply w-5 h-5 text-blue-500 dark:text-blue-400 flex-shrink-0;
+      margin-right: 0.25rem;
+    }
+
+    .file-download .file-name {
+      @apply text-sm font-medium text-gray-700 dark:text-gray-300 no-underline;
+    }
+
+    .file-download:hover .file-name {
+      @apply text-blue-600 dark:text-blue-400;
+    }
+
+    .file-download .file-size {
+      @apply text-xs text-gray-500 dark:text-gray-400 ml-2;
+    }
+  }
+
+  /* 코드 블록 기본 스타일 - GitHub 스타일 */
+  pre[class*="language-"] {
+    @apply bg-gray-900 dark:bg-black text-gray-100 dark:text-gray-200 p-4 rounded-b-lg overflow-x-auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    tab-size: 4;
+  }
+
+  code[class*="language-"] {
+    @apply text-gray-100 dark:text-gray-200;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  }
+
+  /* 인라인 코드 */
+  :not(pre) > code[class*="language-"] {
+    @apply bg-gray-100 dark:bg-gray-800 text-pink-600 dark:text-pink-400 px-1.5 py-0.5 rounded text-sm;
+  }
+
+  /* Prism.js 토큰 색상 - GitHub Dark 스타일 */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    @apply text-gray-500 dark:text-gray-600;
+    font-style: italic;
+  }
+
+  .token.punctuation {
+    @apply text-gray-300 dark:text-gray-400;
+  }
+
+  .token.property,
+  .token.tag,
+  .token.boolean,
+  .token.number,
+  .token.constant,
+  .token.symbol {
+    @apply text-blue-400 dark:text-blue-300;
+  }
+
+  .token.selector,
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin {
+    @apply text-green-400 dark:text-green-300;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    @apply text-cyan-400 dark:text-cyan-300;
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    @apply text-purple-400 dark:text-purple-300;
+  }
+
+  .token.function,
+  .token.class-name {
+    @apply text-yellow-400 dark:text-yellow-300;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    @apply text-orange-400 dark:text-orange-300;
+  }
+
+  .token.deleted {
+    @apply text-red-400 dark:text-red-300;
+  }
+
+  .token.inserted {
+    @apply text-green-400 dark:text-green-300;
+  }
+
+  /* Notion 블록 스타일 - shadcn/ui Alert 스타일 기반 */
+  .callout {
+    @apply relative w-full rounded-lg border p-4 my-6;
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border-color: hsl(var(--border));
+  }
+
+  .callout-icon {
+    @apply text-2xl flex-shrink-0 mr-3;
+  }
+
+  .callout-content {
+    @apply flex-1;
+  }
+
+  .callout-text {
+    @apply text-sm leading-relaxed mb-2;
+  }
+
+  /* Column layout - 동적으로 grid-cols 처리 */
+  .column-layout {
+    @apply my-6;
+  }
+
+  /* Column card styling - shadcn/ui Card 스타일 기반 */
+  .column-card {
+    @apply rounded-lg border shadow-sm p-6 space-y-4;
+    background: hsl(var(--card));
+    color: hsl(var(--card-foreground));
+    border-color: hsl(var(--border));
+    transition: box-shadow 0.2s ease;
+  }
+
+  .column-card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  /* Column card 내부의 heading 스타일 - CardTitle 스타일 */
+  .column-card h3 {
+    @apply text-xl font-semibold leading-none tracking-tight mb-3 pb-2;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  /* Column card 내부의 리스트 스타일 */
+  .column-card ul {
+    @apply space-y-2;
+  }
+
+  .column-card ul li {
+    @apply text-sm leading-relaxed;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Toggle 블록 스타일 */
+  .toggle-block {
+    @apply my-4 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden;
+  }
+
+  .toggle-summary {
+    @apply cursor-pointer px-4 py-3 bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors list-none;
+  }
+
+  /* details 기본 마커 제거 */
+  .toggle-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .toggle-summary::marker {
+    display: none;
+  }
+
+  /* 화살표 회전 애니메이션 */
+  details[open] .toggle-arrow {
+    transform: rotate(90deg);
+  }
+
+  .toggle-content {
+    @apply px-4 py-3 bg-white dark:bg-gray-900;
+  }
+
+  .video-embed {
+    @apply relative w-full my-6 rounded-md overflow-hidden;
+    max-width: 65rem !important; /* 1040px - 더 넓은 크기 */
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .video-container {
+    @apply relative w-full h-0 pb-[56.25%];
+  }
+
+  .video-container iframe {
+    @apply absolute top-0 left-0 w-full h-full;
+  }
+
+  /* 목차 스타일 */
+  .toc {
+    @apply bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700 rounded-lg p-4 my-6;
+  }
+
+  .toc h3 {
+    @apply text-lg font-semibold mb-3 text-gray-900 dark:text-gray-100;
+  }
+
+  .toc ul {
+    @apply space-y-1;
+  }
+
+  .toc li {
+    @apply text-sm;
+  }
+
+  .toc a {
+    @apply text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 no-underline hover:underline;
+  }
+
+  /* TOC 들여쓰기 스타일 */
+  .toc ul ul {
+    @apply ml-4 mt-1;
+  }
+
+  .toc ul ul ul {
+    @apply ml-4 mt-1;
+  }
+
+  .toc ul ul ul ul {
+    @apply ml-4 mt-1;
+  }
+
+  .toc ul ul ul ul ul {
+    @apply ml-4 mt-1;
+  }
+
+  .toc ul ul ul ul ul ul {
+    @apply ml-4 mt-1;
+  }
+
+  /* TOC 레벨별 스타일 */
+  .toc li[data-level="1"] {
+    @apply font-semibold text-base;
+  }
+
+  .toc li[data-level="2"] {
+    @apply text-sm ml-3;
+  }
+
+  .toc li[data-level="3"] {
+    @apply text-sm ml-6;
+  }
+
+  .toc li[data-level="4"] {
+    @apply text-xs ml-9;
+  }
+
+  .toc li[data-level="5"] {
+    @apply text-xs ml-12;
+  }
+
+  .toc li[data-level="6"] {
+    @apply text-xs ml-14;
+  }
+
+  /* 토글/접기 스타일 */
+  .prose details {
+    @apply my-4;
+  }
+
+  .prose summary {
+    @apply cursor-pointer font-semibold text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400;
+  }
+
+  .prose details ul {
+    @apply pl-12 mt-2;
+  }
+
+  .prose details ol {
+    @apply pl-12 mt-2;
+  }
+
+  /* 목차 들여쓰기 복원 */
+  .prose ul {
+    @apply pl-5;
+  }
+
+  .prose ol {
+    @apply pl-5;
+  }
+
+  .prose li {
+    @apply pl-1;
+  }
+
+  /* 북마크 및 파일 다운로드 스타일 - not-prose 내부로 이동하여 중복 제거 */
+
+  /* 이미지 확대 기능 - 클릭 가능한 이미지 표시 */
+  .prose img {
+    @apply cursor-zoom-in transition-all duration-200;
+  }
+
+  .prose img:hover {
+    @apply opacity-90 shadow-lg;
+  }
+
+  /* 링크 멘션 아이콘은 이미지 확대 기능 제외 및 크기 고정 */
+  .prose .link-mention-inline-icon,
+  .link-mention-inline-icon {
+    width: 14px !important;
+    height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+    margin-right: 0.25em !important;
+    margin-bottom: 0.125em !important;
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    box-shadow: none !important;
+  }
+
+  /* 동영상 임베딩 스타일 - 우선순위 강화 */
+  .video-embed,
+  figure.video-embed,
+  .prose .video-embed,
+  .prose figure.video-embed {
+    width: 100% !important;
+    max-width: 65rem !important; /* 1040px - 더 넓은 크기 */
+    margin: 2rem auto !important;
+    padding: 0 !important;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .video-container,
+  .prose .video-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 0 !important;
+    padding-bottom: 75% !important; /* 4:3 비율 */
+    overflow: hidden !important;
+    background-color: rgb(0 0 0);
+  }
+
+  .video-container iframe,
+  .prose .video-container iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+  }
+
+  /* 반응형 동영상 임베딩 */
+  @media (max-width: 1024px) {
+    .video-embed,
+    figure.video-embed,
+    .prose .video-embed,
+    .prose figure.video-embed {
+      max-width: 56rem !important; /* 896px */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .video-embed,
+    figure.video-embed,
+    .prose .video-embed,
+    .prose figure.video-embed {
+      margin-left: 0.5rem !important;
+      margin-right: 0.5rem !important;
+      max-width: calc(100vw - 2rem) !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .video-embed,
+    figure.video-embed,
+    .prose .video-embed,
+    .prose figure.video-embed {
+      margin-left: 0.25rem !important;
+      margin-right: 0.25rem !important;
+      max-width: calc(100vw - 1rem) !important;
+    }
+  }
+}
+
+/* Prism.js token 스타일 - Tailwind 충돌 방지를 위해 별도 정의 */
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
