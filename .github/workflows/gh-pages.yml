@@ -95,17 +95,19 @@ jobs:
           tail -20 npm-install.log
 
       # ============================================
-      # UNIT TESTS
+      # UNIT TESTS (Performance Optimization Test 3: Skip on schedule)
       # ============================================
       - name: Run unit tests
+        if: github.event_name != 'schedule'
         continue-on-error: true
         run: |
           npm run test 2>&1 | tee test.log || true
 
       # ============================================
-      # LINTER
+      # LINTER (Performance Optimization Test 3: Skip on schedule)
       # ============================================
       - name: Run linter
+        if: github.event_name != 'schedule'
         run: |
           npm run lint 2>&1 | tee lint.log
 
