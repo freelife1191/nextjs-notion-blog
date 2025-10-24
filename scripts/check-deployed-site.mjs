@@ -2,9 +2,21 @@
 
 /**
  * 배포된 사이트의 GA4/AdSense 스크립트 로딩 확인
+ *
+ * 환경변수 사용:
+ * - NEXT_PUBLIC_SITE_URL: 배포된 사이트 URL
+ * - GA4_MEASUREMENT_ID: GA4 측정 ID (선택)
+ * - ADSENSE_PUBLISHER_ID: AdSense Publisher ID (선택)
  */
 
-const SITE_URL = 'https://notionblogsample.github.io/';
+import { config } from 'dotenv';
+
+// .env.test 파일 로드 (있는 경우)
+config({ path: '.env.test' });
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.github.io/';
+const GA4_ID = process.env.GA4_MEASUREMENT_ID || 'G-XXXXXXXXXX';
+const ADSENSE_ID = process.env.ADSENSE_PUBLISHER_ID || 'ca-pub-0000000000000000';
 
 console.log('='.repeat(60));
 console.log('🌐 배포된 사이트 GA4/AdSense 확인');
@@ -21,18 +33,18 @@ try {
 
   // GA4 스크립트 확인
   const hasGtagScript = html.includes('googletagmanager.com/gtag/js');
-  const hasGA4Id = html.includes('G-YCDZ0H9VR8');
+  const hasGA4Id = html.includes(GA4_ID);
   const hasDataLayer = html.includes('window.dataLayer');
 
   console.log('Google Analytics 4:');
   console.log(`  gtag.js 스크립트: ${hasGtagScript ? '✅ 발견' : '❌ 없음'}`);
-  console.log(`  Measurement ID (G-YCDZ0H9VR8): ${hasGA4Id ? '✅ 발견' : '❌ 없음'}`);
+  console.log(`  Measurement ID (${GA4_ID}): ${hasGA4Id ? '✅ 발견' : '❌ 없음'}`);
   console.log(`  dataLayer 초기화: ${hasDataLayer ? '✅ 발견' : '❌ 없음'}`);
   console.log();
 
   // AdSense 스크립트 확인
   const hasAdSenseScript = html.includes('pagead2.googlesyndication.com');
-  const hasAdSenseId = html.includes('ca-pub-4222924715781885') || html.includes('pub-4222924715781885');
+  const hasAdSenseId = html.includes(ADSENSE_ID) || html.includes(ADSENSE_ID.replace('ca-pub-', 'pub-'));
 
   console.log('Google AdSense:');
   console.log(`  AdSense 스크립트: ${hasAdSenseScript ? '✅ 발견' : '❌ 없음'}`);
