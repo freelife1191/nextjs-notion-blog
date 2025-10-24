@@ -6,6 +6,7 @@
  */
 
 import { NotionBlock, NotionRichText } from '../renderer';
+import { escapeHtml } from '@/lib/utils';
 
 /**
  * 언어 코드를 Prism.js 클래스로 매핑
@@ -113,14 +114,22 @@ export function getLanguageLabel(language: string): string {
  * 코드 블록을 HTML로 렌더링
  *
  * @param block - Notion 코드 블록
- * @param renderRichText - Rich text 렌더링 함수 (renderer에서 주입)
+ * @param renderRichText - Rich text 렌더링 함수 (renderer에서 주입) - UNUSED, kept for compatibility
  * @returns HTML 문자열
  */
 export function renderCodeBlock(
   block: NotionBlock,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   renderRichText: (richText: NotionRichText[]) => string
 ): string {
-  const text = renderRichText(block.code?.rich_text || []);
+  // Extract plain text from rich_text array and escape HTML entities
+  // This prevents HTML code in code blocks from being rendered as actual HTML
+  const richTextArray = block.code?.rich_text || [];
+  const plainText = richTextArray
+    .map((rt: NotionRichText) => rt.plain_text || rt.text?.content || '')
+    .join('');
+  const escapedText = escapeHtml(plainText);
+
   const language = block.code?.language || 'text';
 
   // 언어별 클래스 매핑
@@ -142,6 +151,6 @@ export function renderCodeBlock(
         Copy
       </button>
     </div>
-    <pre class="language-${languageClass} !mt-0 !rounded-t-none"><code class="language-${languageClass}">${text}</code></pre>
+    <pre class="language-${languageClass} !mt-0 !rounded-t-none"><code class="language-${languageClass}">${escapedText}</code></pre>
   </div>`;
 }
