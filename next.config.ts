@@ -2,8 +2,14 @@ import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === 'development';
 
+// basePath 설정: 환경 변수로 제어
+// - User Site (username.github.io): basePath 없음 (빈 문자열)
+// - Project Site (username.github.io/repo-name): basePath 필요 (예: /nextjs-notion-blog)
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const nextConfig: NextConfig = {
   output: isDev ? undefined : "export", // 개발 환경에서는 export 비활성화
+  basePath: basePath,
   images: {
     unoptimized: true, // Static export requires unoptimized images
     remotePatterns: [
@@ -26,8 +32,6 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 192, 256, 384],
   },
-  // GitHub Pages User Site (username.github.io)를 위해 basePath 제거
-  // basePath와 assetPrefix 없이 루트 경로에서 제공
   trailingSlash: true,
   turbopack: {
     root: process.cwd(),
