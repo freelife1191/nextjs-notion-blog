@@ -3,22 +3,28 @@
  * 빌드 시점에 RSS 피드를 생성하여 public 디렉토리에 저장
  */
 
-// Load environment variables from .env.local
+// CRITICAL: Load environment variables BEFORE importing any application modules
 import { config } from 'dotenv'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
+import { existsSync, writeFileSync, mkdirSync } from 'fs'
 
 // Load .env.local file for local development
-// GitHub Actions에서는 환경 변수가 이미 주입되므로 선택적으로 로드
-try {
-  config({ path: resolve(process.cwd(), '.env.local') })
-} catch (error) {
-  // .env.local이 없어도 계속 진행 (CI 환경)
-  console.log('Note: .env.local not found, using environment variables from system')
+const envPath = resolve(process.cwd(), '.env.local')
+if (existsSync(envPath)) {
+  config({ path: envPath })
+  console.log('✅ Loaded environment variables from .env.local')
+} else {
+  console.log('ℹ️  .env.local not found, using environment variables from system')
 }
 
-import { createNotionClient } from '../src/services/notion/client'
-import { writeFileSync, mkdirSync } from 'fs'
-import { join } from 'path'
+// Check if required environment variables are present
+const hasRequiredEnv = process.env.NOTION_API_KEY && process.env.NOTION_DATABASE_ID
+
+if (!hasRequiredEnv) {
+  console.log('⚠️  Required environment variables (NOTION_API_KEY, NOTION_DATABASE_ID) are not set')
+  console.log('⚠️  Skipping RSS generation - this is expected in CI environments where RSS is generated during build')
+  process.exit(0) // Exit successfully without generating RSS
+}
 
 function escapeXml(unsafe: string): string {
   return unsafe
@@ -32,6 +38,8 @@ function escapeXml(unsafe: string): string {
 async function generateRSS() {
   console.log('🔄 Generating RSS feed...')
 
+  // Dynamic import to avoid loading env.ts before environment variables are set
+  const { createNotionClient } = await import('../src/services/notion/client')
   const notionClient = createNotionClient()
 
   try {
