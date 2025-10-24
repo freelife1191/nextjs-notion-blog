@@ -3,6 +3,19 @@
  * 빌드 시점에 RSS 피드를 생성하여 public 디렉토리에 저장
  */
 
+// Load environment variables from .env.local
+import { config } from 'dotenv'
+import { resolve } from 'path'
+
+// Load .env.local file for local development
+// GitHub Actions에서는 환경 변수가 이미 주입되므로 선택적으로 로드
+try {
+  config({ path: resolve(process.cwd(), '.env.local') })
+} catch (error) {
+  // .env.local이 없어도 계속 진행 (CI 환경)
+  console.log('Note: .env.local not found, using environment variables from system')
+}
+
 import { createNotionClient } from '../src/services/notion/client'
 import { writeFileSync, mkdirSync } from 'fs'
 import { join } from 'path'
@@ -30,9 +43,8 @@ async function generateRSS() {
 
     // Determine base URL based on environment
     const isDev = process.env.NODE_ENV === 'development'
-    const baseUrl = isDev
-      ? 'http://localhost:3000'
-      : 'https://freelife1191.github.io/nextjs-notion-blog'
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ||
+      (isDev ? 'http://localhost:3000' : 'https://your-username.github.io')
 
     // Fetch latest 20 posts
     const posts = allPosts.slice(0, 20)
