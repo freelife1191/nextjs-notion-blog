@@ -31,7 +31,7 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 | └─ 🔍 SEO 최적화 | ⚠️ **검증중** | 메타 태그, sitemap, RSS | - |
 | └─ 🎨 테마 설정 | 🔧 **개발중** | 색상, 폰트 커스터마이징 | - |
 | **🌐 사이트 URL 설정** | | **도메인 및 경로 설정** | |
-| └─ 📌 Base Path | ⚠️ **검증중** | GitHub Pages 경로 설정 | - |
+| └─ 📌 Base Path | ✅ **완료** | 루트 경로 배포 (basePath 제거) | 2025-10-24 |
 | └─ 🏠 커스텀 도메인 | ⚠️ **검증중** | 개인 도메인 연결 가이드 | - |
 | └─ 🔒 HTTPS | ✅ **완료** | 자동 SSL 인증서 (GitHub Pages) | 2025-10-22 |
 
@@ -102,7 +102,7 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 
 ### 데모
 
-- **라이브 데모**: https://notionblogsample.github.io/nextjs-notion-blog
+- **라이브 데모**: https://notionblogsample.github.io
 - **노션 데이터베이스 샘플**: https://www.notion.so/freelife/295573b3dc09809b9b4dc3c309399a97
 
 ### 버그 제보 및 기능 요청
@@ -493,24 +493,82 @@ Notion을 CMS(콘텐츠 관리 시스템)로 사용하기 위한 설정입니다
 
 #### Step 1: Repository 설정 변경
 
-먼저 Repository 이름에 맞게 설정 파일들을 수정해야 합니다.
+**⚠️ GitHub Pages 배포 방식 선택**
 
-**1. next.config.ts 수정**
+GitHub Pages는 두 가지 배포 방식을 제공합니다:
 
-1. Fork한 저장소에서 `next.config.ts` 파일 열기
-2. 3번째 줄 수정:
-   ```typescript
-   // 변경 전
-   const repoBase = "/nextjs-notion-blog";
+| 배포 방식 | URL 형식 | Repository 이름 | 특징 |
+|----------|---------|----------------|-----|
+| **User Site** (권장) | `https://username.github.io` | `username.github.io` | ✅ 루트 경로, 깔끔한 URL |
+| **Project Site** | `https://username.github.io/repo-name` | 자유롭게 설정 | ⚠️ 서브패스 필요 (basePath 설정 필요) |
 
-   // 변경 후 (본인의 repo 이름으로)
-   const repoBase = "/<your-repo-name>";
+**현재 이 프로젝트는 User Site (루트 경로) 방식으로 설정되어 있습니다.**
+
+**User Site로 배포하려면 (권장):**
+
+1. Fork한 Repository 이름을 `<your-username>.github.io`로 변경
+   - Settings → Repository name → `<your-username>.github.io`로 변경
+   - 예: GitHub 사용자명이 `john-doe`인 경우 → `john-doe.github.io`
+
+2. `.env.local` 파일에서 `NEXT_PUBLIC_SITE_URL` 수정:
+   ```env
+   NEXT_PUBLIC_SITE_URL=https://<your-username>.github.io
    ```
-   예시:
-   - Repository 이름이 `my-blog`인 경우: `const repoBase = "/my-blog";`
-   - Repository 이름이 `personal-site`인 경우: `const repoBase = "/personal-site";`
 
-**2. README.md 배지 URL 수정**
+3. 완료! 추가 설정 없이 `https://<your-username>.github.io`에서 블로그 접속 가능
+
+**Project Site로 배포하려면 (서브패스 사용):**
+
+프로젝트를 서브패스에 배포하려면 추가 설정이 필요합니다:
+
+1. `next.config.ts` 파일 수정:
+   ```typescript
+   const isDev = process.env.NODE_ENV === 'development';
+   const repoBase = "/<your-repo-name>"; // 예: "/my-blog"
+
+   const nextConfig: NextConfig = {
+     output: isDev ? undefined : "export",
+     basePath: isDev ? undefined : repoBase,
+     assetPrefix: isDev ? undefined : repoBase,
+     // ... 나머지 설정
+   };
+   ```
+
+2. `src/app/layout.tsx` 파일 수정:
+   ```typescript
+   const basePath = isDev ? '' : '/<your-repo-name>';
+
+   return {
+     // ...
+     icons: {
+       icon: basePath + '/favicon.ico',
+       apple: basePath + '/favicon.ico',
+     },
+   };
+   ```
+
+3. `src/app/manifest.ts` 파일 수정:
+   ```typescript
+   const basePath = isDev ? '' : '/<your-repo-name>';
+
+   return {
+     // ...
+     start_url: basePath + '/',
+     icons: [
+       {
+         src: basePath + '/favicon.ico',
+         // ...
+       },
+     ],
+   };
+   ```
+
+4. `.env.local` 파일에서 `NEXT_PUBLIC_SITE_URL` 수정:
+   ```env
+   NEXT_PUBLIC_SITE_URL=https://<your-username>.github.io/<your-repo-name>
+   ```
+
+**README.md 배지 URL 수정 (선택사항)**
 
 1. `README.md` 파일 상단의 배포 배지 URL 수정
 2. `YOUR-USERNAME`과 `YOUR-REPO-NAME`을 본인의 정보로 교체:
@@ -525,8 +583,6 @@ Notion을 CMS(콘텐츠 관리 시스템)로 사용하기 위한 설정입니다
    - `YOUR-REPO-NAME`: 본인의 Repository 이름
 
 3. 두 곳 모두 수정 (이미지 URL과 링크 URL)
-
-**3. 파일 저장 및 커밋**
 
 #### Step 2: GitHub Actions Secrets 설정
 
@@ -588,6 +644,17 @@ GitHub Actions가 자동으로 Notion에서 콘텐츠를 가져오려면 접근 
    - 빨간색 X: 실패 (로그 확인 필요)
 
 배포가 성공하면 약 2-5분 후 다음 주소에서 블로그 확인 가능:
+
+**User Site (루트 경로) 배포 시:**
+```
+https://<your-username>.github.io/
+```
+
+예시:
+- `https://john-doe.github.io/`
+- `https://jane-smith.github.io/`
+
+**Project Site (서브패스) 배포 시:**
 ```
 https://<your-username>.github.io/<repo-name>/
 ```
@@ -632,10 +699,11 @@ NOTION_DATABASE_ID=a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
 # ============================================
 
 # 배포된 사이트의 전체 URL
-# - GitHub Pages: https://your-username.github.io/your-repo-name
+# - User Site (권장): https://your-username.github.io
+# - Project Site: https://your-username.github.io/your-repo-name
 # - 커스텀 도메인: https://yourdomain.com
 # SEO, Open Graph, RSS 피드에서 사용됨
-NEXT_PUBLIC_SITE_URL=https://your-username.github.io/your-repo-name
+NEXT_PUBLIC_SITE_URL=https://your-username.github.io
 
 # ============================================
 # 선택 환경 변수 (기능별 설정)
@@ -751,7 +819,7 @@ npm run test:e2e:report   # 테스트 리포트 확인
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│  🎉 완료! https://your-username.github.io/your-repo              │
+│  🎉 완료! https://your-username.github.io                        │
 └─────────────────────────────────────────────────────────────────┘
 ```
 

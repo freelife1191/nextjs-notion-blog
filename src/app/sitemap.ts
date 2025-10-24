@@ -9,7 +9,7 @@ import { MetadataRoute } from 'next'
 import { listPublishedPostsMemo } from '@/lib/request-memo'
 import { FALLBACK_POST_SLUGS } from '@/lib/fallback-data'
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io'
 
 export const dynamic = 'force-static'
 

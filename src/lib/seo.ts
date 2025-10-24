@@ -9,7 +9,7 @@ import type { SiteConfig } from '@/services/notion/client'
 /**
  * 사이트 URL - 환경 변수에서 가져오거나 기본값 사용
  */
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io'
 
 /**
  * 기본 SEO 설정 (Notion SiteConfig가 없을 때 fallback)
