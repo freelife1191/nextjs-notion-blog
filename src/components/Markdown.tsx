@@ -28,7 +28,7 @@ export function Markdown({ children, className, inline = false }: MarkdownProps)
         remarkPlugins={[remarkGfm]}
         components={{
           // 링크는 새 창에서 열기
-          a: ({ node, ...props }) => (
+          a: (props) => (
             <a
               {...props}
               target="_blank"
@@ -37,17 +37,17 @@ export function Markdown({ children, className, inline = false }: MarkdownProps)
             />
           ),
           // 인라인 모드일 때 p 태그를 span으로 대체
-          p: ({ node, ...props }) =>
+          p: (props) =>
             inline ? <span {...props} /> : <p {...props} />,
           // 리스트 스타일
-          ul: ({ node, ...props }) => (
+          ul: (props) => (
             <ul className="list-disc list-inside space-y-1" {...props} />
           ),
-          ol: ({ node, ...props }) => (
+          ol: (props) => (
             <ol className="list-decimal list-inside space-y-1" {...props} />
           ),
           // 리스트 아이템
-          li: ({ node, ...props }) => <li className="text-inherit" {...props} />,
+          li: (props) => <li className="text-inherit" {...props} />,
         }}
       >
         {children}

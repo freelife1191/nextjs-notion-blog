@@ -1070,7 +1070,7 @@ describe('createNotionClient', () => {
           {
             id: 'site-page-1',
             properties: {
-              SiteTitle: { rich_text: [{ plain_text: 'My Awesome Blog' }] },
+              SiteTitle: { title: [{ plain_text: 'My Awesome Blog' }] },
               SiteDescription: { rich_text: [{ plain_text: 'A blog about tech' }] },
               OGImage: { files: [{ file: { url: 'https://example.com/og.png' } }] },
               TwitterHandle: { rich_text: [{ plain_text: '@myblog' }] },
@@ -1163,7 +1163,7 @@ describe('createNotionClient', () => {
           {
             id: 'site-page-1',
             properties: {
-              SiteTitle: { rich_text: [{ plain_text: 'Test Blog' }] },
+              SiteTitle: { title: [{ plain_text: 'Test Blog' }] },
               SiteDescription: { rich_text: [{ plain_text: 'Test Description' }] },
               Author: {
                 people: [], // Empty Person field
@@ -1195,7 +1195,7 @@ describe('createNotionClient', () => {
           {
             id: 'site-page-1',
             properties: {
-              SiteTitle: { rich_text: [{ plain_text: 'Cached Blog' }] },
+              SiteTitle: { title: [{ plain_text: 'Cached Blog' }] },
               SiteDescription: { rich_text: [{ plain_text: 'Cached Description' }] },
             },
           },

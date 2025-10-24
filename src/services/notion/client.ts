@@ -675,7 +675,8 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
             const props = page.properties;
 
             // Notion 페이지에서 설정 값 추출
-            const siteTitle = props.SiteTitle?.rich_text ? getPlainText(props.SiteTitle.rich_text) : defaultConfig.siteTitle;
+            // SiteTitle은 title 타입 필드 (데이터베이스 이름 열)
+            const siteTitle = props.SiteTitle?.title ? getPlainText(props.SiteTitle.title) : defaultConfig.siteTitle;
             const siteDescription = props.SiteDescription?.rich_text ? getPlainText(props.SiteDescription.rich_text) : defaultConfig.siteDescription;
 
             // SEO & Social Media 설정
