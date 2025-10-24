@@ -104,6 +104,7 @@ export function ImageZoom() {
               height={1080}
               className="max-w-full max-h-[95vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
               unoptimized
+              referrerPolicy="no-referrer"
             />
 
             {/* 이미지 설명 */}

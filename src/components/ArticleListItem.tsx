@@ -80,6 +80,7 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
                 loading={index < 3 ? 'eager' : 'lazy'}
                 placeholder="blur"
                 blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
+                referrerPolicy="no-referrer"
               />
             </Link>
           )}

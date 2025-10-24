@@ -585,6 +585,7 @@ export class NotionRenderer {
         style="display: block; max-width: 100%; height: auto; object-fit: contain;"
         loading="lazy"
         decoding="async"
+        referrerpolicy="no-referrer"
       >
       ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">${caption}</figcaption>` : ''}
     </figure>`;

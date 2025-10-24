@@ -76,6 +76,7 @@ export function ProfileSidebar({
             <AvatarImage
               src={profile.photoUrl}
               alt={profile.name}
+              referrerPolicy="no-referrer"
             />
             <AvatarFallback className="bg-gradient-to-br from-primary to-primary/60 text-2xl font-bold text-primary-foreground">
               {profile.name.charAt(0)}
