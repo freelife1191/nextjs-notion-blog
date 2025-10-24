@@ -28,6 +28,13 @@
 .DS_Store
 *.pem
 
+# OG Images (downloaded during build, not committed)
+/public/og-images/*.jpg
+/public/og-images/*.jpeg
+/public/og-images/*.png
+/public/og-images/*.webp
+!/public/og-images/.gitkeep
+
 # debug
 npm-debug.log*
 yarn-debug.log*

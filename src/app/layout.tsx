@@ -82,18 +82,20 @@ export default async function RootLayout({
 
   return (
     <html lang="ko" suppressHydrationWarning>
+      {/* Google AdSense - static export를 위해 head에 직접 추가 */}
+      {siteConfig.enableAdsense && siteConfig.adsensePublisherId && (
+        <head>
+          <script
+            async
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteConfig.adsensePublisherId}`}
+            crossOrigin="anonymous"
+          />
+        </head>
+      )}
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Google Analytics - Notion 설정에 따라 조건부 렌더링 */}
         {siteConfig.enableAnalytics && siteConfig.ga4MeasurementId && (
           <GoogleAnalytics measurementId={siteConfig.ga4MeasurementId} />
-        )}
-
-        {/* Google AdSense - Notion 설정에 따라 조건부 렌더링 */}
-        {siteConfig.enableAdsense && siteConfig.adsensePublisherId && (
-          <GoogleAdSense
-            publisherId={siteConfig.adsensePublisherId}
-            autoAds={siteConfig.adsenseAutoAds}
-          />
         )}
 
         <ThemeProvider>

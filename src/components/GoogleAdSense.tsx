@@ -26,12 +26,14 @@ export function GoogleAdSense({ publisherId, autoAds = true }: GoogleAdSenseProp
     return null
   }
 
+  // Static export를 위해 beforeInteractive 사용
+  // afterInteractive는 static export에서 script 태그가 HTML에 포함되지 않음
   return (
     <Script
       async
       src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisherId}`}
       crossOrigin="anonymous"
-      strategy="afterInteractive"
+      strategy="beforeInteractive"
     />
   )
 }
