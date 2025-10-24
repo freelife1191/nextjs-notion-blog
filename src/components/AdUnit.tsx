@@ -51,14 +51,25 @@ export function AdUnit({
 }: AdUnitProps) {
   const adRef = useRef<HTMLModElement>(null)
   const isDevelopment = process.env.NODE_ENV === 'development'
+  const isInitializedRef = useRef(false)
 
   useEffect(() => {
-    if (!isDevelopment && adRef.current && publisherId) {
+    if (!isDevelopment && adRef.current && publisherId && !isInitializedRef.current) {
       try {
+        // 이미 광고가 채워진 요소인지 확인
+        const adStatus = adRef.current.getAttribute('data-adsbygoogle-status')
+        if (adStatus === 'done') {
+          logger.log('[AdUnit] Ad already initialized')
+          isInitializedRef.current = true
+          return
+        }
+
         // @ts-expect-error - adsbygoogle는 Google AdSense 스크립트에서 제공
         ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+        isInitializedRef.current = true
+        logger.log('[AdUnit] Ad initialized')
       } catch (error) {
-        logger.error('AdSense error:', error)
+        logger.error('[AdUnit] AdSense error:', error)
       }
     }
   }, [isDevelopment, publisherId])
