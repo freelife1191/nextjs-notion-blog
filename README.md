@@ -52,8 +52,8 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 <td width="50%">
 
 ### ⚡ **완전 자동 동기화**
-- **2시간마다 자동으로** Notion 변경사항 감지
-- 글 작성 → 발행 상태 변경 → **2시간 이내 자동 배포**
+- **1시간마다 자동으로** Notion 변경사항 감지
+- 글 작성 → 발행 상태 변경 → **1시간 이내 자동 배포**
 - GitHub Actions가 모든 과정을 자동화
 
 </td>
@@ -200,7 +200,7 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 - **Notion API** - 콘텐츠 관리 시스템 (CMS)
   - `@notionhq/client` - 공식 Notion SDK
 - **GitHub Actions** - CI/CD 자동화
-  - Cron 스케줄링 (2시간마다 자동 동기화)
+  - Cron 스케줄링 (1시간마다 자동 동기화)
   - 자동 빌드 및 배포
 - **GitHub Pages** - 정적 사이트 호스팅
 

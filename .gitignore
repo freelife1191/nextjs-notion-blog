@@ -28,6 +28,9 @@
 .DS_Store
 *.pem
 
+# Build-time generated files
+/public/rss.xml
+
 # OG Images (downloaded during build, not committed)
 /public/og-images/*.jpg
 /public/og-images/*.jpeg
