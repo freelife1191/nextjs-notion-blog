@@ -41,8 +41,9 @@ const FEATURES: FeatureStatus[] = [
   },
   {
     name: '📝 블로그 포스팅',
-    status: 'testing',
+    status: 'completed',
     description: 'Notion CMS 연동',
+    completedDate: '2025-10-24',
   },
   {
     name: '🎨 사이트 설정',
@@ -90,13 +91,6 @@ const FEATURES: FeatureStatus[] = [
     status: 'completed',
     description: '도메인 및 경로 설정',
     isSection: true,
-    completedDate: '2025-10-24',
-  },
-  {
-    name: '📌 Base Path',
-    status: 'completed',
-    description: 'GitHub Pages 루트 경로 배포',
-    isSubFeature: true,
     completedDate: '2025-10-24',
   },
   {
