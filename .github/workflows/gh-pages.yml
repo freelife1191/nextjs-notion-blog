@@ -49,7 +49,7 @@ jobs:
           cache-dependency-path: package-lock.json
 
       # ============================================
-      # CACHE NEXT.JS BUILD (Performance Optimization Test 1)
+      # CACHE NEXT.JS BUILD (Performance Optimization Test 1 + 4)
       # ============================================
       - name: Cache Next.js build
         uses: actions/cache@v4
@@ -57,6 +57,8 @@ jobs:
           path: |
             .next/cache
             node_modules/.cache
+            .turbo
+            .next/trace
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.ts', '**/*.tsx', '**/*.js') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
@@ -144,6 +146,23 @@ jobs:
           echo "NOTION_API_KEY: ${NOTION_API_KEY:+SET} (length: ${#NOTION_API_KEY})"
           echo "NOTION_DATABASE_ID: ${NOTION_DATABASE_ID:+SET} (length: ${#NOTION_DATABASE_ID})"
           echo "Database ID (masked): ${NOTION_DATABASE_ID:0:8}..."
+          echo ""
+          echo "=== TURBOPACK CACHE INFO (Test 4) ==="
+          echo "Checking Turbopack cache directories..."
+          if [ -d .turbo ]; then
+            echo "✅ .turbo/ directory exists"
+            echo "Size: $(du -sh .turbo | cut -f1)"
+            echo "Files: $(find .turbo -type f | wc -l)"
+          else
+            echo "❌ .turbo/ directory not found"
+          fi
+          if [ -d .next/trace ]; then
+            echo "✅ .next/trace/ directory exists"
+            echo "Size: $(du -sh .next/trace | cut -f1)"
+            echo "Files: $(find .next/trace -type f | wc -l)"
+          else
+            echo "❌ .next/trace/ directory not found"
+          fi
           echo ""
           echo "Testing Notion API connection..."
           curl -s -X POST "https://api.notion.com/v1/databases/${NOTION_DATABASE_ID}/query" \
