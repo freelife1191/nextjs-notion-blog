@@ -33,6 +33,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+build.log
+npm-install.log
+test.log
+lint.log
 
 # env files (can opt-in for committing if needed)
 .env.local
