@@ -179,7 +179,7 @@ graph LR
 
 ### 이 가이드로 무엇을 얻을 수 있나요?
 
-- ✅ 무료 블로그 웹사이트 (예: `https://your-name.github.io/blog`)
+- ✅ 무료 블로그 웹사이트 (예: `https://your-name.github.io`)
 - ✅ Notion에서 글만 쓰면 자동으로 블로그에 반영
 - ✅ 1시간마다 자동 업데이트
 - ✅ 커버 이미지, 태그, 카테고리 등 모든 기능
@@ -400,10 +400,27 @@ graph LR
 
 🎯 **매우 중요**: 이 이름이 블로그 주소에 들어갑니다!
 
-**예시:**
+**⚠️ 중요: Repository 이름 규칙**
+
+GitHub Pages는 두 가지 방식으로 블로그를 제공합니다:
+
+1. **User Site (권장)** - 깔끔한 루트 경로
+   - Repository 이름: `사용자이름.github.io`
+   - 블로그 주소: `https://사용자이름.github.io`
+   - 예시: `hong-gildong.github.io` → `https://hong-gildong.github.io`
+
+2. **Project Site** - 서브패스 사용
+   - Repository 이름: 자유롭게 (예: `my-blog`)
+   - 블로그 주소: `https://사용자이름.github.io/블로그이름/`
+   - 예시: `my-blog` → `https://hong-gildong.github.io/my-blog/`
+   - ⚠️ 추가 설정 필요 (개발자 지식 필요)
+
+**💡 비개발자는 User Site 방식을 권장합니다!**
+
+**예시 (User Site 방식):**
 - GitHub 사용자 이름: `hong-gildong`
-- Repository 이름: `my-blog`
-- 최종 블로그 주소: `https://hong-gildong.github.io/my-blog/`
+- Repository 이름: `hong-gildong.github.io`
+- 최종 블로그 주소: `https://hong-gildong.github.io`
 
 ⚠️ **주의**: 이 이름을 메모장에 꼭 적어두세요! 다음 단계에서 사용합니다.
 
@@ -839,8 +856,9 @@ SEO 최적화를 위해 블로그 전체 주소를 등록합니다.
 1. **"New repository secret" 버튼 클릭**
 2. **Name 입력**: `NEXT_PUBLIC_SITE_URL`
 3. **Secret 입력**: 본인의 블로그 주소
-   - 형식: `https://사용자이름.github.io/블로그이름`
-   - 예: `https://hong-gildong.github.io/my-blog`
+   - User Site 방식: `https://사용자이름.github.io`
+   - 예: `https://hong-gildong.github.io`
+   - (Project Site 사용 시: `https://사용자이름.github.io/블로그이름`)
 4. **"Add secret" 버튼 클릭**
 
 💡 **팁**: 이 설정은 선택사항이지만 검색 엔진 최적화에 도움이 됩니다.
@@ -1040,9 +1058,9 @@ sequenceDiagram
 
 ### 8.1 블로그 주소 만들기
 
-**📝 주소 형식:**
+**📝 주소 형식 (User Site - 권장):**
 ```
-https://사용자이름.github.io/블로그이름/
+https://사용자이름.github.io
 ```
 
 **🖊️ 본인의 주소 적어보기:**
@@ -1050,16 +1068,21 @@ https://사용자이름.github.io/블로그이름/
 1. **메모장을 엽니다**
 2. **아래 정보를 채웁니다**:
    - 내 GitHub 사용자 이름: `____________`
-   - 내 블로그 이름 (2단계에서 정한): `____________`
 3. **주소를 조합**합니다:
    ```
-   https://____________.github.io/____________/
+   https://____________.github.io
    ```
 
 **예시:**
 - 사용자 이름: `hong-gildong`
-- 블로그 이름: `my-blog`
-- 완성된 주소: `https://hong-gildong.github.io/my-blog/`
+- Repository 이름: `hong-gildong.github.io`
+- 완성된 주소: `https://hong-gildong.github.io`
+
+**💡 참고: Project Site 방식을 사용한 경우**
+```
+https://사용자이름.github.io/블로그이름/
+```
+예: `https://hong-gildong.github.io/my-blog/`
 
 ### 8.2 블로그에 접속하기
 

@@ -186,8 +186,12 @@ flowchart TD
 flowchart TD
     Start([🌐 블로그 접속 시<br/>404 오류]) --> DomainType{접속 주소?}
 
-    DomainType -->|GitHub Pages<br/>username.github.io/repo| CheckBasePath{next.config.ts<br/>repoBase 확인}
+    DomainType -->|GitHub Pages<br/>User Site<br/>username.github.io| CheckUserSite{Repository 이름이<br/>username.github.io?}
+    DomainType -->|GitHub Pages<br/>Project Site<br/>username.github.io/repo| CheckBasePath{next.config.ts<br/>repoBase 확인}
     DomainType -->|커스텀 도메인<br/>blog.example.com| CheckCustom{CNAME 파일<br/>있음?}
+
+    CheckUserSite -->|Yes| CheckPagesEnabled{GitHub Pages<br/>활성화?}
+    CheckUserSite -->|No| FixRepoName[🔥 해결방법:<br/>Repository 이름을<br/>username.github.io로<br/>변경하거나<br/>basePath 설정 추가]
 
     CheckBasePath -->|Repository 이름과<br/>불일치| FixBasePath[🔥 해결방법:<br/>repoBase를<br/>Repository 이름과<br/>정확히 일치시키기<br/>대소문자 구분!]
     CheckBasePath -->|일치함| CheckPagesEnabled{GitHub Pages<br/>활성화?}
@@ -1018,17 +1022,27 @@ Warning: Multiple posts with same slug will overwrite each other
 
 **해결**:
 1. `next.config.ts` 파일 열기
-2. 커스텀 도메인 사용 시 `basePath`를 빈 문자열로 변경:
+2. 배포 방식에 맞게 `basePath` 설정:
    ```typescript
-   // GitHub Pages (username.github.io/repo) 사용 시
-   const repoBase = "/nextjs-notion-blog";
+   // User Site (username.github.io) 또는 커스텀 도메인 사용 시
+   const isDev = process.env.NODE_ENV === 'development';
+   const nextConfig: NextConfig = {
+     output: isDev ? undefined : "export",
+     // basePath와 assetPrefix 없음 (루트 경로)
+   };
 
-   // 커스텀 도메인 (blog.example.com) 사용 시
-   const repoBase = "";
+   // Project Site (username.github.io/repo-name) 사용 시
+   const isDev = process.env.NODE_ENV === 'development';
+   const repoBase = "/repo-name";  // Repository 이름과 정확히 일치
+   const nextConfig: NextConfig = {
+     output: isDev ? undefined : "export",
+     basePath: isDev ? undefined : repoBase,
+     assetPrefix: isDev ? undefined : repoBase,
+   };
    ```
 3. 커밋 및 재배포
 
-**⚠️ 주의**: 커스텀 도메인을 사용하지 않는다면 원래대로 복원해야 합니다!
+**⚠️ 주의**: 현재 프로젝트는 User Site (루트 경로) 방식으로 설정되어 있습니다!
 
 ---
 
@@ -1185,7 +1199,7 @@ Error: NOTION_API_KEY is required
    ```env
    NOTION_API_KEY=secret_xxxxxxxxxxxx
    NOTION_DATABASE_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-   NEXT_PUBLIC_SITE_URL=https://your-username.github.io/your-repo-name
+   NEXT_PUBLIC_SITE_URL=https://your-username.github.io
    ```
 3. 실제 값으로 교체
 4. 파일 이름이 정확히 `.env.local`인지 확인 (`.env` 아님)

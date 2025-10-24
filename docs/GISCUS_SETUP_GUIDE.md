@@ -620,7 +620,8 @@ git push origin main
 ### 6.3 배포된 사이트 확인
 
 1. 배포된 블로그 URL 접속
-   - 예: `https://your-username.github.io/your-repo`
+   - User Site: `https://your-username.github.io`
+   - Project Site: `https://your-username.github.io/your-repo`
 2. 포스트 페이지 접속
 3. 댓글 섹션 정상 표시 확인
 4. 테스트 댓글 작성
