@@ -66,8 +66,6 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
               href={`/posts/${post.slug}`}
               className="flex-shrink-0 w-48 h-32 sm:w-64 sm:h-40 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 relative group"
               prefetch={false}
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <Image
                 src={post.coverImageUrl}
@@ -76,8 +74,7 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
                 sizes="(max-width: 640px) 192px, 256px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 draggable={false}
-                priority={index < 3}
-                loading={index < 3 ? 'eager' : 'lazy'}
+                priority={true}
                 placeholder="blur"
                 blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
                 referrerPolicy="no-referrer"
@@ -94,14 +91,14 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
             </div>
 
             {/* 제목 */}
-            <Link href={`/posts/${post.slug}`} prefetch={false} target="_blank" rel="noopener noreferrer" className="group mt-4 mb-3">
+            <Link href={`/posts/${post.slug}`} prefetch={false} className="group mt-4 mb-3">
               <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                 {post.title}
               </h2>
             </Link>
 
             {/* 요약 */}
-            <Link href={`/posts/${post.slug}`} prefetch={false} target="_blank" rel="noopener noreferrer" className="mb-4">
+            <Link href={`/posts/${post.slug}`} prefetch={false} className="mb-4">
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                 {post.excerpt}
               </p>
@@ -109,7 +106,7 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
 
             {/* 메타 정보 */}
             <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-auto">
-              <Link href={`/posts/${post.slug}`} prefetch={false} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 sm:space-x-4 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+              <Link href={`/posts/${post.slug}`} prefetch={false} className="flex items-center space-x-3 sm:space-x-4 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                 <span className="truncate">{post.author}</span>
                 <time dateTime={post.publishedAt}>
                   {formatDate(post.publishedAt)}

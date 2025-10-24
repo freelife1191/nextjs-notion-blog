@@ -6,13 +6,14 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { SocialIcon } from '@/lib/icons'
 import { motion } from 'framer-motion'
 import { fadeVariants, useInViewAnimation } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './ThemeToggle'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { DevelopmentStatusModal } from './DevelopmentStatusModal'
 import { Markdown } from './Markdown'
 
@@ -73,14 +74,21 @@ export function ProfileSidebar({
         {/* 프로필 이미지 */}
         <div className="mb-6">
           <Avatar className="w-24 h-24 border-2 border-border">
-            <AvatarImage
-              src={profile.photoUrl}
-              alt={profile.name}
-              referrerPolicy="no-referrer"
-            />
-            <AvatarFallback className="bg-gradient-to-br from-primary to-primary/60 text-2xl font-bold text-primary-foreground">
-              {profile.name.charAt(0)}
-            </AvatarFallback>
+            {profile.photoUrl ? (
+              <Image
+                src={profile.photoUrl}
+                alt={profile.name}
+                fill
+                className="object-cover"
+                referrerPolicy="no-referrer"
+                priority={true}
+                sizes="96px"
+              />
+            ) : (
+              <AvatarFallback className="bg-gradient-to-br from-primary to-primary/60 text-2xl font-bold text-primary-foreground">
+                {profile.name.charAt(0)}
+              </AvatarFallback>
+            )}
           </Avatar>
         </div>
 
