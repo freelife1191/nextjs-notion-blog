@@ -53,7 +53,22 @@ try {
   const props = page.properties
 
   console.log('✅ Site Settings DB 연결 성공!\n')
-  console.log('📋 OGImage 필드 확인:\n')
+  console.log('📋 전체 필드 확인:\n')
+
+  // SiteTitle 확인
+  const siteTitle = props.SiteTitle?.title?.[0]?.plain_text
+  console.log('SiteTitle:', siteTitle || '❌ 없음')
+
+  // TwitterHandle 확인
+  const twitterHandle = props.TwitterHandle?.rich_text?.[0]?.plain_text
+  console.log('TwitterHandle:', twitterHandle || '❌ 없음')
+
+  // Author 확인
+  const authorPerson = props.Author?.people?.[0]?.name
+  const authorText = props.Author?.rich_text?.[0]?.plain_text
+  console.log('Author:', authorPerson || authorText || '❌ 없음')
+
+  console.log('\n📋 OGImage 필드 확인:\n')
 
   // OGImage 필드 확인
   const ogImageField = props.OGImage

@@ -132,7 +132,7 @@ export function createMetadata({
 export function createHomeMetadata(siteConfig?: SiteConfig): Metadata {
   const defaultSEO = getDefaultSEO(siteConfig)
   return createMetadata({
-    title: defaultSEO.title,
+    // 홈페이지는 title을 전달하지 않아 사이트 이름만 표시
     description: defaultSEO.description,
     path: '/',
     siteConfig,
