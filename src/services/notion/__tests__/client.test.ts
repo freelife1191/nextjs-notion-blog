@@ -1070,14 +1070,14 @@ describe('createNotionClient', () => {
           {
             id: 'site-page-1',
             properties: {
-              SiteTitle: { title: [{ plain_text: 'My Awesome Blog' }] },
-              SiteDescription: { rich_text: [{ plain_text: 'A blog about tech' }] },
-              OGImage: { files: [{ file: { url: 'https://example.com/og.png' } }] },
-              TwitterHandle: { rich_text: [{ plain_text: '@myblog' }] },
-              Author: { people: [{ name: 'John Doe' }] },
-              GA4MeasurementId: { rich_text: [{ plain_text: 'G-XXXXXXXXXX' }] },
+              SiteTitle: { title: [{ plain_text: 'Test Blog Site' }] },
+              SiteDescription: { rich_text: [{ plain_text: 'Test blog description' }] },
+              OGImage: { files: [{ file: { url: 'https://example.com/test-og.png' } }] },
+              TwitterHandle: { rich_text: [{ plain_text: '@testblog' }] },
+              Author: { people: [{ name: 'Test Author' }] },
+              GA4MeasurementId: { rich_text: [{ plain_text: 'G-TEST1234567' }] },
               EnableAnalytics: { checkbox: true },
-              AdSensePublisherId: { rich_text: [{ plain_text: 'ca-pub-123456789' }] },
+              AdSensePublisherId: { rich_text: [{ plain_text: 'ca-pub-0000000000000000' }] },
               EnableAdSense: { checkbox: true },
               AdSenseAutoAds: { checkbox: false },
             },
@@ -1094,14 +1094,14 @@ describe('createNotionClient', () => {
       const config = await client.getSiteConfig()
 
       expect(config).toEqual({
-        siteTitle: 'My Awesome Blog',
-        siteDescription: 'A blog about tech',
+        siteTitle: 'Test Blog Site',
+        siteDescription: 'Test blog description',
         ogImage: '/og-images/default.jpg', // OG Image는 로컬 경로로 변환됨
-        twitterHandle: '@myblog',
-        author: 'John Doe',
-        ga4MeasurementId: 'G-XXXXXXXXXX',
+        twitterHandle: '@testblog',
+        author: 'Test Author',
+        ga4MeasurementId: 'G-TEST1234567',
         enableAnalytics: true,
-        adsensePublisherId: 'ca-pub-123456789',
+        adsensePublisherId: 'ca-pub-0000000000000000',
         enableAdsense: true,
         adsenseAutoAds: false,
       })
