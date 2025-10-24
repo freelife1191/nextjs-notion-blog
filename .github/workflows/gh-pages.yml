@@ -118,21 +118,6 @@ jobs:
         run: |
           npx next build 2>&1 | tee build.log
 
-      # ============================================
-      # GENERATE RSS FEED
-      # ============================================
-      - name: Generate RSS feed
-        env:
-          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-          NOTION_PROFILE_DATABASE_ID: ${{ secrets.NOTION_PROFILE_DATABASE_ID }}
-          NOTION_SITE_DATABASE_ID: ${{ secrets.NOTION_SITE_DATABASE_ID }}
-          NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
-        run: |
-          npm run generate-rss
-          # Copy RSS to out directory
-          cp public/rss.xml out/rss.xml
-
       # DEBUG: Build process details
       - name: Build debug info
         if: github.ref == 'refs/heads/develop' || inputs.debug_mode

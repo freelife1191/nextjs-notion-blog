@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "generate-rss": "npx tsx scripts/generate-rss.ts",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
