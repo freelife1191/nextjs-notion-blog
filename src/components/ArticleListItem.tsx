@@ -8,7 +8,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import { slideUpVariants, useInViewAnimation, ANIMATION_DURATION } from '@/lib/motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { DateBadge } from '@/components/article/DateBadge'
@@ -30,7 +30,7 @@ interface ArticleListItemProps {
   index?: number
 }
 
-export function ArticleListItem({ post, index = 0 }: ArticleListItemProps) {
+export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }: ArticleListItemProps) {
   const [shouldAnimate, setShouldAnimate] = useState(true)
 
   useEffect(() => {
@@ -124,4 +124,17 @@ export function ArticleListItem({ post, index = 0 }: ArticleListItemProps) {
       </Card>
     </motion.div>
   )
-}
+}, (prevProps, nextProps) => {
+  // Custom comparison: Only re-render if post content or index changes
+  return (
+    prevProps.post.slug === nextProps.post.slug &&
+    prevProps.post.title === nextProps.post.title &&
+    prevProps.post.excerpt === nextProps.post.excerpt &&
+    prevProps.post.coverImageUrl === nextProps.post.coverImageUrl &&
+    prevProps.post.label === nextProps.post.label &&
+    prevProps.post.publishedAt === nextProps.post.publishedAt &&
+    prevProps.post.author === nextProps.post.author &&
+    prevProps.index === nextProps.index &&
+    JSON.stringify(prevProps.post.tags) === JSON.stringify(nextProps.post.tags)
+  )
+})

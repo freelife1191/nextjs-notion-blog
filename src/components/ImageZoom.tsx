@@ -5,7 +5,7 @@
 
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import Image from 'next/image'
@@ -14,39 +14,48 @@ export function ImageZoom() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [imageAlt, setImageAlt] = useState<string>('')
 
+  // closeModal을 useCallback으로 최적화
+  const closeModal = useCallback(() => {
+    setSelectedImage(null)
+    setImageAlt('')
+    document.body.style.overflow = ''
+  }, [])
+
+  // handleImageClick을 useCallback으로 최적화
+  const handleImageClick = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement
+
+    // img 태그이고, prose 내부에 있는 경우에만 처리
+    if (target.tagName === 'IMG' && target.closest('.prose')) {
+      const img = target as HTMLImageElement
+
+      // 이미 작은 아이콘이나 프로필 이미지는 제외
+      if (img.width < 100 || img.height < 100) return
+
+      setSelectedImage(img.src)
+      setImageAlt(img.alt || '')
+      document.body.style.overflow = 'hidden' // 스크롤 방지
+    }
+  }, [])
+
+  // handleKeyDown을 useCallback으로 최적화
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape' && selectedImage) {
+      closeModal()
+    }
+  }, [selectedImage, closeModal])
+
   useEffect(() => {
     // prose 내부의 모든 이미지에 클릭 이벤트 추가
-    const handleImageClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement
-
-      // img 태그이고, prose 내부에 있는 경우에만 처리
-      if (target.tagName === 'IMG' && target.closest('.prose')) {
-        const img = target as HTMLImageElement
-
-        // 이미 작은 아이콘이나 프로필 이미지는 제외
-        if (img.width < 100 || img.height < 100) return
-
-        setSelectedImage(img.src)
-        setImageAlt(img.alt || '')
-        document.body.style.overflow = 'hidden' // 스크롤 방지
-      }
-    }
-
     document.addEventListener('click', handleImageClick)
     return () => {
       document.removeEventListener('click', handleImageClick)
       document.body.style.overflow = '' // 클린업
     }
-  }, [])
+  }, [handleImageClick])
 
   useEffect(() => {
     // ESC 키로 닫기
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && selectedImage) {
-        closeModal()
-      }
-    }
-
     if (selectedImage) {
       document.addEventListener('keydown', handleKeyDown)
     }
@@ -54,13 +63,7 @@ export function ImageZoom() {
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [selectedImage])
-
-  const closeModal = () => {
-    setSelectedImage(null)
-    setImageAlt('')
-    document.body.style.overflow = ''
-  }
+  }, [selectedImage, handleKeyDown])
 
   return (
     <AnimatePresence>

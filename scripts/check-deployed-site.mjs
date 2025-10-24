@@ -4,7 +4,7 @@
  * 배포된 사이트의 GA4/AdSense 스크립트 로딩 확인
  */
 
-const SITE_URL = 'https://notionblogsample.github.io/nextjs-notion-blog/';
+const SITE_URL = 'https://notionblogsample.github.io/';
 
 console.log('='.repeat(60));
 console.log('🌐 배포된 사이트 GA4/AdSense 확인');

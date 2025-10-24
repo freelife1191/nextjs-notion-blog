@@ -6,6 +6,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useMemo } from 'react'
 import { ArticleListItem } from '@/components/ArticleListItem'
 import { EmptyState, ErrorState } from '@/components/states'
 import type { PostListItem } from '@/services/notion/client'
@@ -34,30 +35,39 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
   const currentPage = Number(searchParams.get('page')) || 1
   const postsPerPage = 4
 
-  // 필터링 적용
-  let filteredPosts = posts
+  // 필터링 및 페이지네이션 계산 (useMemo로 최적화)
+  const { paginatedPosts, totalPosts, totalPages } = useMemo(() => {
+    // 필터링 적용
+    let filteredPosts = posts
 
-  if (filterMonth) {
-    filteredPosts = filteredPosts.filter((post) => {
-      const postMonth = post.date?.slice(0, 7) // YYYY-MM 형식
-      return postMonth === filterMonth
-    })
-  }
+    if (filterMonth) {
+      filteredPosts = filteredPosts.filter((post) => {
+        const postMonth = post.date?.slice(0, 7) // YYYY-MM 형식
+        return postMonth === filterMonth
+      })
+    }
 
-  if (filterLabel) {
-    filteredPosts = filteredPosts.filter((post) => post.label === filterLabel)
-  }
+    if (filterLabel) {
+      filteredPosts = filteredPosts.filter((post) => post.label === filterLabel)
+    }
 
-  if (filterTag) {
-    filteredPosts = filteredPosts.filter((post) => post.tags?.includes(filterTag))
-  }
+    if (filterTag) {
+      filteredPosts = filteredPosts.filter((post) => post.tags?.includes(filterTag))
+    }
 
-  // 페이지네이션 계산
-  const totalPosts = filteredPosts.length
-  const totalPages = Math.ceil(totalPosts / postsPerPage)
-  const startIndex = (currentPage - 1) * postsPerPage
-  const endIndex = startIndex + postsPerPage
-  const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
+    // 페이지네이션 계산
+    const totalPosts = filteredPosts.length
+    const totalPages = Math.ceil(totalPosts / postsPerPage)
+    const startIndex = (currentPage - 1) * postsPerPage
+    const endIndex = startIndex + postsPerPage
+    const paginatedPosts = filteredPosts.slice(startIndex, endIndex)
+
+    return {
+      paginatedPosts,
+      totalPosts,
+      totalPages,
+    }
+  }, [posts, filterMonth, filterLabel, filterTag, currentPage, postsPerPage])
 
   // 활성 필터 확인
   const hasActiveFilters = filterMonth || filterLabel || filterTag
@@ -95,6 +105,9 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
             <div className="flex items-center gap-2">
               <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-lg font-medium">
                 {getFilterLabel()}
+              </span>
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                ({totalPosts}개)
               </span>
               <Link
                 href="/"

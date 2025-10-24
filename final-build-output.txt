@@ -1,0 +1,9 @@
+
+> nextjs-notion-blog@0.1.0 prebuild
+> node scripts/download-og-images.mjs
+
+[dotenv@17.2.3] injecting env (12) from .env.local -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+🚀 Starting OG Image download...
+
+📥 Downloading OG Image from Notion...
+   URL: https://prod-files-secure.s3.us-west-2.amazonaws.com/da920e26-5f74-43df-940d-88a6e609bdcc/e3ecab05-8...

@@ -1,0 +1,93 @@
+
+> nextjs-notion-blog@0.1.0 prebuild
+> node scripts/download-og-images.mjs
+
+[dotenv@17.2.3] injecting env (12) from .env.local -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+🚀 Starting OG Image download...
+
+📥 Downloading OG Image from Notion...
+   URL: https://prod-files-secure.s3.us-west-2.amazonaws.com/da920e26-5f74-43df-940d-88a6e609bdcc/e3ecab05-8...
+✅ OG Image downloaded successfully!
+   Saved to: public/og-images/default.jpeg
+   File size: 153.22 KB
+
+✨ OG Image download completed!
+
+
+> nextjs-notion-blog@0.1.0 build
+> next build --turbopack
+
+   ▲ Next.js 15.5.6 (Turbopack)
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+
+warn - The safelist pattern `/^md:grid-cols-[2-4]$/` doesn't match any Tailwind CSS classes.
+warn - Fix this pattern or remove it from your `safelist` configuration.
+warn - https://tailwindcss.com/docs/content-configuration#safelisting-classes
+
+warn - The safelist pattern `/^lg:grid-cols-[2-4]$/` doesn't match any Tailwind CSS classes.
+warn - Fix this pattern or remove it from your `safelist` configuration.
+warn - https://tailwindcss.com/docs/content-configuration#safelisting-classes
+
+warn - The safelist pattern `/^dark:text-(gray|amber|orange|yellow|green|blue|purple|pink|red)-(100|200|300|400)$/` doesn't match any Tailwind CSS classes.
+warn - Fix this pattern or remove it from your `safelist` configuration.
+warn - https://tailwindcss.com/docs/content-configuration#safelisting-classes
+
+warn - The safelist pattern `/^dark:bg-(gray|amber|orange|yellow|green|blue|purple|pink|red)-(700|800|900)(\/\d+)?$/` doesn't match any Tailwind CSS classes.
+warn - Fix this pattern or remove it from your `safelist` configuration.
+warn - https://tailwindcss.com/docs/content-configuration#safelisting-classes
+ ✓ Finished writing to disk in 345ms
+ ✓ Compiled successfully in 3.4s
+   Linting and checking validity of types ...
+
+./src/app/layout.tsx
+10:10  Warning: 'GoogleAdSense' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/GoogleAdSense.tsx
+21:46  Warning: 'autoAds' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+32:5  Warning: `next/script`'s `beforeInteractive` strategy should not be used outside of `pages/_document.js`. See: https://nextjs.org/docs/messages/no-before-interactive-script-outside-document  @next/next/no-before-interactive-script-outside-document
+
+./src/components/HomeClient.tsx
+39:27  Warning: 'totalPosts' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/18) ...
+   Generating static pages (4/18) 
+ ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3000". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+   Generating static pages (8/18) 
+   Generating static pages (13/18) 
+ ✓ Generating static pages (18/18)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/2) ...
+ ✓ Exporting (2/2)
+
+Route (app)                                        Size  First Load JS  Revalidate  Expire
+┌ ○ /                                           10.7 kB         236 kB         10m      1y
+├ ○ /_not-found                                     0 B         225 kB
+├ ○ /about                                      1.63 kB         227 kB         10m      1y
+├ ○ /manifest.webmanifest                           0 B            0 B
+├ ● /posts/[slug]                               32.6 kB         258 kB         10m      1y
+├   ├ /posts/blog-intro-template-with-media                                    10m      1y
+├   ├ /posts/video-tutorial-post-structure                                     10m      1y
+├   ├ /posts/image-optimization-complete-guide                                 10m      1y
+├   └ [+5 more paths]
+├ ○ /robots.txt                                     0 B            0 B
+├ ○ /rss.xml                                        0 B            0 B
+└ ○ /sitemap.xml                                    0 B            0 B
++ First Load JS shared by all                    244 kB
+  ├ chunks/216d72072be82963.js                  42.8 kB
+  ├ chunks/402d6ebd64a3f509.js                  58.9 kB
+  ├ chunks/5704d11db81210d2.js                  14.6 kB
+  ├ chunks/5e31999fad353fd2.js                  20.7 kB
+  ├ chunks/aacbcd36d385b055.js                  37.8 kB
+  ├ chunks/ddfed4b47b527f2f.js                  17.2 kB
+  ├ chunks/129548919874cc4d.css                 13.8 kB
+  └ other shared chunks (total)                 38.1 kB
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

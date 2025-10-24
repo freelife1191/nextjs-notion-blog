@@ -1096,7 +1096,7 @@ describe('createNotionClient', () => {
       expect(config).toEqual({
         siteTitle: 'My Awesome Blog',
         siteDescription: 'A blog about tech',
-        ogImage: 'https://example.com/og.png',
+        ogImage: '/og-images/default.jpg', // OG Image는 로컬 경로로 변환됨
         twitterHandle: '@myblog',
         author: 'John Doe',
         ga4MeasurementId: 'G-XXXXXXXXXX',
