@@ -13,6 +13,7 @@ import type { PostListItem } from '@/services/notion/client'
 import { NavigationIcon } from '@/lib/icons'
 import { useSearchParams } from 'next/navigation'
 import { Markdown } from './Markdown'
+import CodeHighlight from './CodeHighlight'
 
 interface HomeClientProps {
   posts: PostListItem[]
@@ -86,7 +87,7 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
   }
 
   return (
-    <div className="py-4 lg:py-6">
+    <div>
       {/* 페이지 헤더 */}
       <header className="mb-6 lg:mb-8">
         <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
@@ -214,6 +215,9 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
           </>
         )}
       </section>
+
+      {/* Prism.js 코드 구문 강조 */}
+      <CodeHighlight />
     </div>
   )
 }

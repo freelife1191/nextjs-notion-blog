@@ -10,6 +10,7 @@ import { createAboutMetadata, createJsonLd } from '@/lib/seo'
 import { addIdsToHeadings } from '@/lib/toc'
 import { ImageZoomModal } from '@/components/ImageZoomModal'
 import { KatexRenderer } from '@/components/KatexRenderer'
+import CodeHighlight from '@/components/CodeHighlight'
 import type { Metadata } from 'next'
 
 export const revalidate = 600 // ISR 10분
@@ -89,6 +90,9 @@ export default async function AboutPage() {
 
         {/* KaTeX 수식 렌더링 */}
         <KatexRenderer />
+
+        {/* Prism.js 코드 구문 강조 */}
+        <CodeHighlight />
       </>
     )
   } catch {
