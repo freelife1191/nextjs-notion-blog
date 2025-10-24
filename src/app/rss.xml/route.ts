@@ -1,5 +1,8 @@
 import { createNotionClient } from '@/services/notion/client'
 
+// Required for static export - pre-render this route at build time
+export const dynamic = 'force-static'
+
 function escapeXml(unsafe: string): string {
   return unsafe
     .replace(/&/g, '&amp;')
