@@ -14,25 +14,36 @@
 import { describe, it, expect, beforeEach, vi, afterEach } from 'vitest'
 import { createNotionClient, NotionApiError, NotionErrorCode } from '../client'
 import { contentCache } from '@/lib/cache'
+// @ts-expect-error - mockEnv is exported by the mock, not the real module
+import { mockEnv } from '@/lib/env'
 
-// Mock environment variables
-vi.mock('@/lib/env', () => ({
-  env: {
+// Mock environment variables with dynamic values
+vi.mock('@/lib/env', () => {
+  const mockEnvData = {
     NOTION_API_KEY: 'test-api-key',
     NOTION_DATABASE_ID: 'test-database-id',
-    NOTION_PROFILE_DATABASE_ID: undefined,
-    NOTION_SITE_DATABASE_ID: undefined,
-  },
-  getEnv: vi.fn((key: string) => {
-    if (key === 'NOTION_API_KEY') return 'test-api-key'
-    if (key === 'NOTION_DATABASE_ID') return 'test-database-id'
-    return ''
-  }),
-  getEnvOptional: vi.fn((key: string) => {
-    if (key === 'NOTION_SETTINGS_DATABASE_ID') return undefined
-    return undefined
-  }),
-}))
+    NOTION_PROFILE_DATABASE_ID: undefined as string | undefined,
+    NOTION_SITE_DATABASE_ID: undefined as string | undefined,
+  }
+
+  return {
+    env: new Proxy(mockEnvData, {
+      get(target, prop) {
+        return target[prop as keyof typeof target]
+      },
+    }),
+    mockEnv: mockEnvData, // Export mockEnv for test access
+    getEnv: vi.fn((key: string) => {
+      if (key === 'NOTION_API_KEY') return 'test-api-key'
+      if (key === 'NOTION_DATABASE_ID') return 'test-database-id'
+      return ''
+    }),
+    getEnvOptional: vi.fn((key: string) => {
+      if (key === 'NOTION_SETTINGS_DATABASE_ID') return undefined
+      return undefined
+    }),
+  }
+})
 
 // Mock renderer
 vi.mock('../renderer', () => ({
@@ -1033,6 +1044,183 @@ describe('createNotionClient', () => {
       const posts = await client.listPublishedPosts()
 
       expect(posts[0].label).toBe('Custom Label')
+    })
+  })
+
+  describe('getSiteConfig', () => {
+    it('should return default config when database ID not provided', async () => {
+      const client = createNotionClient()
+      const config = await client.getSiteConfig()
+
+      expect(config).toEqual({
+        siteTitle: '사이트 설정 DB의 SiteTitle 속성을 설정하세요',
+        siteDescription: '사이트 설정 DB의 SiteDescription 속성을 설정하세요',
+        enableAnalytics: false,
+        enableAdsense: false,
+        adsenseAutoAds: false,
+      })
+    })
+
+    it('should fetch site config from Notion when database ID provided', async () => {
+      // Set mock environment variable
+      mockEnv.NOTION_SITE_DATABASE_ID = 'site-db-123'
+
+      const mockResponse = {
+        results: [
+          {
+            id: 'site-page-1',
+            properties: {
+              SiteTitle: { rich_text: [{ plain_text: 'My Awesome Blog' }] },
+              SiteDescription: { rich_text: [{ plain_text: 'A blog about tech' }] },
+              OGImage: { files: [{ file: { url: 'https://example.com/og.png' } }] },
+              TwitterHandle: { rich_text: [{ plain_text: '@myblog' }] },
+              Author: { people: [{ name: 'John Doe' }] },
+              GA4MeasurementId: { rich_text: [{ plain_text: 'G-XXXXXXXXXX' }] },
+              EnableAnalytics: { checkbox: true },
+              AdSensePublisherId: { rich_text: [{ plain_text: 'ca-pub-123456789' }] },
+              EnableAdSense: { checkbox: true },
+              AdSenseAutoAds: { checkbox: false },
+            },
+          },
+        ],
+      }
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      })
+
+      const client = createNotionClient()
+      const config = await client.getSiteConfig()
+
+      expect(config).toEqual({
+        siteTitle: 'My Awesome Blog',
+        siteDescription: 'A blog about tech',
+        ogImage: 'https://example.com/og.png',
+        twitterHandle: '@myblog',
+        author: 'John Doe',
+        ga4MeasurementId: 'G-XXXXXXXXXX',
+        enableAnalytics: true,
+        adsensePublisherId: 'ca-pub-123456789',
+        enableAdsense: true,
+        adsenseAutoAds: false,
+      })
+
+      // Restore environment variable
+      mockEnv.NOTION_SITE_DATABASE_ID = undefined
+    })
+
+    it('should return default config when API fails', async () => {
+      mockEnv.NOTION_SITE_DATABASE_ID = 'site-db-123'
+
+      mockFetch.mockResolvedValueOnce({
+        ok: false,
+        status: 500,
+        text: async () => 'Internal Server Error',
+      })
+
+      const client = createNotionClient()
+      const config = await client.getSiteConfig()
+
+      expect(config).toEqual({
+        siteTitle: '사이트 설정 DB의 SiteTitle 속성을 설정하세요',
+        siteDescription: '사이트 설정 DB의 SiteDescription 속성을 설정하세요',
+        enableAnalytics: false,
+        enableAdsense: false,
+        adsenseAutoAds: false,
+      })
+
+      mockEnv.NOTION_SITE_DATABASE_ID = undefined
+    })
+
+    it('should return default config when database is empty', async () => {
+      mockEnv.NOTION_SITE_DATABASE_ID = 'site-db-123'
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => ({ results: [] }),
+      })
+
+      const client = createNotionClient()
+      const config = await client.getSiteConfig()
+
+      expect(config).toEqual({
+        siteTitle: '사이트 설정 DB의 SiteTitle 속성을 설정하세요',
+        siteDescription: '사이트 설정 DB의 SiteDescription 속성을 설정하세요',
+        enableAnalytics: false,
+        enableAdsense: false,
+        adsenseAutoAds: false,
+      })
+
+      mockEnv.NOTION_SITE_DATABASE_ID = undefined
+    })
+
+    it('should support Author as Text type fallback', async () => {
+      mockEnv.NOTION_SITE_DATABASE_ID = 'site-db-123'
+
+      const mockResponse = {
+        results: [
+          {
+            id: 'site-page-1',
+            properties: {
+              SiteTitle: { rich_text: [{ plain_text: 'Test Blog' }] },
+              SiteDescription: { rich_text: [{ plain_text: 'Test Description' }] },
+              Author: {
+                people: [], // Empty Person field
+                rich_text: [{ plain_text: 'Text Author' }],
+              },
+            },
+          },
+        ],
+      }
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      })
+
+      const client = createNotionClient()
+      const config = await client.getSiteConfig()
+
+      expect(config.author).toBe('Text Author')
+
+      mockEnv.NOTION_SITE_DATABASE_ID = undefined
+    })
+
+    it('should use cache on subsequent calls', async () => {
+      mockEnv.NOTION_SITE_DATABASE_ID = 'site-db-123'
+
+      const mockResponse = {
+        results: [
+          {
+            id: 'site-page-1',
+            properties: {
+              SiteTitle: { rich_text: [{ plain_text: 'Cached Blog' }] },
+              SiteDescription: { rich_text: [{ plain_text: 'Cached Description' }] },
+            },
+          },
+        ],
+      }
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      })
+
+      const client = createNotionClient()
+
+      // First call - should hit API
+      const config1 = await client.getSiteConfig()
+      expect(config1.siteTitle).toBe('Cached Blog')
+
+      // Second call - should use cache (no additional fetch)
+      const config2 = await client.getSiteConfig()
+      expect(config2.siteTitle).toBe('Cached Blog')
+
+      // Verify fetch was only called once
+      expect(mockFetch).toHaveBeenCalledTimes(1)
+
+      mockEnv.NOTION_SITE_DATABASE_ID = undefined
     })
   })
 })

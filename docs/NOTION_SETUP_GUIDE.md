@@ -406,7 +406,7 @@ Notion API는 **Rate Limit**이 있습니다:
 | **Description** | Text | ⬜ | 포스트 요약/설명 |
 | **CoverImage** | Files | ⬜ | 커버 이미지 |
 | **Language** | Select | ⬜ | 언어 (예: "ko", "en") |
-| **Author** | People | ⬜ | 작성자 이름 |
+| **Author** | Person 또는 Text | ⬜ | 작성자 (Notion 사용자 선택 또는 직접 입력) |
 
 ### 2.3 Status 속성 설정
 
@@ -466,7 +466,10 @@ Notion API는 **Rate Limit**이 있습니다:
 - **Date**: 포스트 발행 날짜
 - **Description**: 검색 엔진과 미리보기에 표시될 요약문
 - **CoverImage**: 썸네일 이미지 (선택사항)
-- **Author**: 작성자 이름 (선택사항)
+- **Author**: 작성자 (Person 타입 권장, Text 타입도 지원)
+  - Person 타입: Notion 워크스페이스의 실제 사용자 선택
+  - Text 타입: 직접 이름 입력
+  - 설정하지 않으면 Site Settings의 기본 작성자 사용
 
 ### 2.6 데이터베이스 ID 가져오기
 
@@ -964,6 +967,7 @@ Next.js와 Notion을 활용하여 무료로 개인 블로그를 만드는 방법
 | **Instagram** | URL | 인스타그램 프로필 |
 | **Blog** | URL | 블로그 링크 |
 | **Email** | Email | 이메일 주소 |
+| **Notion** | URL | Notion 페이지 링크 |
 | **GitHub** | URL | GitHub 프로필 |
 | **Twitter** | URL | Twitter 프로필 |
 | **YouTube** | URL | YouTube 채널 |
@@ -984,9 +988,9 @@ Next.js와 Notion을 활용하여 무료로 개인 블로그를 만드는 방법
 
 **소셜 링크 예시:**
 
-| KakaoChannel | Kakao | Instagram | Blog | Email |
-|--------------|-------|-----------|------|-------|
-| https://pf.kakao.com/your_channel_id | https://open.kakao.com/your_openchat_id | https://instagram.com/your_username | https://blog.example.com | hello@example.com |
+| KakaoChannel | Kakao | Instagram | Blog | Email | Notion |
+|--------------|-------|-----------|------|-------|--------|
+| https://pf.kakao.com/your_channel_id | https://open.kakao.com/your_openchat_id | https://instagram.com/your_username | https://blog.example.com | hello@example.com | https://notion.so/your_page |
 
 | GitHub | Twitter | YouTube | LinkedIn | Threads |
 |--------|---------|---------|----------|---------|
