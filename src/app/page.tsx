@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io'
 
 export default async function Home() {
   let posts: PostListItem[] = []

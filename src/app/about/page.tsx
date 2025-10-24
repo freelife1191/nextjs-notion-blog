@@ -14,7 +14,7 @@ import type { Metadata } from 'next'
 
 export const revalidate = 600 // ISR 10분
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io'
 
 // Metadata 생성
 export async function generateMetadata(): Promise<Metadata> {

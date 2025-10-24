@@ -14,7 +14,7 @@ import { generateTOCFromNotionBlocks, addIdsToHeadings } from '@/lib/toc'
 import { FALLBACK_POST_SLUGS } from '@/lib/fallback-data'
 import type { Metadata } from 'next'
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io'
 
 export const revalidate = 600 // ISR 10분
 // Static export를 위해 dynamicParams를 false로 설정
