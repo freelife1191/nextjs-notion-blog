@@ -5,6 +5,7 @@
 
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -17,6 +18,14 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { DevelopmentStatusModal } from './DevelopmentStatusModal'
 import { Markdown } from './Markdown'
 import { AdUnit } from './AdUnit'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { X } from 'lucide-react'
 
 interface ProfileSidebarProps {
   profile?: {
@@ -67,33 +76,43 @@ export function ProfileSidebar({
   adsensePublisherId,
 }: ProfileSidebarProps) {
   const pathname = usePathname()
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false)
 
   return (
     <motion.aside
-      className="container-sidebar w-full max-w-full overflow-hidden"
+      className="container-sidebar w-full max-w-full"
       variants={fadeVariants}
       {...useInViewAnimation}
     >
       <div className="space-section w-full">
         {/* 프로필 이미지 */}
-        <div className="mb-6">
-          <Avatar className="w-24 h-24 border-2 border-border">
-            {profile.photoUrl ? (
-              <Image
-                src={profile.photoUrl}
-                alt={profile.name}
-                fill
-                className="object-cover"
-                referrerPolicy="no-referrer"
-                priority={true}
-                sizes="96px"
-              />
-            ) : (
-              <AvatarFallback className="bg-gradient-to-br from-primary to-primary/60 text-2xl font-bold text-primary-foreground">
-                {profile.name.charAt(0)}
-              </AvatarFallback>
-            )}
-          </Avatar>
+        <div className="mb-6 -ml-1 pl-1">
+          <motion.div
+            className={cn("inline-block", profile.photoUrl && "cursor-pointer")}
+            whileHover={profile.photoUrl ? { scale: 1.05 } : {}}
+            whileTap={profile.photoUrl ? { scale: 0.95 } : {}}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => profile.photoUrl && setIsImageModalOpen(true)}
+          >
+            <Avatar className="w-24 h-24 border-2 border-border transition-shadow hover:shadow-lg hover:border-primary/50">
+              {profile.photoUrl ? (
+                <Image
+                  src={profile.photoUrl}
+                  alt={profile.name}
+                  fill
+                  className="object-cover pointer-events-none"
+                  referrerPolicy="no-referrer"
+                  priority={true}
+                  sizes="96px"
+                  draggable={false}
+                />
+              ) : (
+                <AvatarFallback className="bg-gradient-to-br from-primary to-primary/60 text-2xl font-bold text-primary-foreground">
+                  {profile.name.charAt(0)}
+                </AvatarFallback>
+              )}
+            </Avatar>
+          </motion.div>
         </div>
 
         {/* 이름 & 테마 토글 */}
@@ -356,6 +375,50 @@ export function ProfileSidebar({
           </motion.div>
         )}
       </div>
+
+      {/* 프로필 이미지 확대 모달 */}
+      <Dialog open={isImageModalOpen} onOpenChange={setIsImageModalOpen}>
+        <DialogContent
+          className="max-w-3xl p-0 overflow-hidden bg-transparent border-0"
+          showCloseButton={false}
+        >
+          <DialogHeader className="sr-only">
+            <DialogTitle>{profile.name}의 프로필 사진</DialogTitle>
+            <DialogDescription>프로필 이미지 확대 보기</DialogDescription>
+          </DialogHeader>
+
+          <div className="relative w-full aspect-square">
+            {profile.photoUrl && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.2 }}
+                className="relative w-full h-full"
+              >
+                <Image
+                  src={profile.photoUrl}
+                  alt={profile.name}
+                  fill
+                  className="object-contain rounded-lg"
+                  referrerPolicy="no-referrer"
+                  sizes="(max-width: 768px) 100vw, 768px"
+                  priority
+                />
+              </motion.div>
+            )}
+          </div>
+
+          {/* 커스텀 닫기 버튼 */}
+          <button
+            onClick={() => setIsImageModalOpen(false)}
+            className="absolute top-4 right-4 rounded-full p-2 bg-background/80 backdrop-blur-sm border border-border hover:bg-background transition-colors z-10"
+            aria-label="닫기"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </DialogContent>
+      </Dialog>
     </motion.aside>
   )
 }

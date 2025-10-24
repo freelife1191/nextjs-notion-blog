@@ -169,6 +169,8 @@ export default async function PostPage({ params }: PostPageProps) {
         {/* KaTeX 수식 렌더링 */}
         <KatexRenderer />
 
+        {/* Mermaid 다이어그램은 Kroki API로 이미지로 렌더링됨 (MermaidRenderer 불필요) */}
+
         {/* Prism.js 코드 구문 강조 */}
         <CodeHighlight />
       </>

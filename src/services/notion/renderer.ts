@@ -196,6 +196,9 @@ export class NotionRenderer {
     const annotations = text.annotations || {};
     const link = text.text?.link || text.href;
 
+    // HTML escape 적용 (XSS 방지 및 특수 문자 보호)
+    content = this.escapeHtml(content);
+
     // 텍스트 스타일 적용 (색상 전에 먼저 적용)
     if (annotations.bold) {
       content = `<strong>${content}</strong>`;
@@ -223,9 +226,11 @@ export class NotionRenderer {
       content = `<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono">${content}</code>`;
     }
 
-    // Mention 타입 처리 (링크 멘션) - 가장 나중에 처리
+    // Mention 타입 처리 (링크 멘션) - 원본 텍스트 사용 (이미 escape됨)
     if (text.type === 'mention' && (text as any).mention) {
       const mention = (text as any).mention;
+      // mention의 경우 annotations가 적용되기 전 원본 텍스트 사용
+      const mentionText = this.escapeHtml(text.plain_text || text.text?.content || '');
 
       // Page mention - Notion 스타일 페이지 링크 카드
       if (mention.type === 'page' && mention.page) {
@@ -239,7 +244,7 @@ export class NotionRenderer {
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
             <polyline points="14 2 14 8 20 8"></polyline>
           </svg>
-          <span class="font-medium">${this.escapeHtml(content)}</span>
+          <span class="font-medium">${mentionText}</span>
           <svg class="w-3 h-3 flex-shrink-0 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
             <polyline points="15 3 21 3 21 9"></polyline>
@@ -249,16 +254,26 @@ export class NotionRenderer {
       }
       // User mention
       else if (mention.type === 'user' && mention.user) {
-        content = `<span class="text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 px-1 rounded">${content}</span>`;
+        content = `<span class="text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 px-1 rounded">${mentionText}</span>`;
       }
-      // Date mention
+      // Date mention - 날짜를 사람이 읽기 쉬운 형식으로 표시
       else if (mention.type === 'date' && mention.date) {
-        content = `<span class="text-gray-700 dark:text-gray-300">${content}</span>`;
+        const dateInfo = mention.date;
+        const formattedDate = this.formatDateMention(dateInfo);
+        content = `<span class="inline-flex items-center gap-1 text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded">
+          <svg class="w-3 h-3 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span>${formattedDate}</span>
+        </span>`;
       }
       // Link preview mention
       else if (mention.type === 'link_preview' && mention.link_preview) {
         const url = mention.link_preview.url;
-        content = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">${content}</a>`;
+        content = `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline">${mentionText}</a>`;
       }
     }
     // 일반 링크 처리 - 가장 나중에 처리
@@ -293,7 +308,7 @@ export class NotionRenderer {
       // 아이콘 + 저자(회색) + 타이틀(밑줄)
       return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="link-mention-inline">
         ${iconUrl && iconUrl.endsWith('.png') && !iconUrl.includes('og-image') ?
-          `<img src="${iconUrl}" alt="${provider}" class="link-mention-inline-icon" />` :
+          `<img src="${iconUrl}" alt="${provider}" class="link-mention-inline-icon" referrerpolicy="no-referrer" />` :
           `<svg class="link-mention-inline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
           </svg>`}
@@ -342,6 +357,72 @@ export class NotionRenderer {
       "'": '&#039;'
     };
     return text.replace(/[&<>"']/g, (m) => map[m]);
+  }
+
+  /**
+   * 날짜 멘션을 사람이 읽기 쉬운 형식으로 포맷팅
+   */
+  private formatDateMention(dateInfo: any): string {
+    if (!dateInfo || !dateInfo.start) {
+      return '';
+    }
+
+    const startDate = new Date(dateInfo.start);
+    const endDate = dateInfo.end ? new Date(dateInfo.end) : null;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // 요일 배열 (한국어)
+    const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+
+    // 상대적 날짜 확인
+    const startDateOnly = new Date(startDate);
+    startDateOnly.setHours(0, 0, 0, 0);
+    const diffDays = Math.floor((startDateOnly.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+
+    // 상대적 날짜 표시
+    if (diffDays === 0 && !endDate) {
+      return '오늘';
+    } else if (diffDays === 1 && !endDate) {
+      return '내일';
+    } else if (diffDays === -1 && !endDate) {
+      return '어제';
+    }
+
+    // 날짜 포맷팅
+    const formatDate = (date: Date, includeTime: boolean = false): string => {
+      const year = date.getFullYear();
+      const month = date.getMonth() + 1;
+      const day = date.getDate();
+      const weekday = weekdays[date.getDay()];
+
+      let formatted = `${year}년 ${month}월 ${day}일 (${weekday})`;
+
+      // 시간이 포함된 경우 (ISO 8601 형식에 T가 있으면)
+      if (includeTime && dateInfo.start.includes('T')) {
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+        formatted += ` ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+      }
+
+      return formatted;
+    };
+
+    // 단일 날짜
+    if (!endDate) {
+      return formatDate(startDate, true);
+    }
+
+    // 기간
+    const startFormatted = formatDate(startDate, true);
+    const endFormatted = formatDate(endDate, true);
+
+    // 같은 날인 경우 (시간만 다른 경우)
+    if (startDate.toDateString() === endDate.toDateString()) {
+      return startFormatted;
+    }
+
+    return `${startFormatted} ~ ${endFormatted}`;
   }
 
   private extractDomain(url: string): string {
@@ -546,16 +627,19 @@ export class NotionRenderer {
     const children = calloutData?.children || [];
     const childrenHtml = children.length > 0 ? this.renderBlocks(children) : '';
 
-    let colorClass = '';
-    if (hasBlockColor) {
-      colorClass = getNotionColorClass(blockColor);
-    } else {
-      colorClass = '';
+    let bgColorClass = 'bg-card';
+    let textColorClass = 'text-card-foreground';
+
+    // 배경색이 있는 경우, 블록 레벨 배경색 클래스 사용
+    if (hasBlockColor && blockColor.endsWith('_background')) {
+      const colorClasses = getBlockBackgroundColorClasses(blockColor);
+      bgColorClass = colorClasses.bg;
+      textColorClass = colorClasses.text;
     }
 
     const text = this.renderRichText(richText);
 
-    return `<div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 my-6 ${colorClass}">
+    return `<div class="rounded-lg border ${bgColorClass} ${textColorClass} shadow-sm p-6 my-6 not-prose">
       <div class="flex items-start gap-3">
         <span class="text-2xl flex-shrink-0">${icon}</span>
         <div class="flex-1">
@@ -598,17 +682,76 @@ export class NotionRenderer {
 
     if (!url) return '';
 
+    // Spotify URL 처리
+    if (url.includes('spotify.com')) {
+      // Spotify 임베드 URL은 이미 embed 형식이거나 일반 URL일 수 있음
+      let embedUrl = url;
+
+      // 일반 Spotify URL을 embed URL로 변환
+      if (!url.includes('/embed/')) {
+        embedUrl = url.replace('open.spotify.com/', 'open.spotify.com/embed/');
+      }
+
+      return `<figure class="video-embed">
+        <div class="video-container" style="padding-bottom: 152px !important; height: 0;">
+          <iframe
+            src="${embedUrl}"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+            class="w-full h-full">
+          </iframe>
+        </div>
+        ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
+      </figure>`;
+    }
+
+    // Apple Podcasts URL 처리
+    if (url.includes('podcasts.apple.com')) {
+      // Apple Podcasts 임베드 URL로 변환
+      let embedUrl = url;
+
+      // podcasts.apple.com을 embed.podcasts.apple.com으로 변경
+      if (!url.includes('embed.podcasts.apple.com')) {
+        embedUrl = url.replace('podcasts.apple.com', 'embed.podcasts.apple.com');
+      }
+
+      return `<figure class="video-embed">
+        <div class="video-container" style="padding-bottom: 450px !important; height: 0;">
+          <iframe
+            src="${embedUrl}"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+            class="w-full h-full">
+          </iframe>
+        </div>
+        ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
+      </figure>`;
+    }
+
     // YouTube URL 처리
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
       const videoId = this.extractYouTubeId(url);
       if (videoId) {
+        // YouTube iframe 매개변수 추가 (에러 153 방지)
+        // - enablejsapi=1: JavaScript API 활성화
+        // - rel=0: 관련 동영상 숨기기
+        // - modestbranding=1: YouTube 브랜딩 최소화
         return `<figure class="video-embed">
           <div class="video-container">
             <iframe
-              src="https://www.youtube.com/embed/${videoId}"
+              src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&rel=0&modestbranding=1"
               frameborder="0"
               allowfullscreen
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
               class="w-full h-full">
             </iframe>
           </div>
@@ -617,19 +760,35 @@ export class NotionRenderer {
       }
     }
 
-    // Vimeo URL 처리
+    // Vimeo URL 처리 - 클릭 시 로드 (lazy loading)
     if (url.includes('vimeo.com')) {
       const videoId = this.extractVimeoId(url);
       if (videoId) {
+        // 고유 ID 생성 (동일 페이지에 여러 Vimeo 비디오가 있을 수 있음)
+        const uniqueId = `vimeo-${videoId}-${block.id || Math.random().toString(36).substr(2, 9)}`;
+
         return `<figure class="video-embed">
-          <div class="video-container">
-            <iframe
-              src="https://player.vimeo.com/video/${videoId}"
-              frameborder="0"
-              allowfullscreen
-              allow="autoplay; fullscreen; picture-in-picture"
-              class="w-full h-full">
-            </iframe>
+          <div id="${uniqueId}" class="video-container cursor-pointer relative bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black flex items-center justify-center group hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-800 dark:hover:to-gray-900 transition-all duration-300" onclick="
+            const container = document.getElementById('${uniqueId}');
+            container.innerHTML = '<iframe src=\\'https://player.vimeo.com/video/${videoId}?autoplay=1\\' frameborder=\\'0\\' allowfullscreen allow=\\'autoplay; fullscreen; picture-in-picture\\' class=\\'w-full h-full\\' loading=\\'eager\\'></iframe>';
+            container.onclick = null;
+            container.classList.remove('cursor-pointer', 'hover:from-gray-700', 'hover:to-gray-800');
+          " role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){this.onclick();event.preventDefault();}">
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+              <!-- Vimeo 로고 (간소화된 버전) -->
+              <svg class="w-12 h-12 text-white/90 mb-2" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/>
+              </svg>
+              <!-- Play 버튼 -->
+              <div class="relative">
+                <div class="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <svg class="w-20 h-20 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" fill="white" opacity="0.9"/>
+                  <path d="M10 8.5v7l6-3.5-6-3.5z" fill="currentColor" class="text-gray-900"/>
+                </svg>
+              </div>
+              <div class="text-white text-base font-medium group-hover:text-white/90 transition-colors duration-300">Vimeo에서 보기</div>
+            </div>
           </div>
           ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
         </figure>`;
@@ -653,6 +812,33 @@ export class NotionRenderer {
 
     if (!url) return '';
 
+    // Spotify URL 처리
+    if (url.includes('spotify.com')) {
+      // Spotify 임베드 URL은 이미 embed 형식이거나 일반 URL일 수 있음
+      let embedUrl = url;
+
+      // 일반 Spotify URL을 embed URL로 변환
+      if (!url.includes('/embed/')) {
+        embedUrl = url.replace('open.spotify.com/', 'open.spotify.com/embed/');
+      }
+
+      return `<figure class="video-embed">
+        <div class="video-container" style="padding-bottom: 152px !important; height: 0;">
+          <iframe
+            src="${embedUrl}"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+            class="w-full h-full">
+          </iframe>
+        </div>
+        ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
+      </figure>`;
+    }
+
+    // 일반 오디오 파일
     return `<figure class="my-6">
       <audio controls class="w-full rounded-lg shadow-md bg-gray-100 dark:bg-gray-800">
         <source src="${url}" type="audio/mpeg">
@@ -668,9 +854,9 @@ export class NotionRenderer {
     const file = block.file;
     const url = file?.external?.url || file?.file?.url;
     const name = file?.name || 'Download File';
-    
+
     if (!url) return '';
-    
+
     return `<div class="file-download">
       <a href="${url}" target="_blank" rel="noopener noreferrer" class="flex items-center">
         <div class="file-icon">
@@ -752,6 +938,18 @@ export class NotionRenderer {
 
   private renderColumn(block: NotionBlock): string {
     const children = block.column?.children || [];
+
+    // column 내부에 callout만 있는지 확인
+    const hasOnlyCallout = children.length === 1 && children[0].type === 'callout';
+
+    // callout만 있으면 카드 스타일 제거 (callout 자체가 카드로 렌더링됨)
+    if (hasOnlyCallout) {
+      return `<div class="space-y-4">
+        ${this.renderBlocks(children)}
+      </div>`;
+    }
+
+    // 그 외의 경우 카드 스타일 적용
     return `<div class="rounded-lg border bg-card text-card-foreground shadow-sm p-6 hover:shadow-md transition-shadow duration-200 space-y-4">
       ${this.renderBlocks(children)}
     </div>`;
@@ -785,11 +983,11 @@ export class NotionRenderer {
             <div class="youtube-bookmark-title">${this.escapeHtml(title)}</div>
             ${description ? `<div class="youtube-bookmark-description">${this.escapeHtml(description)}</div>` : ''}
             <div class="youtube-bookmark-footer">
-              <img src="https://www.youtube.com/s/desktop/3d178601/img/favicon_144x144.png" alt="YouTube" class="youtube-bookmark-icon" />
+              <img src="https://www.youtube.com/s/desktop/3d178601/img/favicon_144x144.png" alt="YouTube" class="youtube-bookmark-icon" referrerpolicy="no-referrer" />
               <span class="youtube-bookmark-url">${url}</span>
             </div>
           </div>
-          ${thumbnailUrl ? `<div class="youtube-bookmark-thumbnail" style="background-image: url('${thumbnailUrl}'); background-size: cover; background-position: center;"></div>` : ''}
+          ${thumbnailUrl ? `<div class="youtube-bookmark-thumbnail"><img src="${thumbnailUrl}" alt="${this.escapeHtml(title)}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" referrerpolicy="no-referrer" /></div>` : ''}
         </a>
       </div>`;
     }
@@ -828,8 +1026,62 @@ export class NotionRenderer {
           style="display: block; max-width: 100%; height: auto; object-fit: contain;"
           loading="lazy"
           decoding="async"
+          referrerpolicy="no-referrer"
         >
         ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">${caption}</figcaption>` : ''}
+      </figure>`;
+    }
+
+    // Spotify URL 처리
+    if (url.includes('spotify.com')) {
+      // Spotify 임베드 URL은 이미 embed 형식이거나 일반 URL일 수 있음
+      let embedUrl = url;
+
+      // 일반 Spotify URL을 embed URL로 변환
+      if (!url.includes('/embed/')) {
+        embedUrl = url.replace('open.spotify.com/', 'open.spotify.com/embed/');
+      }
+
+      return `<figure class="video-embed">
+        <div class="video-container" style="padding-bottom: 152px !important; height: 0;">
+          <iframe
+            src="${embedUrl}"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+            class="w-full h-full">
+          </iframe>
+        </div>
+        ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
+      </figure>`;
+    }
+
+    // Apple Podcasts URL 처리
+    if (url.includes('podcasts.apple.com')) {
+      // Apple Podcasts 임베드 URL로 변환
+      let embedUrl = url;
+
+      // podcasts.apple.com을 embed.podcasts.apple.com으로 변경
+      if (!url.includes('embed.podcasts.apple.com')) {
+        embedUrl = url.replace('podcasts.apple.com', 'embed.podcasts.apple.com');
+      }
+
+      return `<figure class="video-embed">
+        <div class="video-container" style="padding-bottom: 450px !important; height: 0;">
+          <iframe
+            src="${embedUrl}"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;"
+            class="w-full h-full">
+          </iframe>
+        </div>
+        ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
       </figure>`;
     }
 
@@ -837,13 +1089,19 @@ export class NotionRenderer {
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
       const videoId = this.extractYouTubeId(url);
       if (videoId) {
+        // YouTube iframe 매개변수 추가 (에러 153 방지)
+        // - enablejsapi=1: JavaScript API 활성화
+        // - rel=0: 관련 동영상 숨기기
+        // - modestbranding=1: YouTube 브랜딩 최소화
         return `<figure class="video-embed">
           <div class="video-container">
             <iframe
-              src="https://www.youtube.com/embed/${videoId}"
+              src="https://www.youtube.com/embed/${videoId}?enablejsapi=1&rel=0&modestbranding=1"
               frameborder="0"
               allowfullscreen
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
               class="w-full h-full">
             </iframe>
           </div>
@@ -852,19 +1110,35 @@ export class NotionRenderer {
       }
     }
 
-    // Vimeo URL 처리
+    // Vimeo URL 처리 - 클릭 시 로드 (lazy loading)
     if (url.includes('vimeo.com')) {
       const videoId = this.extractVimeoId(url);
       if (videoId) {
+        // 고유 ID 생성 (동일 페이지에 여러 Vimeo 비디오가 있을 수 있음)
+        const uniqueId = `vimeo-embed-${videoId}-${block.id || Math.random().toString(36).substr(2, 9)}`;
+
         return `<figure class="video-embed">
-          <div class="video-container">
-            <iframe
-              src="https://player.vimeo.com/video/${videoId}"
-              frameborder="0"
-              allowfullscreen
-              allow="autoplay; fullscreen; picture-in-picture"
-              class="w-full h-full">
-            </iframe>
+          <div id="${uniqueId}" class="video-container cursor-pointer relative bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-900 dark:to-black flex items-center justify-center group hover:from-gray-700 hover:to-gray-800 dark:hover:from-gray-800 dark:hover:to-gray-900 transition-all duration-300" onclick="
+            const container = document.getElementById('${uniqueId}');
+            container.innerHTML = '<iframe src=\\'https://player.vimeo.com/video/${videoId}?autoplay=1\\' frameborder=\\'0\\' allowfullscreen allow=\\'autoplay; fullscreen; picture-in-picture\\' class=\\'w-full h-full\\' loading=\\'eager\\'></iframe>';
+            container.onclick = null;
+            container.classList.remove('cursor-pointer', 'hover:from-gray-700', 'hover:to-gray-800');
+          " role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){this.onclick();event.preventDefault();}">
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-4">
+              <!-- Vimeo 로고 (간소화된 버전) -->
+              <svg class="w-12 h-12 text-white/90 mb-2" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.493 4.797l-.013.01z"/>
+              </svg>
+              <!-- Play 버튼 -->
+              <div class="relative">
+                <div class="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <svg class="w-20 h-20 text-white relative z-10 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="currentColor">
+                  <circle cx="12" cy="12" r="10" fill="white" opacity="0.9"/>
+                  <path d="M10 8.5v7l6-3.5-6-3.5z" fill="currentColor" class="text-gray-900"/>
+                </svg>
+              </div>
+              <div class="text-white text-base font-medium group-hover:text-white/90 transition-colors duration-300">Vimeo에서 보기</div>
+            </div>
           </div>
           ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-4 text-center">${caption}</figcaption>` : ''}
         </figure>`;
@@ -914,6 +1188,7 @@ export class NotionRenderer {
           style="display: block; max-width: 100%; height: auto; object-fit: contain;"
           loading="lazy"
           decoding="async"
+          referrerpolicy="no-referrer"
         >
         ${caption ? `<figcaption class="text-sm text-gray-600 dark:text-gray-400 mt-2 text-center">${caption}</figcaption>` : ''}
       </figure>`;

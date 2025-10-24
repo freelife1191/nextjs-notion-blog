@@ -77,26 +77,51 @@ export default function CodeHighlight() {
     // 복사 버튼 이벤트 핸들러 설정
     const handleCopyClick = (event: Event) => {
       const button = event.target as HTMLButtonElement
-      if (!button.dataset.copyBtn) return
 
-      const blockId = button.dataset.copyBtn
-      const wrapper = document.querySelector(`[data-code-block="${blockId}"]`)
-      if (!wrapper) return
+      // 일반 코드 블록 복사
+      if (button.dataset.copyBtn) {
+        const blockId = button.dataset.copyBtn
+        const wrapper = document.querySelector(`[data-code-block="${blockId}"]`)
+        if (!wrapper) return
 
-      const codeElement = wrapper.querySelector('code')
-      if (!codeElement) return
+        const codeElement = wrapper.querySelector('code')
+        if (!codeElement) return
 
-      const text = codeElement.textContent || ''
+        const text = codeElement.textContent || ''
 
-      navigator.clipboard.writeText(text).then(() => {
-        const originalText = button.textContent
-        button.textContent = 'Copied!'
-        setTimeout(() => {
-          button.textContent = originalText
-        }, 2000)
-      }).catch(err => {
-        logger.error('복사 실패:', err)
-      })
+        navigator.clipboard.writeText(text).then(() => {
+          const originalText = button.textContent
+          button.textContent = 'Copied!'
+          setTimeout(() => {
+            button.textContent = originalText
+          }, 2000)
+        }).catch(err => {
+          logger.error('복사 실패:', err)
+        })
+        return
+      }
+
+      // Mermaid 코드 복사
+      if (button.dataset.mermaidCopy) {
+        const copyText = button.dataset.copyText
+        if (!copyText) return
+
+        // HTML 엔티티 디코딩
+        const textarea = document.createElement('textarea')
+        textarea.innerHTML = copyText
+        const decodedText = textarea.value
+
+        navigator.clipboard.writeText(decodedText).then(() => {
+          const originalText = button.textContent
+          button.textContent = 'Copied!'
+          setTimeout(() => {
+            button.textContent = originalText
+          }, 2000)
+        }).catch(err => {
+          logger.error('복사 실패:', err)
+        })
+        return
+      }
     }
 
     // 이벤트 위임으로 복사 버튼 처리
