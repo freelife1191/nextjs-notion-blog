@@ -50,11 +50,10 @@ export function AdUnit({
   publisherId,
 }: AdUnitProps) {
   const adRef = useRef<HTMLModElement>(null)
-  const isDevelopment = process.env.NODE_ENV === 'development'
   const isInitializedRef = useRef(false)
 
   useEffect(() => {
-    if (!isDevelopment && adRef.current && publisherId && !isInitializedRef.current) {
+    if (adRef.current && publisherId && !isInitializedRef.current) {
       try {
         // 이미 광고가 채워진 요소인지 확인
         const adStatus = adRef.current.getAttribute('data-adsbygoogle-status')
@@ -72,26 +71,7 @@ export function AdUnit({
         logger.error('[AdUnit] AdSense error:', error)
       }
     }
-  }, [isDevelopment, publisherId])
-
-  // 개발 환경에서는 플레이스홀더 표시
-  if (isDevelopment) {
-    return (
-      <div className="not-prose my-8">
-        <div className="border-2 border-dashed border-muted-foreground/30 rounded-lg p-8 text-center bg-muted/20">
-          <p className="text-sm text-muted-foreground mb-2">{label}</p>
-          <p className="text-xs text-muted-foreground/60">
-            Google AdSense 광고 영역 (프로덕션에서만 표시됨)
-          </p>
-          {adSlot && (
-            <p className="text-xs text-muted-foreground/60 mt-1">
-              Slot: {adSlot}
-            </p>
-          )}
-        </div>
-      </div>
-    )
-  }
+  }, [publisherId])
 
   // Publisher ID가 없으면 광고를 표시하지 않음
   if (!publisherId) {
@@ -108,11 +88,16 @@ export function AdUnit({
       </div>
 
       {/* Google AdSense 광고 */}
-      <div className="flex justify-center">
+      <div className="flex justify-center min-h-[250px]">
         <ins
           ref={adRef}
           className="adsbygoogle"
-          style={{ display: 'block', textAlign: 'center' }}
+          style={{
+            display: 'block',
+            textAlign: 'center',
+            minWidth: '250px',
+            minHeight: '250px'
+          }}
           data-ad-client={publisherId}
           data-ad-slot={adSlot}
           data-ad-format={adFormat}

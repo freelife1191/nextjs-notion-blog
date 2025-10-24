@@ -8,7 +8,6 @@ import { TagChips } from './TagChips'
 import CodeHighlight from './CodeHighlight'
 import { ImageZoom } from './ImageZoom'
 import { Breadcrumb } from './Breadcrumb'
-import { AdUnit } from './AdUnit'
 import { motion } from 'framer-motion'
 import { pageVariants, usePageAnimation } from '@/lib/motion'
 import { Button } from '@/components/ui/button'
@@ -25,7 +24,6 @@ interface PostHeroClientProps {
   label?: string
   toc: TOCItem[]
   contentHtml: string
-  adsensePublisherId?: string
 }
 
 // TOC 리스트 컴포넌트
@@ -59,7 +57,6 @@ export function PostHeroClient({
   label,
   toc,
   contentHtml,
-  adsensePublisherId,
 }: PostHeroClientProps) {
   // 페이지 진입 시 스크롤을 맨 위로 이동
   useEffect(() => {
@@ -130,28 +127,8 @@ export function PostHeroClient({
             </div>
           )}
 
-          {/* 상단 광고 (목차 아래, 본문 위) */}
-          {adsensePublisherId && (
-            <AdUnit
-              publisherId={adsensePublisherId}
-              adFormat="auto"
-              fullWidthResponsive={true}
-              label="광고"
-            />
-          )}
-
           {/* 본문 내용 */}
           <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-
-          {/* 하단 광고 (본문 끝) */}
-          {adsensePublisherId && (
-            <AdUnit
-              publisherId={adsensePublisherId}
-              adFormat="auto"
-              fullWidthResponsive={true}
-              label="광고"
-            />
-          )}
         </article>
       </motion.article>
     </>

@@ -17,7 +17,6 @@ import { ThemeToggle } from './ThemeToggle'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { DevelopmentStatusModal } from './DevelopmentStatusModal'
 import { Markdown } from './Markdown'
-import { AdUnit } from './AdUnit'
 import {
   Dialog,
   DialogContent,
@@ -51,8 +50,6 @@ interface ProfileSidebarProps {
       line?: string
     }
   }
-  /** Google AdSense Publisher ID */
-  adsensePublisherId?: string
 }
 
 const NAV_ITEMS = [
@@ -73,7 +70,6 @@ export function ProfileSidebar({
       blog: 'https://blog.example.com',
     }
   },
-  adsensePublisherId,
 }: ProfileSidebarProps) {
   const pathname = usePathname()
   const [isImageModalOpen, setIsImageModalOpen] = useState(false)
@@ -358,22 +354,6 @@ export function ProfileSidebar({
           </p>
           <DevelopmentStatusModal />
         </motion.div>
-
-        {/* 세로형 광고 - 데스크톱에서만 표시 */}
-        {adsensePublisherId && (
-          <motion.div
-            className="hidden lg:block mt-8"
-            variants={fadeVariants}
-            transition={{ delay: 0.7 }}
-          >
-            <AdUnit
-              publisherId={adsensePublisherId}
-              adFormat="vertical"
-              fullWidthResponsive={false}
-              label="광고"
-            />
-          </motion.div>
-        )}
       </div>
 
       {/* 프로필 이미지 확대 모달 */}

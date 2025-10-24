@@ -102,7 +102,6 @@ export default async function RootLayout({
                   <div className="sticky top-4 pt-4">
                     <ProfileSidebar
                       profile={profile}
-                      adsensePublisherId={siteConfig.enableAdsense ? siteConfig.adsensePublisherId : undefined}
                     />
                   </div>
                 </aside>

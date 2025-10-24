@@ -18,14 +18,8 @@ interface GoogleAdSenseProps {
 }
 
 export function GoogleAdSense({ publisherId }: GoogleAdSenseProps) {
-  // 개발 환경에서는 AdSense를 로드하지 않음
-  const isDevelopment = process.env.NODE_ENV === 'development'
-
-  if (isDevelopment) {
-    return null
-  }
-
   // afterInteractive 전략 사용 (페이지 로드 후 실행)
+  // 정적 빌드에서는 항상 스크립트 로드
   return (
     <Script
       async

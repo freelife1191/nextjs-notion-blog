@@ -148,7 +148,6 @@ export default async function PostPage({ params }: PostPageProps) {
           label={post.label}
           toc={toc}
           contentHtml={contentWithIds}
-          adsensePublisherId={siteConfig.enableAdsense ? siteConfig.adsensePublisherId : undefined}
         />
 
         {/* Giscus 댓글 시스템 */}
