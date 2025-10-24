@@ -22,6 +22,7 @@ const geistMono = Geist_Mono({
 
 export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfigMemo();
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io';
 
   return {
     title: siteConfig.siteTitle,
@@ -29,6 +30,29 @@ export async function generateMetadata(): Promise<Metadata> {
     icons: {
       icon: '/favicon.ico',
       apple: '/favicon.ico', // Use favicon for apple icon to prevent 404
+    },
+    openGraph: {
+      title: siteConfig.siteTitle,
+      description: siteConfig.siteDescription,
+      url: siteUrl,
+      siteName: siteConfig.siteTitle,
+      images: siteConfig.ogImage ? [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.siteTitle,
+        },
+      ] : undefined,
+      locale: 'ko_KR',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: siteConfig.siteTitle,
+      description: siteConfig.siteDescription,
+      images: siteConfig.ogImage ? [siteConfig.ogImage] : undefined,
+      creator: siteConfig.twitterHandle,
     },
     alternates: {
       types: {
