@@ -11,9 +11,13 @@ import fs from 'fs';
 import path from 'path';
 import https from 'https';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// .env.local 파일에서 환경 변수 로드
+dotenv.config({ path: path.join(__dirname, '..', '.env.local') });
 
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
 const OG_IMAGES_DIR = path.join(PUBLIC_DIR, 'og-images');

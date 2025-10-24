@@ -116,7 +116,7 @@ jobs:
           NEXT_PUBLIC_GISCUS_THEME_DARK: ${{ secrets.NEXT_PUBLIC_GISCUS_THEME_DARK }}
         timeout-minutes: 10
         run: |
-          npx next build 2>&1 | tee build.log
+          npm run build 2>&1 | tee build.log
 
       # DEBUG: Build process details
       - name: Build debug info
