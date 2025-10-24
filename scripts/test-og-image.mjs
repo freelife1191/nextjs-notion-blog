@@ -66,7 +66,21 @@ try {
   // Author 확인
   const authorPerson = props.Author?.people?.[0]?.name
   const authorText = props.Author?.rich_text?.[0]?.plain_text
-  console.log('Author:', authorPerson || authorText || '❌ 없음')
+  const author = authorPerson || authorText
+  console.log('Author:', author || '❌ 없음')
+
+  console.log('\n💡 Author 필드 사용처:')
+  console.log('1. 포스트 메타데이터 (작성자 표시)')
+  console.log('2. JSON-LD 구조화된 데이터 (검색엔진 최적화)')
+  console.log('3. OpenGraph 메타데이터 (소셜 미디어 공유)')
+  console.log('4. 포스트 DB의 Author 필드가 없을 때 기본값으로 사용')
+  console.log('\n📌 확인 방법:')
+  console.log('- 포스트 상세 페이지: 작성자 이름이 표시됨')
+  console.log('- 포스트 목록: 작성자 이름이 표시됨')
+  console.log('- 포스트 DB에 Author 필드가 있으면 개별 설정 가능')
+  if (author) {
+    console.log(`\n✅ 사이트 기본 작성자: "${author}"`)
+  }
 
   console.log('\n📋 OGImage 필드 확인:\n')
 
