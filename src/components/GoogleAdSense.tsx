@@ -52,7 +52,7 @@ export function GoogleAdSense({ publisherId, autoAds = true }: GoogleAdSenseProp
       // Auto Ads 활성화
       if (autoAds) {
         try {
-          // @ts-ignore
+          // @ts-expect-error - adsbygoogle is added by Google AdSense script
           ;(window.adsbygoogle = window.adsbygoogle || []).push({})
           logger.log('[GoogleAdSense] Auto ads initialized')
         } catch (error) {
