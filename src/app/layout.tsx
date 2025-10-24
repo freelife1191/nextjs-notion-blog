@@ -27,10 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: siteConfig.siteTitle,
     description: siteConfig.siteDescription,
-    icons: {
-      icon: '/favicon.ico',
-      apple: '/favicon.ico', // Use favicon for apple icon to prevent 404
-    },
     // Fix Notion S3 image CORS errors by setting referrer policy
     referrer: 'no-referrer',
     openGraph: {
