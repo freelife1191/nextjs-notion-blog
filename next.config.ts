@@ -1,6 +1,5 @@
 import type { NextConfig } from "next";
 
-const repoBase = "/nextjs-notion-blog"; // GitHub Pages project path
 const isDev = process.env.NODE_ENV === 'development';
 
 const nextConfig: NextConfig = {
@@ -27,8 +26,8 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 192, 256, 384],
   },
-  basePath: isDev ? undefined : repoBase, // 개발 환경에서는 basePath 비활성화
-  assetPrefix: isDev ? undefined : repoBase, // 개발 환경에서는 assetPrefix 비활성화
+  // GitHub Pages User Site (username.github.io)를 위해 basePath 제거
+  // basePath와 assetPrefix 없이 루트 경로에서 제공
   trailingSlash: true,
   turbopack: {
     root: process.cwd(),

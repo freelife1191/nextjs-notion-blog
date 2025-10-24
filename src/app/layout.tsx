@@ -23,19 +23,16 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const siteConfig = await getSiteConfigMemo();
 
-  const isDev = process.env.NODE_ENV === 'development';
-  const basePath = isDev ? '' : '/nextjs-notion-blog';
-
   return {
     title: siteConfig.siteTitle,
     description: siteConfig.siteDescription,
     icons: {
-      icon: basePath + '/favicon.ico',
-      apple: basePath + '/favicon.ico', // Use favicon for apple icon to prevent 404
+      icon: '/favicon.ico',
+      apple: '/favicon.ico', // Use favicon for apple icon to prevent 404
     },
     alternates: {
       types: {
-        'application/rss+xml': basePath + '/rss.xml',
+        'application/rss+xml': '/rss.xml',
       },
     },
   };
