@@ -9,6 +9,7 @@ import { PostHeroClient } from '@/components/PostHeroClient'
 import { Comments } from '@/components/Comments'
 import { ImageZoomModal } from '@/components/ImageZoomModal'
 import { KatexRenderer } from '@/components/KatexRenderer'
+import CodeHighlight from '@/components/CodeHighlight'
 import { createPostMetadata, createJsonLd, createBreadcrumbJsonLd } from '@/lib/seo'
 import { generateTOCFromNotionBlocks, addIdsToHeadings } from '@/lib/toc'
 import { FALLBACK_POST_SLUGS } from '@/lib/fallback-data'
@@ -167,6 +168,9 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {/* KaTeX 수식 렌더링 */}
         <KatexRenderer />
+
+        {/* Prism.js 코드 구문 강조 */}
+        <CodeHighlight />
       </>
     )
   } catch {
