@@ -118,23 +118,8 @@ jobs:
         run: |
           echo "NODE_ENV: $NODE_ENV"
           echo "Starting build at $(date)"
-
-          # Run build with periodic heartbeat to show progress
-          npm run build 2>&1 | tee build.log &
-          BUILD_PID=$!
-
-          # Monitor build process
-          while kill -0 $BUILD_PID 2>/dev/null; do
-            echo "Build still running... ($(date))"
-            sleep 30
-          done
-
-          # Wait for build to complete and get exit code
-          wait $BUILD_PID
-          BUILD_EXIT=$?
-
-          echo "Build completed with exit code: $BUILD_EXIT at $(date)"
-          exit $BUILD_EXIT
+          npm run build 2>&1 | tee build.log
+          echo "Build completed at $(date)"
 
       # DEBUG: Build process details
       - name: Build debug info
