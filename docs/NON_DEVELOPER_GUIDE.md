@@ -408,14 +408,20 @@ GitHub Pages는 두 가지 방식으로 블로그를 제공합니다:
    - Repository 이름: `사용자이름.github.io`
    - 블로그 주소: `https://사용자이름.github.io`
    - 예시: `hong-gildong.github.io` → `https://hong-gildong.github.io`
+   - ✅ **Google AdSense 광고 기능 사용 가능**
 
 2. **Project Site** - 서브패스 사용
    - Repository 이름: 자유롭게 (예: `my-blog`)
    - 블로그 주소: `https://사용자이름.github.io/블로그이름/`
    - 예시: `my-blog` → `https://hong-gildong.github.io/my-blog/`
    - ⚠️ 추가 설정 필요 (개발자 지식 필요)
+   - ❌ **Google AdSense 사이트 확인 불가**
 
 **💡 비개발자는 User Site 방식을 권장합니다!**
+
+> **💰 블로그로 수익을 내고 싶으신가요?**
+>
+> Google AdSense로 블로그에 광고를 넣어 수익을 얻으려면 **반드시 User Site 방식**을 사용해야 합니다. Project Site 방식에서는 Google이 사이트 확인을 할 수 없어 AdSense를 사용할 수 없습니다.
 
 **예시 (User Site 방식):**
 - GitHub 사용자 이름: `hong-gildong`

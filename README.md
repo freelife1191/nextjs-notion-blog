@@ -499,10 +499,16 @@ GitHub Pages는 두 가지 배포 방식을 제공합니다:
 
 | 배포 방식 | URL 형식 | Repository 이름 | 특징 |
 |----------|---------|----------------|-----|
-| **User Site** (권장) | `https://username.github.io` | `username.github.io` | ✅ 루트 경로, 깔끔한 URL |
-| **Project Site** | `https://username.github.io/repo-name` | 자유롭게 설정 | ⚠️ 서브패스 필요 (basePath 설정 필요) |
+| **User Site** (권장) | `https://username.github.io` | `username.github.io` | ✅ 루트 경로, 깔끔한 URL<br>✅ **Google AdSense 필수** |
+| **Project Site** | `https://username.github.io/repo-name` | 자유롭게 설정 | ⚠️ 서브패스 필요 (basePath 설정 필요)<br>❌ AdSense 사이트 확인 불가 |
 
 **현재 이 프로젝트는 User Site (루트 경로) 방식으로 설정되어 있습니다.**
+
+> **💰 Google AdSense를 사용하시나요?**
+>
+> Google AdSense 사이트 확인을 위해서는 **반드시 User Site 방식**으로 배포해야 합니다. AdSense는 루트 도메인의 HTML `<head>` 태그에서 스크립트를 확인하므로, Project Site (`/repo-name/`) 방식에서는 사이트 확인이 실패합니다.
+>
+> 자세한 내용은 [Google AdSense 설정 가이드](./docs/ADVANCED_FEATURES_GUIDE.md#-필수-repository-이름-설정)를 참고하세요.
 
 **User Site로 배포하려면 (권장):**
 

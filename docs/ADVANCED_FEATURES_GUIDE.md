@@ -396,14 +396,54 @@ Google AdSense를 통해 블로그에서 광고 수익을 얻을 수 있습니�
   - 저작권 문제 없어야 함
   - 충분한 방문자 (일 50명 이상 권장)
 
+### 🚨 필수: Repository 이름 설정
+
+**Google AdSense 사이트 확인을 위해서는 반드시 User Site 방식으로 배포해야 합니다.**
+
+| 배포 방식 | URL 형식 | Repository 이름 | AdSense 사이트 확인 |
+|----------|---------|----------------|-------------------|
+| **User Site** (필수) | `https://username.github.io` | `username.github.io` | ✅ 가능 |
+| **Project Site** | `https://username.github.io/repo-name` | 자유롭게 설정 | ❌ 불가능 |
+
+**왜 User Site가 필요한가요?**
+
+Google AdSense는 사이트 확인을 위해 HTML `<head>` 태그에 AdSense 스크립트가 있는지 확인합니다. 이 스크립트는 **루트 도메인**에서만 제대로 인식됩니다.
+
+- ✅ **User Site** (`https://username.github.io`): AdSense 스크립트가 루트 도메인에 삽입되어 사이트 확인 가능
+- ❌ **Project Site** (`https://username.github.io/repo-name`): 서브패스에 배포되어 AdSense 사이트 확인 실패
+
+**Repository 이름 변경 방법:**
+
+1. GitHub Repository 페이지 접속
+2. **Settings** 클릭
+3. **Repository name** 항목에서 `<your-username>.github.io`로 변경
+   - 예: GitHub 사용자명이 `notionblogsample`인 경우 → `notionblogsample.github.io`
+4. **Rename** 버튼 클릭
+5. 몇 분 후 `https://<your-username>.github.io`에서 블로그 접속 가능
+
+**환경 변수 업데이트:**
+
+Repository 이름 변경 후 GitHub Secrets도 업데이트하세요:
+
+```bash
+# GitHub Repository → Settings → Secrets and variables → Actions
+
+NEXT_PUBLIC_SITE_URL=https://<your-username>.github.io
+```
+
+> **참고**: User Site 배포 방식에 대한 자세한 설명은 [README.md 4. GitHub 설정](../README.md#4-github-설정) 섹션을 참고하세요.
+
+---
+
 ### Step 1: AdSense 계정 생성
 
 1. [Google AdSense](https://www.google.com/adsense/) 접속
 2. **시작하기** 클릭
 3. Google 계정 로그인 (Analytics와 동일 계정 권장)
 4. 웹사이트 URL 입력:
-   - `https://<your-username>.github.io/<repo-name>`
-   - 예: `https://john-doe.github.io/my-blog`
+   - **User Site (필수)**: `https://<your-username>.github.io`
+   - 예: `https://notionblogsample.github.io`
+   - ⚠️ **중요**: 서브패스가 없는 루트 URL을 입력하세요
 5. 이메일 주소 입력 및 설정 완료
 
 ### Step 2: 사이트 연결
