@@ -87,14 +87,16 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
   }
 
   return (
-    <div>
-      {/* 페이지 헤더 */}
-      <header className="mb-6 lg:mb-8">
-        <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+    <>
+      <CodeHighlight />
+      <div className="pt-6">
+        {/* 페이지 헤더 */}
+        <header className="mb-6 lg:mb-8">
+        <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
           {settings.homeTitle}
         </h1>
-        <div className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-          <Markdown className="[&>*]:text-lg lg:[&>*]:text-xl [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+        <div className="text-sm lg:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+          <Markdown className="[&>*]:text-sm lg:[&>*]:text-base [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
             {settings.homeDescription || ''}
           </Markdown>
         </div>
@@ -216,8 +218,7 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
         )}
       </section>
 
-      {/* Prism.js 코드 구문 강조 */}
-      <CodeHighlight />
-    </div>
+      </div>
+    </>
   )
 }

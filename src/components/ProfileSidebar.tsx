@@ -119,11 +119,11 @@ export function ProfileSidebar({
 
         {/* 소개 */}
         <motion.div
-          className="text-body text-foreground mb-8 leading-relaxed break-words"
+          className="text-sm lg:text-base text-foreground mb-8 leading-relaxed break-words"
           variants={fadeVariants}
           transition={{ delay: 0.3 }}
         >
-          <Markdown className="[&>*]:text-body [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+          <Markdown className="[&>*]:text-sm lg:[&>*]:text-base [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
             {profile.bio || ''}
           </Markdown>
         </motion.div>

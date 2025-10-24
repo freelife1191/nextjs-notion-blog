@@ -103,7 +103,7 @@ export default async function RootLayout({
                 <aside className="lg:col-span-4 xl:col-span-4 lg:pr-8 xl:pr-12 relative">
                   {/* 스타일리쉬한 세로선 - 프로필부터 copyright까지 */}
                   <div className="hidden lg:block absolute right-0 top-12 w-px h-[calc(100%-6rem)] bg-gradient-to-b from-transparent via-gray-300 dark:via-gray-700 to-transparent"></div>
-                  <div className="sticky top-4">
+                  <div className="sticky top-4 pt-4">
                     <ProfileSidebar
                       profile={profile}
                       adsensePublisherId={siteConfig.enableAdsense ? siteConfig.adsensePublisherId : undefined}

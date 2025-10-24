@@ -71,7 +71,7 @@ export function PostHeroClient({
       <CodeHighlight />
       <ImageZoom />
       <motion.article
-        className="pt-20 pb-8 lg:pt-24 lg:pb-12"
+        className="pt-4 pb-8 lg:pt-6 lg:pb-12"
         variants={pageVariants}
         {...usePageAnimation}
       >

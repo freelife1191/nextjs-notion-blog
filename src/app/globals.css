@@ -388,7 +388,7 @@ body {
 
   /* 코드 블록 기본 스타일 - GitHub 스타일 */
   pre[class*="language-"] {
-    @apply bg-gray-900 dark:bg-black text-gray-100 dark:text-gray-200 p-4 rounded-b-lg overflow-x-auto;
+    @apply bg-gray-900 dark:bg-black text-gray-100 dark:text-gray-200 p-4 rounded-lg overflow-x-auto;
     font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     font-size: 14px;
     line-height: 1.5;
