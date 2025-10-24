@@ -78,11 +78,11 @@ jobs:
           echo "Secret flags => NOTION_API_KEY: $HAS_KEY, NOTION_DATABASE_ID: $HAS_DB"
 
       # ============================================
-      # INSTALL DEPENDENCIES
+      # INSTALL DEPENDENCIES (Performance Optimization Test 2)
       # ============================================
       - name: Install deps
         run: |
-          npm ci 2>&1 | tee npm-install.log
+          npm ci --prefer-offline --no-audit --no-fund 2>&1 | tee npm-install.log
 
       # DEBUG: Detailed install info
       - name: Install debug info
