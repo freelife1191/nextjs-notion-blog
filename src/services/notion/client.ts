@@ -143,7 +143,9 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
     coverImageUrl = optimizeNotionImageUrl(coverImageUrl, IMAGE_SIZE.THUMBNAIL);
 
     const language = props[FIELD.language]?.select?.name ?? undefined;
-    const author = props[FIELD.author]?.rich_text ? getPlainText(props[FIELD.author].rich_text) : (props[FIELD.author]?.people?.[0]?.name ?? undefined);
+    // Author: Person 타입 우선, 없으면 Text 타입 fallback
+    const author = props[FIELD.author]?.people?.[0]?.name ||
+                  (props[FIELD.author]?.rich_text ? getPlainText(props[FIELD.author].rich_text) : undefined);
     return { slug, title, date, tags, tagsWithColors, status, statusColor, label, description, coverImageUrl, language, author };
   }
 
@@ -679,7 +681,9 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
             // SEO & Social Media 설정
             const ogImage = props.OGImage?.files?.[0]?.file?.url || props.OGImage?.files?.[0]?.external?.url || undefined;
             const twitterHandle = props.TwitterHandle?.rich_text ? getPlainText(props.TwitterHandle.rich_text) : undefined;
-            const author = props.Author?.rich_text ? getPlainText(props.Author.rich_text) : undefined;
+            // Author: Person 타입 우선, 없으면 Text 타입 fallback
+            const author = props.Author?.people?.[0]?.name ||
+                          (props.Author?.rich_text ? getPlainText(props.Author.rich_text) : undefined);
 
             // Google Analytics 4 설정
             const ga4MeasurementId = props.GA4MeasurementId?.rich_text ? getPlainText(props.GA4MeasurementId.rich_text) : undefined;

@@ -12,7 +12,8 @@ import type { SiteConfig } from '@/services/notion/client'
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-username.github.io/your-repo-name'
 
 /**
- * 기본 SEO 설정 (SiteConfig가 없을 때 fallback)
+ * 기본 SEO 설정 (Notion SiteConfig가 없을 때 fallback)
+ * Notion Site Settings DB에서 설정을 관리하세요
  */
 const fallbackSEO = {
   title: '블로그 제목',

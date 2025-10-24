@@ -368,6 +368,87 @@ describe('createNotionClient', () => {
       })
     })
 
+    it('should support Person type for Author field', async () => {
+      const mockResponse = {
+        results: [
+          {
+            id: 'page-1',
+            properties: {
+              Title: { title: [{ plain_text: 'Test Post' }] },
+              Slug: { rich_text: [{ plain_text: 'test-post' }] },
+              Author: { people: [{ name: 'Jane Smith' }] },
+            },
+          },
+        ],
+      }
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      })
+
+      const client = createNotionClient()
+      const posts = await client.listPublishedPosts()
+
+      expect(posts[0].author).toBe('Jane Smith')
+    })
+
+    it('should fallback to Text type if Person type is empty', async () => {
+      const mockResponse = {
+        results: [
+          {
+            id: 'page-1',
+            properties: {
+              Title: { title: [{ plain_text: 'Test Post' }] },
+              Slug: { rich_text: [{ plain_text: 'test-post' }] },
+              Author: {
+                people: [], // Empty Person field
+                rich_text: [{ plain_text: 'Text Author' }],
+              },
+            },
+          },
+        ],
+      }
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      })
+
+      const client = createNotionClient()
+      const posts = await client.listPublishedPosts()
+
+      expect(posts[0].author).toBe('Text Author')
+    })
+
+    it('should prioritize Person type over Text type for Author', async () => {
+      const mockResponse = {
+        results: [
+          {
+            id: 'page-1',
+            properties: {
+              Title: { title: [{ plain_text: 'Test Post' }] },
+              Slug: { rich_text: [{ plain_text: 'test-post' }] },
+              Author: {
+                people: [{ name: 'Person Author' }],
+                rich_text: [{ plain_text: 'Text Author' }],
+              },
+            },
+          },
+        ],
+      }
+
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: async () => mockResponse,
+      })
+
+      const client = createNotionClient()
+      const posts = await client.listPublishedPosts()
+
+      expect(posts[0].author).toBe('Person Author')
+    })
+
     it('should retry on 5xx errors', async () => {
       vi.useFakeTimers()
 
