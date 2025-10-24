@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "npx tsx scripts/generate-rss.ts",
+    "prebuild": "npx tsx --env-file=.env.local scripts/generate-rss.ts",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
