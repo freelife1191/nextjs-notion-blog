@@ -32,11 +32,10 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # environment removed to allow testing on develop branch
+    # deployment only runs on main branch (see deployment step conditions)
     concurrency:
-      group: pages
+      group: pages-${{ github.ref }}
       cancel-in-progress: false
     steps:
       - name: Checkout
