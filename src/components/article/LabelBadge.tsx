@@ -7,7 +7,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { RainbowBorderMotion } from '@/components/RainbowBorderMotion'
 import { ANIMATION_SCALE } from '@/lib/motion'
 
@@ -26,7 +26,7 @@ interface LabelBadgeProps {
  * <LabelBadge label="Technology" />
  * ```
  */
-export function LabelBadge({ label, stopPropagation = true }: LabelBadgeProps) {
+export const LabelBadge = memo(function LabelBadge({ label, stopPropagation = true }: LabelBadgeProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
@@ -47,4 +47,4 @@ export function LabelBadge({ label, stopPropagation = true }: LabelBadgeProps) {
       </motion.span>
     </Link>
   )
-}
+})

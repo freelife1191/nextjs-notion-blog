@@ -7,7 +7,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { RainbowBorderMotion } from '@/components/RainbowBorderMotion'
 import { ANIMATION_SCALE } from '@/lib/motion'
 
@@ -31,7 +31,7 @@ interface TagListProps {
  * <TagList tags={['React', 'TypeScript', 'Next.js']} initialDisplayCount={2} />
  * ```
  */
-export function TagList({
+export const TagList = memo(function TagList({
   tags,
   initialDisplayCount = 2,
   stopPropagation = true,
@@ -84,4 +84,4 @@ export function TagList({
       )}
     </div>
   )
-}
+})

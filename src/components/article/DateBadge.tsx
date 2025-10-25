@@ -7,7 +7,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 import { RainbowBorderMotion } from '@/components/RainbowBorderMotion'
 import { ANIMATION_SCALE } from '@/lib/motion'
 
@@ -26,7 +26,7 @@ interface DateBadgeProps {
  * <DateBadge publishedAt="2024-01-15T00:00:00.000Z" />
  * ```
  */
-export function DateBadge({ publishedAt, stopPropagation = true }: DateBadgeProps) {
+export const DateBadge = memo(function DateBadge({ publishedAt, stopPropagation = true }: DateBadgeProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   // 날짜 포맷팅 (예: OCTOBER 2024)
@@ -60,4 +60,4 @@ export function DateBadge({ publishedAt, stopPropagation = true }: DateBadgeProp
       </motion.span>
     </Link>
   )
-}
+})
