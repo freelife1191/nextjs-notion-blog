@@ -228,7 +228,57 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 ## 🎯 주요 기능
 
 ### 📝 콘텐츠 관리
-- ✅ **노션 기반 글 작성** - 노션의 모든 블록 타입 지원
+- ✅ **노션 기반 글 작성** - 노션의 **29가지 블록 타입** 완벽 지원
+  <details>
+  <summary><b>📦 지원하는 Notion 블록 타입 전체 목록 (29개)</b></summary>
+
+  **기본 블록 (7개)**
+  - ✅ Paragraph (단락)
+  - ✅ Heading 1, 2, 3 (제목)
+  - ✅ Bulleted List (글머리 기호 목록)
+  - ✅ Numbered List (번호 매기기 목록)
+  - ✅ To-do (체크리스트)
+  - ✅ Toggle (토글 목록)
+  - ✅ Divider (구분선)
+
+  **미디어 블록 (5개)**
+  - ✅ Image (이미지)
+  - ✅ Video (비디오 - YouTube, Vimeo, Spotify, Apple Podcasts)
+  - ✅ Audio (오디오)
+  - ✅ File (파일 다운로드)
+  - ✅ PDF (PDF 뷰어)
+
+  **고급 블록 (7개)**
+  - ✅ Code (코드 블록 - Prism.js 구문 강조)
+  - ✅ Quote (인용구)
+  - ✅ Callout (콜아웃)
+  - ✅ Table (표)
+  - ✅ Equation (수식 - LaTeX/KaTeX)
+  - ✅ Table of Contents (목차)
+  - ✅ Columns (2단/3단 레이아웃)
+
+  **임베드 블록 (3개)**
+  - ✅ Bookmark (북마크 - YouTube 리치 프리뷰 지원)
+  - ✅ Embed (외부 콘텐츠 임베드)
+  - ✅ Link Preview (링크 미리보기)
+
+  **데이터베이스 & 페이지 (5개)**
+  - ✅ Child Page (하위 페이지)
+  - ✅ Child Database (하위 데이터베이스)
+  - ✅ Synced Block (동기화 블록)
+  - ✅ Link to Page (페이지 링크)
+  - ✅ Template (템플릿)
+
+  **기타 (2개)**
+  - ✅ Breadcrumb (브레드크럼)
+  - ✅ Unsupported Blocks (미지원 블록 안내)
+
+  **특별 지원 기능**
+  - 🎨 **Notion 색상 지원** - 텍스트 색상 및 배경색 완벽 지원
+  - 🔗 **멘션 지원** - Page, User, Date, Link Preview 멘션
+  - 📱 **반응형 임베드** - YouTube, Vimeo, Spotify 자동 임베드
+  - 🎯 **중첩 블록** - Toggle, Callout 내부 블록 완벽 렌더링
+  </details>
 - ✅ **자동 동기화** - 1시간마다 GitHub Actions가 자동으로 노션에서 최신 콘텐츠 가져오기
 - ✅ **상태 관리** - Publish, Draft, Hidden, Wait 상태로 글 관리
 - ✅ **태그 & 카테고리** - 다중 태그 및 라벨 분류
