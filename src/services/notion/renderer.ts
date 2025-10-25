@@ -12,7 +12,7 @@ import { generateId } from '@/lib/toc';
 import { renderCodeBlock } from './renderers/code-block';
 import { logger } from '@/lib/logger';
 import { escapeHtml } from '@/lib/utils';
-import { renderRichText, renderTextElement, formatDateMention } from './renderers/text';
+import { renderRichText } from './renderers/text';
 
 export interface NotionBlock {
   type: string;
