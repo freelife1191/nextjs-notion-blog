@@ -181,16 +181,21 @@ describe('ArticleListItem', () => {
       expect(image).toBeInTheDocument();
     });
 
-    it('should set loading=eager for first 2 items', () => {
+    it('should set loading=eager for first 4 items', () => {
       const post = createMockPost();
 
-      // First item
+      // First item (index 0)
       const { rerender } = render(<ArticleListItem post={post} index={0} />);
       let image = screen.getByTestId('next-image');
       expect(image).toHaveAttribute('loading', 'eager');
 
-      // Third item - should be lazy
+      // Third item (index 2) - still eager
       rerender(<ArticleListItem post={post} index={2} />);
+      image = screen.getByTestId('next-image');
+      expect(image).toHaveAttribute('loading', 'eager');
+
+      // Fifth item (index 4) - should be lazy
+      rerender(<ArticleListItem post={post} index={4} />);
       image = screen.getByTestId('next-image');
       expect(image).toHaveAttribute('loading', 'lazy');
     });

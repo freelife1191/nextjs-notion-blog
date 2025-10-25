@@ -69,9 +69,10 @@ export default async function Home() {
     siteConfig,
   })
 
-  // 첫 3개 게시물의 이미지를 preload
+  // 첫 페이지(4개) 게시물의 이미지를 preload
+  const POSTS_PER_PAGE = 4
   const imagesToPreload = posts
-    .slice(0, 3)
+    .slice(0, POSTS_PER_PAGE)
     .map(post => post.coverImageUrl)
     .filter((url): url is string => !!url)
 

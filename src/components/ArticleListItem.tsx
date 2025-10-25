@@ -74,8 +74,8 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
                 sizes="(max-width: 640px) 192px, 256px"
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 draggable={false}
-                priority={index < 2}
-                loading={index < 2 ? 'eager' : 'lazy'}
+                priority={index < 4}
+                loading={index < 4 ? 'eager' : 'lazy'}
                 placeholder="blur"
                 blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
                 referrerPolicy="no-referrer"

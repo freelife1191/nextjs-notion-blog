@@ -287,9 +287,26 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 ### 🎨 블로그 기능
 - ✅ **반응형 디자인** - 모바일, 태블릿, 데스크톱 완벽 지원
 - ✅ **다크 모드** - 시스템 설정 기반 자동 전환
+- ✅ **프로필 사이드바** - 좌측 고정 프로필 영역
+  - 프로필 사진 및 이름, 직함 표시
+  - Bio (자기소개) - 마크다운 지원
+  - 15개 소셜 미디어 링크 (GitHub, Instagram, Email, LinkedIn, Twitter, YouTube, Threads, Facebook, TikTok, Telegram, Line, Kakao, KakaoChannel, Blog, Notion)
+  - 개발 진행 상태 모달
+  - 반응형 모바일 메뉴
+- ✅ **마크다운 지원**
+  - 홈 페이지 상단 설명 (HomeDescription) - 마크다운 문법 완벽 지원
+  - 프로필 Bio - 마크다운 렌더링
+  - GitHub Flavored Markdown (GFM) 지원
+  - 코드 블록, 링크, 리스트 등 모든 마크다운 요소 지원
 - ✅ **스마트 필터링** - 월별, 태그, 라벨로 글 필터링
 - ✅ **페이지네이션** - 4개씩 나누어 표시 (커스터마이징 가능)
 - ✅ **목차 (TOC)** - 자동 생성되는 포스트 목차
+- ✅ **앵커 링크** - 헤딩 옆 링크 아이콘으로 섹션 URL 복사
+  - 원클릭 링크 복사 (클립보드 자동 복사)
+  - URL 해시 자동 업데이트
+  - 복사 성공 시 시각적 피드백
+  - 부드러운 스크롤 이동
+  - 목차에서 헤딩으로 바로 이동
 - ✅ **코드 하이라이팅** - Prism.js 기반 다양한 언어 지원
 - ✅ **유튜브 임베드** - 북마크로 유튜브 영상 자동 임베드
 
@@ -306,9 +323,11 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 ### 💰 분석 & 수익화
 - ✅ **Google Analytics 4** - 방문자 추적 및 분석
 - ✅ **Google AdSense** - 광고를 통한 수익 창출 (선택)
-  - 포스트 상단/하단에 자동 배치
+  - **Auto Ads (자동 광고)** - Google이 최적 위치에 자동으로 광고 배치
+  - Publisher ID만 입력하면 자동으로 광고 표시
   - 반응형 광고 (모바일/데스크톱 최적화)
-  - 개발 환경에서는 플레이스홀더로 표시
+  - 프로덕션 환경에서만 활성화
+  - afterInteractive 전략으로 페이지 로딩 성능 최적화
 - ✅ **환경별 설정** - 개발/프로덕션 환경 분리
 
 ---
@@ -364,10 +383,12 @@ nextjs-notion-blog/
 │   │   ├── rss.xml/                # RSS 피드
 │   │   └── sitemap.xml/            # 사이트맵
 │   ├── components/          # 재사용 가능한 컴포넌트
-│   │   ├── ProfileSidebar.tsx      # 프로필 사이드바
+│   │   ├── ProfileSidebar.tsx      # 프로필 사이드바 (15개 소셜 링크, Bio 마크다운)
 │   │   ├── PostCard.tsx            # 포스트 카드
+│   │   ├── Markdown.tsx            # 마크다운 렌더러 (GFM 지원)
+│   │   ├── HeadingAnchorScript.tsx # 헤딩 앵커 링크 (클릭으로 URL 복사)
 │   │   ├── GoogleAnalytics.tsx     # GA4 통합
-│   │   └── GoogleAdSense.tsx       # AdSense 통합
+│   │   └── GoogleAdSense.tsx       # AdSense Auto Ads 통합
 │   ├── services/            # 비즈니스 로직
 │   │   └── notion/
 │   │       ├── client.ts           # Notion API 클라이언트
@@ -376,7 +397,7 @@ nextjs-notion-blog/
 │       ├── env.ts                  # 환경 변수 검증
 │       ├── cache.ts                # 캐싱 시스템
 │       ├── seo.ts                  # SEO 헬퍼
-│       └── toc.ts                  # 목차 생성
+│       └── toc.ts                  # 목차 생성 및 앵커 링크 관리
 ├── public/                  # 정적 파일
 ├── tests/                   # 테스트
 │   └── e2e/                        # E2E 테스트 (Playwright, *.spec.ts)
