@@ -21,18 +21,18 @@ export const TagChips = memo(function TagChips({
   maxDisplay = 5,
   className = ''
 }: TagChipsProps) {
-  // Early return을 useMemo 전에 실행 (Hook 규칙 준수)
-  if (!tags || tags.length === 0) {
-    return null
-  }
-
-  // displayTags와 remainingCount를 useMemo로 캐싱
+  // displayTags와 remainingCount를 useMemo로 캐싱 (Hook은 항상 최상위에서 호출)
   const { displayTags, remainingCount } = useMemo(() => {
     return {
       displayTags: tags.slice(0, maxDisplay),
       remainingCount: tags.length - maxDisplay
     }
   }, [tags, maxDisplay])
+
+  // Early return은 Hook 호출 후에 실행
+  if (!tags || tags.length === 0) {
+    return null
+  }
 
   return (
     <motion.div
