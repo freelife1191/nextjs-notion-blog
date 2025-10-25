@@ -6,7 +6,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { CheckCircle2, AlertCircle, Code2, X, Info, Sparkles } from 'lucide-react'
+import { CheckCircle2, AlertCircle, Code2, X, Info } from 'lucide-react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ANIMATION_SCALE, ANIMATION_DURATION } from '@/lib/motion'
@@ -531,12 +531,12 @@ export function DevelopmentStatusModal() {
                   damping: 25,
                   stiffness: 300
                 }}
-                className="fixed inset-0 m-auto w-[98vw] max-w-[2400px] h-fit max-h-[95vh] overflow-y-auto bg-background rounded-lg shadow-2xl border border-border"
+                className="fixed inset-4 m-auto w-[calc(100vw-2rem)] max-w-[2400px] h-[calc(100vh-2rem)] flex flex-col bg-background rounded-lg shadow-2xl border border-border"
                 onClick={(e) => e.stopPropagation()}
                 style={{ isolation: 'isolate', willChange: 'transform' }}
               >
                 {/* 헤더 */}
-                <div className="sticky top-0 flex items-center justify-between p-4 border-b border-border bg-background z-10 backdrop-blur-sm bg-background/95">
+                <div className="flex-shrink-0 flex items-center justify-between p-4 border-b border-border bg-background z-10">
                   <motion.div
                     className="flex items-center gap-2"
                     initial={{ x: -20, opacity: 0 }}
@@ -561,7 +561,8 @@ export function DevelopmentStatusModal() {
                 </div>
 
                 {/* 콘텐츠 */}
-                <div className="p-3 grid grid-cols-1 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-2">
+                <div className="flex-1 overflow-y-auto p-3">
+                  <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-7 xl:grid-cols-8 gap-2">
                   {FEATURES.map((feature, index) => {
                     const config = STATUS_CONFIG[feature.status]
                     const Icon = config.icon
@@ -673,34 +674,8 @@ export function DevelopmentStatusModal() {
                       </motion.div>
                     )
                   })}
-                </div>
-
-                {/* 푸터 */}
-                <motion.div
-                  className="sticky bottom-0 p-4 border-t border-border bg-muted/50 text-center z-10 backdrop-blur-sm"
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                >
-                  <div className="flex items-center justify-center gap-2">
-                    <Sparkles className="h-3 w-3 text-primary" />
-                    <p className="text-xs text-muted-foreground">
-                      지속적으로 개발 중입니다
-                    </p>
-                    <motion.div
-                      animate={{
-                        rotate: [0, 360],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "linear"
-                      }}
-                    >
-                      🚀
-                    </motion.div>
                   </div>
-                </motion.div>
+                </div>
               </motion.div>
             </motion.div>
           )}
