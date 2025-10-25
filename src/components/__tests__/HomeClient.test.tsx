@@ -115,9 +115,8 @@ describe('HomeClient', () => {
 
       render(<HomeClient posts={[]} settings={settings} error={null} />);
 
-      // Markdown should render with empty string
-      const markdown = screen.getByTestId('markdown');
-      expect(markdown).toHaveTextContent('');
+      // Markdown should not render when description is empty
+      expect(screen.queryByTestId('markdown')).not.toBeInTheDocument();
     });
   });
 

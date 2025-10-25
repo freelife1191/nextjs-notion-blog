@@ -100,11 +100,13 @@ export const HomeClient = memo(function HomeClient({ posts, settings, error }: H
         <h1 className="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
           {settings.homeTitle}
         </h1>
-        <div className="text-sm lg:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-          <Markdown className="[&>*]:text-sm lg:[&>*]:text-base [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
-            {settings.homeDescription || ''}
-          </Markdown>
-        </div>
+        {settings.homeDescription && (
+          <div className="text-sm lg:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+            <Markdown className="[&>*]:text-sm lg:[&>*]:text-base [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+              {settings.homeDescription}
+            </Markdown>
+          </div>
+        )}
 
         {/* 활성 필터 표시 */}
         {hasActiveFilters && (
