@@ -75,10 +75,10 @@ export function PostHeroClient({
         const button = btn as HTMLButtonElement;
         if (button.dataset.tab === tab) {
           // Active 상태
-          button.classList.add('active', 'bg-gray-400', 'dark:bg-gray-700');
+          button.classList.add('active', 'bg-gray-200', 'dark:bg-gray-700', 'text-gray-950', 'dark:text-gray-100');
         } else {
           // Inactive 상태
-          button.classList.remove('active', 'bg-gray-400', 'dark:bg-gray-700');
+          button.classList.remove('active', 'bg-gray-200', 'dark:bg-gray-700', 'text-gray-950', 'dark:text-gray-100');
         }
       });
 
