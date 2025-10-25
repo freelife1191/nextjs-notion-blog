@@ -175,171 +175,37 @@ export function ProfileSidebar({
           variants={fadeVariants}
           transition={{ delay: 0.5 }}
         >
-          {profile.socialLinks.kakaoChannel && (
-            <a
-              href={profile.socialLinks.kakaoChannel}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="KakaoTalk Channel"
-            >
-              <SocialIcon platform="kakaoChannel" size={20} />
-            </a>
-          )}
+          {([
+            { key: 'kakaoChannel', label: 'KakaoTalk Channel', external: true },
+            { key: 'kakao', label: 'KakaoTalk Open Chat', external: true },
+            { key: 'twitter', label: 'Twitter', external: true },
+            { key: 'threads', label: 'Threads', external: true },
+            { key: 'instagram', label: 'Instagram', external: true },
+            { key: 'youtube', label: 'YouTube', external: true },
+            { key: 'blog', label: 'Blog', external: true },
+            { key: 'notion', label: 'Notion', external: true },
+            { key: 'email', label: 'Email', external: false },
+            { key: 'github', label: 'GitHub', external: true },
+            { key: 'facebook', label: 'Facebook', external: true },
+            { key: 'tiktok', label: 'TikTok', external: true },
+            { key: 'telegram', label: 'Telegram', external: true },
+            { key: 'line', label: 'LINE', external: true },
+          ] as const).map(({ key, label, external }) => {
+            const url = profile.socialLinks[key as keyof typeof profile.socialLinks]
+            if (!url) return null
 
-          {profile.socialLinks.kakao && (
-            <a
-              href={profile.socialLinks.kakao}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="KakaoTalk Open Chat"
-            >
-              <SocialIcon platform="kakao" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.twitter && (
-            <a
-              href={profile.socialLinks.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Twitter"
-            >
-              <SocialIcon platform="twitter" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.threads && (
-            <a
-              href={profile.socialLinks.threads}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Threads"
-            >
-              <SocialIcon platform="threads" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.instagram && (
-            <a
-              href={profile.socialLinks.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Instagram"
-            >
-              <SocialIcon platform="instagram" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.youtube && (
-            <a
-              href={profile.socialLinks.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="YouTube"
-            >
-              <SocialIcon platform="youtube" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.blog && (
-            <a
-              href={profile.socialLinks.blog}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Blog"
-            >
-              <SocialIcon platform="blog" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.notion && (
-            <a
-              href={profile.socialLinks.notion}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Notion"
-            >
-              <SocialIcon platform="notion" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.email && (
-            <a
-              href={profile.socialLinks.email}
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Email"
-            >
-              <SocialIcon platform="email" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.github && (
-            <a
-              href={profile.socialLinks.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="GitHub"
-            >
-              <SocialIcon platform="github" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.facebook && (
-            <a
-              href={profile.socialLinks.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Facebook"
-            >
-              <SocialIcon platform="facebook" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.tiktok && (
-            <a
-              href={profile.socialLinks.tiktok}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="TikTok"
-            >
-              <SocialIcon platform="tiktok" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.telegram && (
-            <a
-              href={profile.socialLinks.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="Telegram"
-            >
-              <SocialIcon platform="telegram" size={20} />
-            </a>
-          )}
-
-          {profile.socialLinks.line && (
-            <a
-              href={profile.socialLinks.line}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
-              aria-label="LINE"
-            >
-              <SocialIcon platform="line" size={20} />
-            </a>
-          )}
+            return (
+              <a
+                key={key}
+                href={url}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="p-2 text-muted-foreground hover:text-foreground hover:bg-muted rounded-md border border-gray-200 dark:border-gray-700 transition-all"
+                aria-label={label}
+              >
+                <SocialIcon platform={key} size={20} />
+              </a>
+            )
+          })}
         </motion.div>
 
         {/* 저작권 & 개발 상태 */}

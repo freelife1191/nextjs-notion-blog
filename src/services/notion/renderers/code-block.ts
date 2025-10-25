@@ -51,7 +51,7 @@ export function renderCodeBlock(
         <div class="code-block-header flex items-center justify-between px-4 py-2 bg-gray-800 dark:bg-gray-900 text-gray-100 dark:text-gray-100 text-xs font-mono rounded-t-lg border-b border-gray-700">
           <div class="flex items-center gap-2">
             <button
-              class="mermaid-tab px-3 py-1 rounded transition-colors active bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+              class="mermaid-tab px-3 py-1 rounded transition-colors active bg-gray-400 dark:bg-gray-700"
               data-tab="diagram"
               data-block-id="${blockId}"
               onclick="window.switchMermaidTab('${blockId}', 'diagram')"
@@ -59,7 +59,7 @@ export function renderCodeBlock(
               다이어그램
             </button>
             <button
-              class="mermaid-tab px-3 py-1 rounded transition-colors text-gray-100 hover:bg-gray-700/40"
+              class="mermaid-tab px-3 py-1 rounded transition-colors hover:bg-gray-700/40"
               data-tab="code"
               data-block-id="${blockId}"
               onclick="window.switchMermaidTab('${blockId}', 'code')"
