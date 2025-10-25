@@ -276,4 +276,88 @@ describe('TagChips', () => {
       expect(reactTags).toHaveLength(3)
     })
   })
+
+  describe('Regression Tests - Previous Bugs', () => {
+    /**
+     * 회귀 테스트: React Hook 규칙 위반
+     *
+     * 이전 버그: useMemo가 early return 이후에 호출되어 React Hook 규칙 위반
+     * 오류 메시지: "React Hook 'useMemo' is called conditionally"
+     *
+     * 수정 방법: useMemo를 early return 이전으로 이동
+     * 관련 파일: src/components/TagChips.tsx:24-33
+     */
+    it('[BUG-FIX] should call useMemo before any early returns (React Hook rules)', () => {
+      // This test verifies that useMemo is always called in the same order
+      // regardless of the tags value, preventing Hook rules violation
+
+      // Test 1: null tags - should not throw Hook error
+      const { rerender } = render(<TagChips tags={null as any} />)
+      expect(() => rerender(<TagChips tags={null as any} />)).not.toThrow()
+
+      // Test 2: empty tags - should not throw Hook error
+      rerender(<TagChips tags={[]} />)
+      expect(() => rerender(<TagChips tags={[]} />)).not.toThrow()
+
+      // Test 3: valid tags - should not throw Hook error
+      rerender(<TagChips tags={['React']} />)
+      expect(() => rerender(<TagChips tags={['React']} />)).not.toThrow()
+    })
+
+    /**
+     * 회귀 테스트: Null 참조 오류
+     *
+     * 이전 버그: tags가 null일 때 useMemo 내부에서 tags.slice() 호출하여 오류 발생
+     * 오류 메시지: "TypeError: Cannot read properties of null (reading 'slice')"
+     *
+     * 수정 방법: useMemo 내부에 null/undefined 체크 추가
+     * 관련 파일: src/components/TagChips.tsx:26-28
+     */
+    it('[BUG-FIX] should handle null tags in useMemo without throwing (null safety)', () => {
+      // This test verifies that useMemo handles null/undefined tags gracefully
+      // without calling .slice() on null
+
+      // Test 1: null tags should not throw in useMemo
+      expect(() => render(<TagChips tags={null as any} />)).not.toThrow()
+
+      // Test 2: undefined tags should not throw in useMemo
+      expect(() => render(<TagChips tags={undefined as any} />)).not.toThrow()
+
+      // Test 3: both should return null (no rendering)
+      const { container: container1 } = render(<TagChips tags={null as any} />)
+      expect(container1.firstChild).toBeNull()
+
+      const { container: container2 } = render(<TagChips tags={undefined as any} />)
+      expect(container2.firstChild).toBeNull()
+    })
+
+    /**
+     * 회귀 테스트: useMemo 의존성 배열 검증
+     *
+     * 이 테스트는 useMemo가 tags와 maxDisplay 변경 시 올바르게 재계산되는지 확인합니다.
+     */
+    it('[BUG-FIX] should recalculate useMemo when dependencies change', () => {
+      const { rerender } = render(<TagChips tags={['A', 'B', 'C']} maxDisplay={2} />)
+
+      // Initial: 2 tags displayed, +1 remaining
+      expect(screen.getByText('A')).toBeInTheDocument()
+      expect(screen.getByText('B')).toBeInTheDocument()
+      expect(screen.queryByText('C')).not.toBeInTheDocument()
+      expect(screen.getByText('+1')).toBeInTheDocument()
+
+      // Change maxDisplay: should show all 3 tags
+      rerender(<TagChips tags={['A', 'B', 'C']} maxDisplay={5} />)
+      expect(screen.getByText('A')).toBeInTheDocument()
+      expect(screen.getByText('B')).toBeInTheDocument()
+      expect(screen.getByText('C')).toBeInTheDocument()
+      expect(screen.queryByText(/\+/)).not.toBeInTheDocument()
+
+      // Change tags: should show new tags
+      rerender(<TagChips tags={['X', 'Y', 'Z']} maxDisplay={5} />)
+      expect(screen.getByText('X')).toBeInTheDocument()
+      expect(screen.getByText('Y')).toBeInTheDocument()
+      expect(screen.getByText('Z')).toBeInTheDocument()
+      expect(screen.queryByText('A')).not.toBeInTheDocument()
+    })
+  })
 })
