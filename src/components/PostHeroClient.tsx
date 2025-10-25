@@ -74,9 +74,9 @@ export function PostHeroClient({
       wrapper.querySelectorAll('.mermaid-tab').forEach(btn => {
         const button = btn as HTMLButtonElement;
         if (button.dataset.tab === tab) {
-          button.classList.add('active', 'bg-gray-700', 'dark:bg-gray-800');
+          button.classList.add('active', 'bg-gray-600', 'dark:bg-gray-700');
         } else {
-          button.classList.remove('active', 'bg-gray-700', 'dark:bg-gray-800');
+          button.classList.remove('active', 'bg-gray-600', 'dark:bg-gray-700');
         }
       });
 
