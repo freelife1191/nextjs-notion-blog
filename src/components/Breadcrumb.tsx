@@ -5,6 +5,7 @@
 
 'use client'
 
+import { memo } from 'react'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 
@@ -17,7 +18,7 @@ interface BreadcrumbProps {
   items: BreadcrumbItem[]
 }
 
-export function Breadcrumb({ items }: BreadcrumbProps) {
+export const Breadcrumb = memo(function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
       <ol className="flex items-center flex-wrap gap-2 text-sm text-muted-foreground">
@@ -50,4 +51,4 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
       </ol>
     </nav>
   )
-}
+})
