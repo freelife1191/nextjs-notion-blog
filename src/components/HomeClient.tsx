@@ -174,7 +174,7 @@ export const HomeClient = memo(function HomeClient({ posts, settings, error }: H
                   {/* PREV 버튼 */}
                   <Link
                     href={currentPage > 1 ? `/?page=${currentPage - 1}` : '#'}
-                    prefetch={false}
+                    prefetch={false}  // 이전 페이지는 prefetch 하지 않음
                     className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                       currentPage > 1
                         ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md'
@@ -192,7 +192,7 @@ export const HomeClient = memo(function HomeClient({ posts, settings, error }: H
                       <Link
                         key={page}
                         href={`/?page=${page}`}
-                        prefetch={false}
+                        prefetch={page === currentPage + 1}  // 다음 페이지만 prefetch
                         className={`w-10 h-10 flex items-center justify-center rounded-lg font-semibold transition-all ${
                           page === currentPage
                             ? 'bg-gradient-to-br from-blue-600 to-blue-700 dark:from-blue-500 dark:to-blue-600 text-white shadow-lg scale-110'
@@ -207,7 +207,7 @@ export const HomeClient = memo(function HomeClient({ posts, settings, error }: H
                   {/* NEXT 버튼 */}
                   <Link
                     href={currentPage < totalPages ? `/?page=${currentPage + 1}` : '#'}
-                    prefetch={false}
+                    prefetch={currentPage < totalPages}  // 다음 페이지가 있을 때만 prefetch
                     className={`flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all ${
                       currentPage < totalPages
                         ? 'bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-md'
