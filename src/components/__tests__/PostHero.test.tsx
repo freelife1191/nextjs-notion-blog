@@ -9,6 +9,7 @@ import { PostHero } from '../PostHero'
 // Next.js Image 컴포넌트 모킹
 vi.mock('next/image', () => ({
   default: ({ src, alt, priority, ...props }: any) => (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}
@@ -183,7 +184,7 @@ describe('PostHero', () => {
     })
 
     it('should have proper time element', () => {
-      const { container } = render(
+      render(
         <PostHero
           title="Test Post"
           publishedAt="2024-10-15"

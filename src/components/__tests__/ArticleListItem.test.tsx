@@ -25,8 +25,15 @@ vi.mock('next/link', () => ({
 
 vi.mock('next/image', () => ({
   default: ({ src, alt, ...props }: any) => (
+    // eslint-disable-next-line @next/next/no-img-element
     <img src={src} alt={alt} data-testid="next-image" {...props} />
   ),
+}));
+
+vi.mock('next/navigation', () => ({
+  useSearchParams: () => ({
+    get: vi.fn().mockReturnValue(null),
+  }),
 }));
 
 // Mock sub-components

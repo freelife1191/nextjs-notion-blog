@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useEffect, useState, memo, useMemo } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { slideUpVariants, useInViewAnimation, ANIMATION_DURATION } from '@/lib/motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { DateBadge } from '@/components/article/DateBadge'
@@ -40,6 +41,7 @@ function areTagsEqual(a?: string[], b?: string[]): boolean {
 
 export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }: ArticleListItemProps) {
   const [shouldAnimate, setShouldAnimate] = useState(true)
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     // 페이지 로드가 히스토리 네비게이션(뒤로가기)인 경우 애니메이션 스킵
@@ -58,6 +60,29 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
     })
   }, [post.publishedAt])
 
+  // 현재 페이지 정보를 유지하기 위한 URL 생성
+  const postUrl = useMemo(() => {
+    const currentPage = searchParams.get('page')
+    const filterMonth = searchParams.get('month')
+    const filterLabel = searchParams.get('label')
+    const filterTag = searchParams.get('tag')
+
+    // 쿼리 파라미터를 localStorage에 저장 (뒤로가기 시 복원용)
+    const returnParams = new URLSearchParams()
+    if (currentPage) returnParams.set('page', currentPage)
+    if (filterMonth) returnParams.set('month', filterMonth)
+    if (filterLabel) returnParams.set('label', filterLabel)
+    if (filterTag) returnParams.set('tag', filterTag)
+
+    if (returnParams.toString()) {
+      if (typeof window !== 'undefined') {
+        sessionStorage.setItem('homeReturnUrl', `/?${returnParams.toString()}`)
+      }
+    }
+
+    return `/posts/${post.slug}`
+  }, [post.slug, searchParams])
+
   return (
     <motion.div
       {...(shouldAnimate ? useInViewAnimation : {})}
@@ -71,7 +96,7 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
           {/* 커버 이미지 */}
           {post.coverImageUrl && (
             <Link
-              href={`/posts/${post.slug}`}
+              href={postUrl}
               className="flex-shrink-0 w-48 h-32 sm:w-64 sm:h-40 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800 relative group"
               prefetch={false}
             >
@@ -100,14 +125,14 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
             </div>
 
             {/* 제목 */}
-            <Link href={`/posts/${post.slug}`} prefetch={false} className="group mt-4 mb-3">
+            <Link href={postUrl} prefetch={false} className="group mt-4 mb-3">
               <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                 {post.title}
               </h2>
             </Link>
 
             {/* 요약 */}
-            <Link href={`/posts/${post.slug}`} prefetch={false} className="mb-4">
+            <Link href={postUrl} prefetch={false} className="mb-4">
               <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                 {post.excerpt}
               </p>
@@ -115,7 +140,7 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
 
             {/* 메타 정보 */}
             <div className="flex items-center justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-auto">
-              <Link href={`/posts/${post.slug}`} prefetch={false} className="flex items-center space-x-3 sm:space-x-4 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+              <Link href={postUrl} prefetch={false} className="flex items-center space-x-3 sm:space-x-4 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                 <span className="truncate">{post.author}</span>
                 <time dateTime={post.publishedAt}>
                   {formattedDate}
