@@ -265,48 +265,69 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
         CACHE_KEYS.POSTS_LIST,
         () => withRetry(async () => {
           try {
-            const requestBody = {
-              filter: {
-                property: FIELD.status,
-                select: { equals: 'Publish' },
-              },
-              sorts: [
-                { property: FIELD.date, direction: 'descending' },
-              ],
-            };
+            let allPosts: PostListItem[] = [];
+            let startCursor: string | undefined;
 
-            const response = await fetch(
-              `${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.databaseQuery(databaseId)}`,
-              {
-                method: 'POST',
-                headers: {
-                  'Authorization': `Bearer ${apiKey}`,
-                  'Notion-Version': NOTION_CONFIG.API_VERSION,
-                  'Content-Type': 'application/json',
+            // 페이지네이션 처리
+            do {
+              const requestBody: any = {
+                filter: {
+                  property: FIELD.status,
+                  select: { equals: 'Publish' },
                 },
-                body: JSON.stringify(requestBody),
-              }
-            );
+                sorts: [
+                  { property: FIELD.date, direction: 'descending' },
+                ],
+                page_size: 100,
+              };
 
-            if (!response.ok) {
-              let errorBody = '';
-              try {
-                errorBody = typeof response.text === 'function' ? await response.text() : 'Unable to read error response';
-              } catch {
-                errorBody = 'Unable to read error response';
+              if (startCursor) {
+                requestBody.start_cursor = startCursor;
               }
-              throw NotionApiError.fromHttpStatus(
-                response.status,
-                `Failed to fetch published posts: ${errorBody}`
+
+              const response = await fetch(
+                `${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.databaseQuery(databaseId)}`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Notion-Version': NOTION_CONFIG.API_VERSION,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(requestBody),
+                }
               );
-            }
 
-            const data = await response.json();
-            const posts = data.results
-              .map(pageToItem)
-              .filter((p: PostListItem) => p.slug);
+              if (!response.ok) {
+                let errorBody = '';
+                try {
+                  errorBody = typeof response.text === 'function' ? await response.text() : 'Unable to read error response';
+                } catch {
+                  errorBody = 'Unable to read error response';
+                }
+                throw NotionApiError.fromHttpStatus(
+                  response.status,
+                  `Failed to fetch published posts: ${errorBody}`
+                );
+              }
 
-            return posts;
+              const data = await response.json();
+              const posts = data.results
+                .map(pageToItem)
+                .filter((p: PostListItem) => p.slug);
+
+              allPosts = allPosts.concat(posts);
+
+              startCursor = data.has_more ? data.next_cursor : undefined;
+
+              // 무한 루프 방지: 최대 1000개 포스트까지만 가져오기
+              if (allPosts.length >= 1000) {
+                logger.warn(`[WARN] Post limit reached (1000 posts)`);
+                break;
+              }
+            } while (startCursor);
+
+            return allPosts;
           } catch (error: unknown) {
             const errorMessage = error instanceof Error ? error.message : String(error);
             logger.error('[Notion API] Error fetching posts:', errorMessage);
@@ -368,23 +389,37 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
                 tags: [],
               };
 
-              // 블록 데이터 가져오기
+              // 블록 데이터 가져오기 (페이지네이션 지원)
               async function fetchBlocksRecursively(blockId: string): Promise<BlockObjectResponse[]> {
-                const blocks = await _notion.blocks.children.list({
-                  block_id: blockId,
-                  page_size: 100,
-                });
+                let allBlocks: BlockObjectResponse[] = [];
+                let startCursor: string | undefined;
 
-                const allBlocks: BlockObjectResponse[] = [];
-                for (const block of blocks.results) {
-                  if ('type' in block) {
-                    allBlocks.push(block as BlockObjectResponse);
-                    if (block.has_children) {
-                      const children = await fetchBlocksRecursively(block.id);
-                      (block as any)[block.type].children = children;
+                // 페이지네이션 처리
+                do {
+                  const response = await _notion.blocks.children.list({
+                    block_id: blockId,
+                    page_size: 100,
+                    start_cursor: startCursor,
+                  });
+
+                  for (const block of response.results) {
+                    if ('type' in block) {
+                      allBlocks.push(block as BlockObjectResponse);
+                      if (block.has_children) {
+                        const children = await fetchBlocksRecursively(block.id);
+                        (block as any)[block.type].children = children;
+                      }
                     }
                   }
-                }
+
+                  startCursor = response.has_more ? response.next_cursor || undefined : undefined;
+
+                  // 무한 루프 방지: 최대 1000개 블록까지만 가져오기
+                  if (allBlocks.length >= 1000) {
+                    logger.warn(`[WARN] Block limit reached (1000 blocks) for blockId ${blockId}`);
+                    break;
+                  }
+                } while (startCursor);
 
                 return allBlocks;
               }
@@ -724,7 +759,7 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
     /**
      * 링크드 데이터베이스 쿼리 함수
      * @param databaseId 데이터베이스 ID
-     * @param pageSize 가져올 행 수 (기본값: 10)
+     * @param pageSize 가져올 행 수 (기본값: 10, 100 이상이면 페이지네이션 처리)
      * @returns 데이터베이스 행 배열
      */
     async queryDatabase(databaseId: string, pageSize: number = 10) {
@@ -732,31 +767,81 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
         CACHE_KEYS.DATABASE_QUERY(databaseId, pageSize),
         () => withRetry(async () => {
           try {
-            const response = await fetch(
-              `${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.databaseQuery(databaseId)}`,
-              {
-                method: 'POST',
-                headers: {
-                  'Authorization': `Bearer ${apiKey}`,
-                  'Notion-Version': NOTION_CONFIG.API_VERSION,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  page_size: Math.min(pageSize, 100), // Notion API 최대값은 100
-                }),
-              }
-            );
-
-            if (!response.ok) {
-              const errorText = await response.text();
-              throw NotionApiError.fromHttpStatus(
-                response.status,
-                `Failed to query database: ${errorText}`
+            // pageSize가 100 이하면 단일 요청으로 처리
+            if (pageSize <= 100) {
+              const response = await fetch(
+                `${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.databaseQuery(databaseId)}`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Notion-Version': NOTION_CONFIG.API_VERSION,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    page_size: pageSize,
+                  }),
+                }
               );
+
+              if (!response.ok) {
+                const errorText = await response.text();
+                throw NotionApiError.fromHttpStatus(
+                  response.status,
+                  `Failed to query database: ${errorText}`
+                );
+              }
+
+              const data = await response.json();
+              return data.results || [];
             }
 
-            const data = await response.json();
-            return data.results || [];
+            // pageSize가 100 이상이면 페이지네이션 처리
+            let allResults: any[] = [];
+            let startCursor: string | undefined;
+
+            do {
+              const requestBody: any = {
+                page_size: 100, // 최대값 사용
+              };
+
+              if (startCursor) {
+                requestBody.start_cursor = startCursor;
+              }
+
+              const response = await fetch(
+                `${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.databaseQuery(databaseId)}`,
+                {
+                  method: 'POST',
+                  headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Notion-Version': NOTION_CONFIG.API_VERSION,
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(requestBody),
+                }
+              );
+
+              if (!response.ok) {
+                const errorText = await response.text();
+                throw NotionApiError.fromHttpStatus(
+                  response.status,
+                  `Failed to query database: ${errorText}`
+                );
+              }
+
+              const data = await response.json();
+              allResults = allResults.concat(data.results || []);
+
+              startCursor = data.has_more ? data.next_cursor : undefined;
+
+              // 요청한 pageSize에 도달하면 중단
+              if (allResults.length >= pageSize) {
+                return allResults.slice(0, pageSize);
+              }
+            } while (startCursor);
+
+            return allResults;
           } catch (error: unknown) {
             const errorMessage = error instanceof Error ? error.message : String(error);
             logger.error(`[Notion API] Error querying database ${databaseId}:`, errorMessage);

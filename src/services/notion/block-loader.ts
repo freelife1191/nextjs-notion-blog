@@ -55,34 +55,54 @@ export async function fetchBlocksRecursively(
   const cachedBlocks = await withCache(
     cacheKey,
     async () => {
-      // Notion API로 블록 가져오기
-      const blocksResponse = await fetch(
-        `${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.blockChildren(blockId)}`,
-        {
+      // Notion API로 블록 가져오기 (페이지네이션 지원)
+      let blocks: BlockObjectResponse[] = [];
+      let hasMore = true;
+      let startCursor: string | undefined;
+
+      while (hasMore) {
+        const url = new URL(`${NOTION_CONFIG.BASE_URL}/${NOTION_ENDPOINTS.blockChildren(blockId)}`);
+        url.searchParams.append('page_size', '100'); // 최대값 사용
+        if (startCursor) {
+          url.searchParams.append('start_cursor', startCursor);
+        }
+
+        const blocksResponse = await fetch(url.toString(), {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${apiKey}`,
             'Notion-Version': NOTION_CONFIG.API_VERSION,
           },
+        });
+
+        if (!blocksResponse.ok) {
+          const errorBody = await blocksResponse.text();
+
+          // 400 에러이고 unsupported block type인 경우 경고만 출력하고 빈 배열 반환
+          if (blocksResponse.status === 400 && errorBody.includes('is not supported via the API')) {
+            logger.warn(`[WARN] Skipping unsupported block type for blockId ${blockId}`);
+            logger.warn(`[WARN] Error:`, errorBody);
+            return [];
+          }
+
+          // 다른 에러는 throw
+          throw new Error(`Notion blocks API returned ${blocksResponse.status} for block ${blockId}: ${errorBody}`);
         }
-      );
 
-      if (!blocksResponse.ok) {
-        const errorBody = await blocksResponse.text();
+        const blocksData = await blocksResponse.json();
+        const pageBlocks = (blocksData.results || []) as BlockObjectResponse[];
+        blocks = blocks.concat(pageBlocks);
 
-        // 400 에러이고 unsupported block type인 경우 경고만 출력하고 빈 배열 반환
-        if (blocksResponse.status === 400 && errorBody.includes('is not supported via the API')) {
-          logger.warn(`[WARN] Skipping unsupported block type for blockId ${blockId}`);
-          logger.warn(`[WARN] Error:`, errorBody);
-          return [];
+        // 페이지네이션 처리
+        hasMore = blocksData.has_more || false;
+        startCursor = blocksData.next_cursor || undefined;
+
+        // 무한 루프 방지: 최대 1000개 블록까지만 가져오기 (페이지 10개)
+        if (blocks.length >= 1000) {
+          logger.warn(`[WARN] Block limit reached (1000 blocks) for blockId ${blockId}`);
+          hasMore = false;
         }
-
-        // 다른 에러는 throw
-        throw new Error(`Notion blocks API returned ${blocksResponse.status} for block ${blockId}: ${errorBody}`);
       }
-
-      const blocksData = await blocksResponse.json();
-      const blocks = (blocksData.results || []) as BlockObjectResponse[];
 
       // 병렬 처리: has_children이 true인 블록의 자식을 병렬로 가져오기
       await Promise.all(

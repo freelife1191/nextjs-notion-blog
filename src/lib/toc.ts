@@ -14,12 +14,20 @@ export interface TOCItem {
  * 텍스트를 URL-safe ID로 변환
  */
 export function generateId(text: string): string {
-  return text
+  let id = text
     .toLowerCase()
-    .replace(/[^\w\s-]/g, '') // 특수문자 제거
+    // 알파벳, 숫자, 한글, 공백, 하이픈만 허용
+    .replace(/[^a-z0-9가-힣\s-]/g, '')
     .replace(/\s+/g, '-') // 공백을 하이픈으로
     .replace(/-+/g, '-') // 연속된 하이픈을 하나로
-    .trim()
+    .replace(/^-+|-+$/g, '') // 앞뒤 하이픈 제거
+
+  // ID가 비어있거나 숫자로 시작하면 접두사 추가
+  if (!id || /^\d/.test(id)) {
+    id = `heading-${id}`
+  }
+
+  return id
 }
 
 /**

@@ -663,6 +663,32 @@ body {
 
   /* 북마크 및 파일 다운로드 스타일 - not-prose 내부로 이동하여 중복 제거 */
 
+  /* 제목 앵커 링크 스타일 */
+  .heading-wrapper {
+    @apply relative flex items-center gap-2;
+  }
+
+  .heading-wrapper:hover .heading-anchor-link {
+    opacity: 0.5;
+  }
+
+  .heading-anchor-link {
+    @apply flex items-center justify-center w-6 h-6 rounded transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 border-0 bg-transparent cursor-pointer flex-shrink-0;
+    opacity: 0;
+  }
+
+  .heading-anchor-link:hover {
+    opacity: 1 !important;
+  }
+
+  .heading-anchor-icon {
+    @apply w-4 h-4 text-gray-400 dark:text-gray-500;
+  }
+
+  .heading-anchor-link:hover .heading-anchor-icon {
+    @apply text-blue-600 dark:text-blue-400;
+  }
+
   /* 이미지 확대 기능 - 클릭 가능한 이미지 표시 */
   .prose img {
     @apply cursor-zoom-in transition-all duration-200;

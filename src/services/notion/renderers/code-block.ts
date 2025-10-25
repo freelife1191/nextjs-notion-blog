@@ -254,6 +254,6 @@ export function renderCodeBlock(
         Copy
       </button>
     </div>
-    <pre class="language-${languageClass} !mt-0 !rounded-t-none"><code class="language-${languageClass}">${escapedText}</code></pre>
+    <pre class="language-${languageClass} !mt-0 !rounded-t-none border border-t-0 border-gray-700 dark:border-gray-600"><code class="language-${languageClass}">${escapedText}</code></pre>
   </div>`;
 }

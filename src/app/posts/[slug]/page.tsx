@@ -9,6 +9,7 @@ import { PostHeroClient } from '@/components/PostHeroClient'
 import { Comments } from '@/components/Comments'
 import { ImageZoomModal } from '@/components/ImageZoomModal'
 import { KatexRenderer } from '@/components/KatexRenderer'
+import { HeadingAnchorScript } from '@/components/HeadingAnchorScript'
 import CodeHighlight from '@/components/CodeHighlight'
 import { createPostMetadata, createJsonLd, createBreadcrumbJsonLd } from '@/lib/seo'
 import { generateTOCFromNotionBlocks, addIdsToHeadings } from '@/lib/toc'
@@ -167,6 +168,9 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {/* KaTeX 수식 렌더링 */}
         <KatexRenderer />
+
+        {/* 제목 앵커 링크 복사 기능 */}
+        <HeadingAnchorScript />
 
         {/* Mermaid 다이어그램은 Kroki API로 이미지로 렌더링됨 (MermaidRenderer 불필요) */}
 

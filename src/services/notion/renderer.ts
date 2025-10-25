@@ -222,8 +222,9 @@ export class NotionRenderer {
     }
 
     // 코드 스타일 (색상 이후에 적용 - 코드는 자체 배경이 있음)
+    // 회색 배경 + 붉은색 텍스트 + 테두리 (Notion 스타일)
     if (annotations.code) {
-      content = `<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono">${content}</code>`;
+      content = `<code class="bg-gray-100 dark:bg-gray-800 text-red-600 dark:text-red-400 border border-gray-200 dark:border-gray-700 px-1 py-0.5 rounded text-sm font-mono">${content}</code>`;
     }
 
     // Mention 타입 처리 (링크 멘션) - 원본 텍스트 사용 (이미 escape됨)
@@ -288,6 +289,11 @@ export class NotionRenderer {
   private renderParagraph(block: NotionBlock): string {
     const richText = block.paragraph?.rich_text || [];
 
+    const hasAnyColor = richText.some((t: NotionRichText) =>
+      t.annotations?.color && t.annotations.color !== 'default'
+    );
+    const blockColor = block.paragraph?.color;
+
     // link_mention이 포함된 경우 특별 처리
     const linkMention = richText.find((text: any) =>
       text.type === 'mention' && text.mention?.type === 'link_mention'
@@ -317,15 +323,11 @@ export class NotionRenderer {
       </a>`;
     }
 
-    // 블록 레벨 배경색 확인
-    const paragraphData = block.paragraph;
-    const blockColor = paragraphData?.color;
+    // 블록 레벨 배경색 확인 (위에서 이미 blockColor 선언됨)
     const hasBlockColor = blockColor && blockColor !== 'default';
 
-    // rich_text 내부 개별 색상 확인
-    const hasTextColor = richText.some((text: NotionRichText) =>
-      text.annotations?.color && text.annotations.color !== 'default'
-    );
+    // rich_text 내부 개별 색상 확인 (위에서 이미 hasAnyColor로 확인됨)
+    const hasTextColor = hasAnyColor;
 
     let colorClass = '';
     let wrappedText = '';
@@ -337,7 +339,8 @@ export class NotionRenderer {
       wrappedText = this.renderRichText(richText);
     } else if (hasTextColor) {
       // 텍스트 개별 색상은 renderRichText에서 처리됨
-      colorClass = 'text-gray-700 dark:text-gray-300';
+      // p 태그에 색상을 적용하지 않음 (rich text 내부 색상만 사용)
+      colorClass = '';
       wrappedText = this.renderRichText(richText);
     } else {
       // 색상이 없으면 기본 색상
@@ -345,7 +348,9 @@ export class NotionRenderer {
       wrappedText = this.renderRichText(richText);
     }
 
-    return `<p class="${colorClass} leading-relaxed mb-4">${wrappedText}</p>`;
+    // colorClass가 비어있으면 클래스에 포함하지 않음
+    const classes = colorClass ? `${colorClass} leading-relaxed mb-4` : 'leading-relaxed mb-4';
+    return `<p class="${classes}">${wrappedText}</p>`;
   }
 
   private escapeHtml(text: string): string {
@@ -464,6 +469,13 @@ export class NotionRenderer {
       colorClass = 'text-gray-900 dark:text-white';
     }
 
+    // 링크 아이콘 SVG (Lucide의 Link 아이콘)
+    // Source: https://lucide.dev/icons/link
+    const linkIconSvg = `<svg class="heading-anchor-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+    </svg>`;
+
     // 토글 가능한 제목인 경우
     if (isToggleable) {
       return `<details class="toggle-heading-block group" style="list-style: none; margin: 1rem 0;">
@@ -471,7 +483,12 @@ export class NotionRenderer {
         <svg class="toggle-arrow w-3 h-3 text-gray-500 dark:text-gray-400 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m9 18 6-6-6-6"></path>
         </svg>
-        <h${level} id="${id}" class="${sizeClasses[level as keyof typeof sizeClasses]} ${colorClass}" style="margin: 0;">${htmlText}</h${level}>
+        <div class="heading-wrapper group">
+          <h${level} id="${id}" class="${sizeClasses[level as keyof typeof sizeClasses]} ${colorClass}" style="margin: 0;">${htmlText}</h${level}>
+          <button class="heading-anchor-link" aria-label="Copy link to ${plainText.replace(/"/g, '&quot;')}" title="Copy link">
+            ${linkIconSvg}
+          </button>
+        </div>
       </summary>
       <div class="toggle-content" style="margin-left: calc(0.75rem + 0.5rem + 0.5rem); margin-top: 0.5rem;">
         ${this.renderBlocks(children)}
@@ -498,7 +515,12 @@ export class NotionRenderer {
     }
 
     // 일반 제목
-    return `<h${level} id="${id}" class="${sizeClasses[level as keyof typeof sizeClasses]} ${colorClass}">${htmlText}</h${level}>`;
+    return `<div class="heading-wrapper group">
+      <h${level} id="${id}" class="${sizeClasses[level as keyof typeof sizeClasses]} ${colorClass}">${htmlText}</h${level}>
+      <button class="heading-anchor-link" aria-label="Copy link to ${plainText.replace(/"/g, '&quot;')}" title="Copy link">
+        ${linkIconSvg}
+      </button>
+    </div>`;
   }
 
   private renderBulletedListItem(block: NotionBlock): string {
@@ -625,16 +647,59 @@ export class NotionRenderer {
     const hasBlockColor = blockColor && blockColor !== 'default';
     const icon = calloutData?.icon?.emoji || '💡';
     const children = calloutData?.children || [];
-    const childrenHtml = children.length > 0 ? this.renderBlocks(children) : '';
+
 
     let bgColorClass = 'bg-card';
     let textColorClass = 'text-card-foreground';
 
-    // 배경색이 있는 경우, 블록 레벨 배경색 클래스 사용
-    if (hasBlockColor && blockColor.endsWith('_background')) {
-      const colorClasses = getBlockBackgroundColorClasses(blockColor);
-      bgColorClass = colorClasses.bg;
-      textColorClass = colorClasses.text;
+    // 색상 처리
+    if (hasBlockColor) {
+      if (blockColor.endsWith('_background')) {
+        // 배경색이 있는 경우
+        const colorClasses = getBlockBackgroundColorClasses(blockColor);
+        bgColorClass = colorClasses.bg;
+        textColorClass = colorClasses.text;
+      } else {
+        // 텍스트 색상만 있는 경우 (예: 'purple', 'red')
+        // 배경색은 유지하고 테두리 색상만 변경
+        const borderColorClass = getNotionColorClass(blockColor).replace('text-', 'border-');
+        bgColorClass = `bg-card ${borderColorClass}`;
+        textColorClass = getNotionColorClass(blockColor);
+      }
+    }
+
+    // children 렌더링
+    let childrenHtml = '';
+    if (children.length > 0) {
+      const renderedChildren = this.renderBlocks(children);
+
+      // callout에 텍스트 색상이 있으면 children의 기본 회색 클래스를 제거하고 callout 색상 적용
+      if (hasBlockColor && !blockColor.endsWith('_background')) {
+        // paragraph, list(ul/ol), list item(li)의 기본 회색 클래스를 모두 제거
+        childrenHtml = renderedChildren
+          // paragraph의 회색 클래스 제거
+          .replace(
+            /class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4"/g,
+            'class="leading-relaxed mb-4"'
+          )
+          // ul의 회색 클래스 제거
+          .replace(
+            /class="list-disc pl-12 mb-4 text-gray-700 dark:text-gray-300"/g,
+            'class="list-disc pl-12 mb-4"'
+          )
+          // ol의 회색 클래스 제거
+          .replace(
+            /class="list-decimal pl-12 mb-4 text-gray-700 dark:text-gray-300"/g,
+            'class="list-decimal pl-12 mb-4"'
+          )
+          // li의 회색 클래스 제거
+          .replace(
+            /class="text-gray-700 dark:text-gray-300 leading-relaxed mb-2"/g,
+            'class="leading-relaxed mb-2"'
+          );
+      } else {
+        childrenHtml = renderedChildren;
+      }
     }
 
     const text = this.renderRichText(richText);
