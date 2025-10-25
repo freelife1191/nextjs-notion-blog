@@ -30,6 +30,14 @@ interface ArticleListItemProps {
   index?: number
 }
 
+// Helper function for shallow array comparison
+function areTagsEqual(a?: string[], b?: string[]): boolean {
+  if (a === b) return true
+  if (!a || !b) return a === b
+  if (a.length !== b.length) return false
+  return a.every((tag, i) => tag === b[i])
+}
+
 export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }: ArticleListItemProps) {
   const [shouldAnimate, setShouldAnimate] = useState(true)
 
@@ -134,6 +142,6 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
     prevProps.post.publishedAt === nextProps.post.publishedAt &&
     prevProps.post.author === nextProps.post.author &&
     prevProps.index === nextProps.index &&
-    JSON.stringify(prevProps.post.tags) === JSON.stringify(nextProps.post.tags)
+    areTagsEqual(prevProps.post.tags, nextProps.post.tags)
   )
 })
