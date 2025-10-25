@@ -8,7 +8,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { useEffect, useState, memo } from 'react'
+import { useEffect, useState, memo, useMemo } from 'react'
 import { slideUpVariants, useInViewAnimation, ANIMATION_DURATION } from '@/lib/motion'
 import { Card, CardContent } from '@/components/ui/card'
 import { DateBadge } from '@/components/article/DateBadge'
@@ -42,13 +42,13 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
     }
   }, [])
 
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ko-KR', {
+  const formattedDate = useMemo(() => {
+    return new Date(post.publishedAt).toLocaleDateString('ko-KR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     })
-  }
+  }, [post.publishedAt])
 
   return (
     <motion.div
@@ -110,7 +110,7 @@ export const ArticleListItem = memo(function ArticleListItem({ post, index = 0 }
               <Link href={`/posts/${post.slug}`} prefetch={false} className="flex items-center space-x-3 sm:space-x-4 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
                 <span className="truncate">{post.author}</span>
                 <time dateTime={post.publishedAt}>
-                  {formatDate(post.publishedAt)}
+                  {formattedDate}
                 </time>
               </Link>
 

@@ -59,7 +59,7 @@ export function renderCodeBlock(
               다이어그램
             </button>
             <button
-              class="mermaid-tab px-3 py-1 rounded transition-colors text-gray-100"
+              class="mermaid-tab px-3 py-1 rounded transition-colors text-gray-100 hover:bg-gray-700/40"
               data-tab="code"
               data-block-id="${blockId}"
               onclick="window.switchMermaidTab('${blockId}', 'code')"

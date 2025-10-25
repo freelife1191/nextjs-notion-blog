@@ -6,7 +6,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useMemo } from 'react'
+import { useMemo, useCallback, memo } from 'react'
 import { ArticleListItem } from '@/components/ArticleListItem'
 import { EmptyState, ErrorState } from '@/components/states'
 import type { PostListItem } from '@/services/notion/client'
@@ -24,7 +24,7 @@ interface HomeClientProps {
   error: string | null
 }
 
-export function HomeClient({ posts, settings, error }: HomeClientProps) {
+export const HomeClient = memo(function HomeClient({ posts, settings, error }: HomeClientProps) {
   const searchParams = useSearchParams()
 
   // 필터 파라미터
@@ -74,7 +74,7 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
   const hasActiveFilters = filterMonth || filterLabel || filterTag
 
   // 필터 레이블 생성
-  const getFilterLabel = () => {
+  const getFilterLabel = useCallback(() => {
     if (filterMonth) {
       const date = new Date(filterMonth + '-01')
       const month = date.toLocaleString('en-US', { month: 'long' }).toUpperCase()
@@ -84,7 +84,12 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
     if (filterLabel) return filterLabel
     if (filterTag) return `#${filterTag}`
     return null
-  }
+  }, [filterMonth, filterLabel, filterTag])
+
+  // 페이지 번호 배열
+  const pageNumbers = useMemo(() => {
+    return Array.from({ length: totalPages }, (_, i) => i + 1)
+  }, [totalPages])
 
   return (
     <>
@@ -181,7 +186,7 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
 
                   {/* 페이지 번호들 */}
                   <div className="flex items-center gap-2 flex-1 justify-center">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    {pageNumbers.map((page) => (
                       <Link
                         key={page}
                         href={`/?page=${page}`}
@@ -221,4 +226,4 @@ export function HomeClient({ posts, settings, error }: HomeClientProps) {
       </div>
     </>
   )
-}
+})
