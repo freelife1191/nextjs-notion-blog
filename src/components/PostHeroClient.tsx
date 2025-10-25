@@ -63,6 +63,42 @@ export function PostHeroClient({
     window.scrollTo(0, 0)
   }, [])
 
+  // Mermaid 다이어그램 탭 전환 함수 등록
+  useEffect(() => {
+    // Define switchMermaidTab function on window object for onclick handlers
+    (window as any).switchMermaidTab = function(blockId: string, tab: string) {
+      const wrapper = document.querySelector(`[data-mermaid-block="${blockId}"]`);
+      if (!wrapper) return;
+
+      // 탭 버튼 전환
+      wrapper.querySelectorAll('.mermaid-tab').forEach(btn => {
+        const button = btn as HTMLButtonElement;
+        if (button.dataset.tab === tab) {
+          button.classList.add('active', 'bg-gray-700', 'dark:bg-gray-800');
+        } else {
+          button.classList.remove('active', 'bg-gray-700', 'dark:bg-gray-800');
+        }
+      });
+
+      // 패널 전환
+      wrapper.querySelectorAll('.mermaid-tab-panel').forEach(panel => {
+        const panelElement = panel as HTMLElement;
+        if (panelElement.dataset.panel === tab) {
+          panelElement.classList.remove('hidden');
+          panelElement.classList.add('active');
+        } else {
+          panelElement.classList.add('hidden');
+          panelElement.classList.remove('active');
+        }
+      });
+    };
+
+    // Cleanup on unmount
+    return () => {
+      delete (window as any).switchMermaidTab;
+    };
+  }, [])
+
   return (
     <>
       <CodeHighlight />

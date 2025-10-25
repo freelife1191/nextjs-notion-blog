@@ -93,38 +93,6 @@ export function renderCodeBlock(
             <pre class="language-mermaid !mt-0 !rounded-t-none bg-gray-900 dark:bg-gray-950 p-6 rounded-b-lg border border-gray-200 dark:border-gray-700 overflow-x-auto"><code class="language-mermaid text-gray-100">${escapedCode}</code></pre>
           </div>
         </div>
-        <script>
-          if (!window.switchMermaidTab) {
-            window.switchMermaidTab = function(blockId, tab) {
-              const wrapper = document.querySelector('[data-mermaid-block="' + blockId + '"]');
-              if (!wrapper) return;
-
-              // 탭 버튼 전환
-              wrapper.querySelectorAll('.mermaid-tab').forEach(btn => {
-                if (btn.dataset.tab === tab) {
-                  btn.classList.add('active');
-                  btn.classList.add('bg-gray-700');
-                  btn.classList.add('dark:bg-gray-800');
-                } else {
-                  btn.classList.remove('active');
-                  btn.classList.remove('bg-gray-700');
-                  btn.classList.remove('dark:bg-gray-800');
-                }
-              });
-
-              // 패널 전환
-              wrapper.querySelectorAll('.mermaid-tab-panel').forEach(panel => {
-                if (panel.dataset.panel === tab) {
-                  panel.classList.remove('hidden');
-                  panel.classList.add('active');
-                } else {
-                  panel.classList.add('hidden');
-                  panel.classList.remove('active');
-                }
-              });
-            };
-          }
-        </script>
       </div>`;
     } catch (error) {
       console.error('Mermaid Kroki encoding error:', error);
