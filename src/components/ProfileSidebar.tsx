@@ -98,7 +98,6 @@ export function ProfileSidebar({
                   fill
                   className="object-cover pointer-events-none"
                   referrerPolicy="no-referrer"
-                  priority={true}
                   sizes="96px"
                   draggable={false}
                 />
@@ -383,7 +382,7 @@ export function ProfileSidebar({
                   className="object-contain rounded-lg"
                   referrerPolicy="no-referrer"
                   sizes="(max-width: 768px) 100vw, 768px"
-                  priority
+                  loading="lazy"
                 />
               </motion.div>
             )}
