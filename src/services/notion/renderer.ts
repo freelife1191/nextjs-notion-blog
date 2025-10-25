@@ -11,6 +11,7 @@ import {
 import { generateId } from '@/lib/toc';
 import { renderCodeBlock } from './renderers/code-block';
 import { logger } from '@/lib/logger';
+import { escapeHtml } from '@/lib/utils';
 
 export interface NotionBlock {
   type: string;
@@ -197,7 +198,7 @@ export class NotionRenderer {
     const link = text.text?.link || text.href;
 
     // HTML escape 적용 (XSS 방지 및 특수 문자 보호)
-    content = this.escapeHtml(content);
+    content = escapeHtml(content);
 
     // 텍스트 스타일 적용 (색상 전에 먼저 적용)
     if (annotations.bold) {
@@ -231,7 +232,7 @@ export class NotionRenderer {
     if (text.type === 'mention' && (text as any).mention) {
       const mention = (text as any).mention;
       // mention의 경우 annotations가 적용되기 전 원본 텍스트 사용
-      const mentionText = this.escapeHtml(text.plain_text || text.text?.content || '');
+      const mentionText = escapeHtml(text.plain_text || text.text?.content || '');
 
       // Page mention - Notion 스타일 페이지 링크 카드
       if (mention.type === 'page' && mention.page) {
@@ -318,8 +319,8 @@ export class NotionRenderer {
           `<svg class="link-mention-inline-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
           </svg>`}
-        ${author ? `<span class="link-mention-author-inline">${this.escapeHtml(author)}</span>` : ''}
-        <span class="link-mention-title-inline">${this.escapeHtml(title)}</span>
+        ${author ? `<span class="link-mention-author-inline">${escapeHtml(author)}</span>` : ''}
+        <span class="link-mention-title-inline">${escapeHtml(title)}</span>
       </a>`;
     }
 
@@ -351,17 +352,6 @@ export class NotionRenderer {
     // colorClass가 비어있으면 클래스에 포함하지 않음
     const classes = colorClass ? `${colorClass} leading-relaxed mb-4` : 'leading-relaxed mb-4';
     return `<p class="${classes}">${wrappedText}</p>`;
-  }
-
-  private escapeHtml(text: string): string {
-    const map: { [key: string]: string } = {
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;'
-    };
-    return text.replace(/[&<>"']/g, (m) => map[m]);
   }
 
   /**
@@ -1045,14 +1035,14 @@ export class NotionRenderer {
       return `<div class="not-prose youtube-bookmark">
         <a href="${url}" target="_blank" rel="noopener noreferrer" class="youtube-bookmark-card">
           <div class="youtube-bookmark-content">
-            <div class="youtube-bookmark-title">${this.escapeHtml(title)}</div>
-            ${description ? `<div class="youtube-bookmark-description">${this.escapeHtml(description)}</div>` : ''}
+            <div class="youtube-bookmark-title">${escapeHtml(title)}</div>
+            ${description ? `<div class="youtube-bookmark-description">${escapeHtml(description)}</div>` : ''}
             <div class="youtube-bookmark-footer">
               <img src="https://www.youtube.com/s/desktop/3d178601/img/favicon_144x144.png" alt="YouTube" class="youtube-bookmark-icon" referrerpolicy="no-referrer" />
               <span class="youtube-bookmark-url">${url}</span>
             </div>
           </div>
-          ${thumbnailUrl ? `<div class="youtube-bookmark-thumbnail"><img src="${thumbnailUrl}" alt="${this.escapeHtml(title)}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" referrerpolicy="no-referrer" /></div>` : ''}
+          ${thumbnailUrl ? `<div class="youtube-bookmark-thumbnail"><img src="${thumbnailUrl}" alt="${escapeHtml(title)}" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" referrerpolicy="no-referrer" /></div>` : ''}
         </a>
       </div>`;
     }
@@ -1063,8 +1053,8 @@ export class NotionRenderer {
     return `<div class="not-prose regular-bookmark">
       <a href="${url}" target="_blank" rel="noopener noreferrer" class="regular-bookmark-card">
         <div class="regular-bookmark-content">
-          <div class="regular-bookmark-title">${this.escapeHtml(domain)}</div>
-          <div class="regular-bookmark-url">${this.escapeHtml(url)}</div>
+          <div class="regular-bookmark-title">${escapeHtml(domain)}</div>
+          <div class="regular-bookmark-url">${escapeHtml(url)}</div>
         </div>
       </a>
     </div>`;
@@ -1334,7 +1324,7 @@ export class NotionRenderer {
           <polyline points="14 2 14 8 20 8"></polyline>
         </svg>
         <div class="flex-1">
-          <span class="font-medium text-gray-900 dark:text-gray-100">${this.escapeHtml(title)}</span>
+          <span class="font-medium text-gray-900 dark:text-gray-100">${escapeHtml(title)}</span>
           <svg class="w-4 h-4 text-gray-400 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
             <polyline points="15 3 21 3 21 9"></polyline>
@@ -1362,7 +1352,7 @@ export class NotionRenderer {
     if (databaseRows.length === 0 || propertyNames.length === 0) {
       return `<div class="child-database my-6">
         <div class="mb-4 flex items-center gap-2">
-          <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100">${this.escapeHtml(title)}</h3>
+          <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100">${escapeHtml(title)}</h3>
           <a href="${notionUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -1388,7 +1378,7 @@ export class NotionRenderer {
     // 데이터베이스 데이터를 테이블로 렌더링
     let tableHtml = `<div class="child-database my-6">
       <div class="mb-4 flex items-center gap-2">
-        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100">${this.escapeHtml(title)}</h3>
+        <h3 class="font-semibold text-lg text-gray-900 dark:text-gray-100">${escapeHtml(title)}</h3>
         <a href="${notionUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -1404,7 +1394,7 @@ export class NotionRenderer {
 
     // 테이블 헤더 렌더링
     propertyNames.forEach((propName: string) => {
-      tableHtml += `<th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">${this.escapeHtml(propName)}</th>`;
+      tableHtml += `<th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground">${escapeHtml(propName)}</th>`;
     });
 
     tableHtml += `</tr>
@@ -1462,7 +1452,7 @@ export class NotionRenderer {
         if (value && value.name) {
           const color = value.color || 'default';
           const colorClasses = getBadgeColorClasses(color);
-          return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${colorClasses}">${this.escapeHtml(value.name)}</span>`;
+          return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${colorClasses}">${escapeHtml(value.name)}</span>`;
         }
         return '';
 
@@ -1471,7 +1461,7 @@ export class NotionRenderer {
           const tags = value.map((item: any) => {
             const color = item.color || 'default';
             const colorClasses = getBadgeColorClasses(color);
-            return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${colorClasses}">${this.escapeHtml(item.name)}</span>`;
+            return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${colorClasses}">${escapeHtml(item.name)}</span>`;
           }).join('');
           return `<div class="flex flex-wrap gap-2">${tags}</div>`;
         }
@@ -1493,24 +1483,24 @@ export class NotionRenderer {
 
       case 'url':
         if (value) {
-          return `<a href="${value}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">${this.escapeHtml(value)}</a>`;
+          return `<a href="${value}" target="_blank" rel="noopener noreferrer" class="text-blue-600 dark:text-blue-400 hover:underline">${escapeHtml(value)}</a>`;
         }
         return '';
 
       case 'email':
         if (value) {
-          return `<a href="mailto:${value}" class="text-blue-600 dark:text-blue-400 hover:underline">${this.escapeHtml(value)}</a>`;
+          return `<a href="mailto:${value}" class="text-blue-600 dark:text-blue-400 hover:underline">${escapeHtml(value)}</a>`;
         }
         return '';
 
       case 'phone_number':
-        return value ? this.escapeHtml(value) : '';
+        return value ? escapeHtml(value) : '';
 
       case 'status':
         if (value && value.name) {
           const color = value.color || 'default';
           const colorClasses = getBadgeColorClasses(color);
-          return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${colorClasses}">${this.escapeHtml(value.name)}</span>`;
+          return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${colorClasses}">${escapeHtml(value.name)}</span>`;
         }
         return '';
 
@@ -1550,7 +1540,7 @@ export class NotionRenderer {
 
     const expression = equation.expression;
     // LaTeX 표현식을 HTML 엔티티로 이스케이프
-    const escapedExpression = this.escapeHtml(expression);
+    const escapedExpression = escapeHtml(expression);
 
     // KaTeX가 클라이언트 사이드에서 렌더링할 수 있도록 data 속성에 원본 LaTeX 저장
     return `
@@ -1684,7 +1674,7 @@ export class NotionRenderer {
             <polyline points="14 2 14 8 20 8"></polyline>
           </svg>
           <div class="flex-1">
-            <span class="font-medium text-gray-900 dark:text-gray-100">${this.escapeHtml(displayName)}</span>
+            <span class="font-medium text-gray-900 dark:text-gray-100">${escapeHtml(displayName)}</span>
             <svg class="w-4 h-4 text-gray-400 inline-block ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>

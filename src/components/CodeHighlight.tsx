@@ -2,27 +2,7 @@
 
 import { useEffect } from 'react'
 import { logger } from '@/lib/logger';
-
-/**
- * 언어명을 Prism.js 컴포넌트 이름으로 매핑
- */
-const LANGUAGE_MAP: Record<string, string> = {
-  javascript: 'prism-javascript',
-  js: 'prism-javascript',
-  typescript: 'prism-typescript',
-  ts: 'prism-typescript',
-  python: 'prism-python',
-  py: 'prism-python',
-  sql: 'prism-sql',
-  bash: 'prism-bash',
-  sh: 'prism-bash',
-  shell: 'prism-bash',
-  json: 'prism-json',
-  html: 'prism-markup',
-  xml: 'prism-markup',
-  markup: 'prism-markup',
-  css: 'prism-css',
-}
+import { getPrismComponent } from '@/lib/languages';
 
 export default function CodeHighlight() {
   useEffect(() => {
@@ -39,7 +19,7 @@ export default function CodeHighlight() {
             classList.forEach((className) => {
               if (className.startsWith('language-')) {
                 const lang = className.replace('language-', '').toLowerCase()
-                const prismComponent = LANGUAGE_MAP[lang]
+                const prismComponent = getPrismComponent(lang)
                 if (prismComponent) {
                   usedLanguages.add(prismComponent)
                 }

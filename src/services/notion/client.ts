@@ -391,7 +391,7 @@ export function createNotionClient(override?: { notion?: Client; databaseId?: st
 
               // 블록 데이터 가져오기 (페이지네이션 지원)
               async function fetchBlocksRecursively(blockId: string): Promise<BlockObjectResponse[]> {
-                let allBlocks: BlockObjectResponse[] = [];
+                const allBlocks: BlockObjectResponse[] = [];
                 let startCursor: string | undefined;
 
                 // 페이지네이션 처리
