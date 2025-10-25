@@ -5,6 +5,7 @@
 
 'use client'
 
+import { memo, useMemo } from 'react'
 import Image from 'next/image'
 
 interface PostHeroProps {
@@ -15,14 +16,14 @@ interface PostHeroProps {
   className?: string
 }
 
-export function PostHero({ title, coverImageUrl, publishedAt, category, className = '' }: PostHeroProps) {
-  // 날짜 포맷팅 (예: OCTOBER 2025)
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
+export const PostHero = memo(function PostHero({ title, coverImageUrl, publishedAt, category, className = '' }: PostHeroProps) {
+  // 날짜 포맷팅 (예: OCTOBER 2025) - useMemo로 캐싱
+  const formattedDate = useMemo(() => {
+    const date = new Date(publishedAt)
     const month = date.toLocaleString('en-US', { month: 'long' }).toUpperCase()
     const year = date.getFullYear()
     return `${month} ${year}`
-  }
+  }, [publishedAt])
   return (
     <section className={`relative w-full mb-12 ${className}`}>
       {coverImageUrl ? (
@@ -47,7 +48,7 @@ export function PostHero({ title, coverImageUrl, publishedAt, category, classNam
               {/* 날짜와 카테고리 */}
               <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                 <span className="text-xs sm:text-sm font-semibold text-gray-300 tracking-wider">
-                  {formatDate(publishedAt)}
+                  {formattedDate}
                 </span>
                 {category && (
                   <>
@@ -73,7 +74,7 @@ export function PostHero({ title, coverImageUrl, publishedAt, category, classNam
               {/* 날짜와 카테고리 */}
               <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                 <span className="text-xs sm:text-sm font-semibold text-gray-500 dark:text-gray-400 tracking-wider">
-                  {formatDate(publishedAt)}
+                  {formattedDate}
                 </span>
                 {category && (
                   <>
@@ -95,4 +96,4 @@ export function PostHero({ title, coverImageUrl, publishedAt, category, classNam
       )}
     </section>
   )
-}
+})
