@@ -5,6 +5,7 @@
 
 'use client'
 
+import { memo, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Icon } from '@/lib/icons'
 import { fadeVariants, useInViewAnimation } from '@/lib/motion'
@@ -16,19 +17,20 @@ interface PostMetaProps {
   className?: string
 }
 
-export function PostMeta({ 
-  author, 
-  publishedAt, 
-  readTime, 
-  className = '' 
+export const PostMeta = memo(function PostMeta({
+  author,
+  publishedAt,
+  readTime,
+  className = ''
 }: PostMetaProps) {
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ko-KR', {
+  // 날짜 포맷팅 - useMemo로 캐싱
+  const formattedDate = useMemo(() => {
+    return new Date(publishedAt).toLocaleDateString('ko-KR', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
     })
-  }
+  }, [publishedAt])
 
   return (
     <motion.div
@@ -46,7 +48,7 @@ export function PostMeta({
       <div className="flex items-center space-x-2">
         <Icon name="calendar" size={16} />
         <time dateTime={publishedAt}>
-          {formatDate(publishedAt)}
+          {formattedDate}
         </time>
       </div>
 
@@ -59,4 +61,4 @@ export function PostMeta({
       )}
     </motion.div>
   )
-}
+})
