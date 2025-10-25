@@ -5,6 +5,7 @@
 
 'use client'
 
+import { memo, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Icon } from '@/lib/icons'
 import { fadeVariants, scaleVariants, useInViewAnimation, useHoverAnimation, ANIMATION_DURATION } from '@/lib/motion'
@@ -15,17 +16,23 @@ interface TagChipsProps {
   className?: string
 }
 
-export function TagChips({
+export const TagChips = memo(function TagChips({
   tags,
   maxDisplay = 5,
   className = ''
 }: TagChipsProps) {
+  // Early return을 useMemo 전에 실행 (Hook 규칙 준수)
   if (!tags || tags.length === 0) {
     return null
   }
 
-  const displayTags = tags.slice(0, maxDisplay)
-  const remainingCount = tags.length - maxDisplay
+  // displayTags와 remainingCount를 useMemo로 캐싱
+  const { displayTags, remainingCount } = useMemo(() => {
+    return {
+      displayTags: tags.slice(0, maxDisplay),
+      remainingCount: tags.length - maxDisplay
+    }
+  }, [tags, maxDisplay])
 
   return (
     <motion.div
@@ -57,4 +64,4 @@ export function TagChips({
       )}
     </motion.div>
   )
-}
+})
