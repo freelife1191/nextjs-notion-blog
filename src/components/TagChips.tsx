@@ -23,6 +23,9 @@ export const TagChips = memo(function TagChips({
 }: TagChipsProps) {
   // displayTags와 remainingCount를 useMemo로 캐싱 (Hook은 항상 최상위에서 호출)
   const { displayTags, remainingCount } = useMemo(() => {
+    if (!tags || tags.length === 0) {
+      return { displayTags: [], remainingCount: 0 }
+    }
     return {
       displayTags: tags.slice(0, maxDisplay),
       remainingCount: tags.length - maxDisplay
