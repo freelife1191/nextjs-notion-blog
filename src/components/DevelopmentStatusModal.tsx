@@ -6,7 +6,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { CheckCircle2, AlertCircle, Code2, X, Info } from 'lucide-react'
+import { CheckCircle2, AlertCircle, Code2, X, Info, Sparkles } from 'lucide-react'
 import { createPortal } from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ANIMATION_SCALE, ANIMATION_DURATION } from '@/lib/motion'
@@ -676,6 +676,33 @@ export function DevelopmentStatusModal() {
                   })}
                   </div>
                 </div>
+
+                {/* 푸터 */}
+                <motion.div
+                  className="flex-shrink-0 p-4 border-t border-border bg-muted/50 text-center backdrop-blur-sm"
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <div className="flex items-center justify-center gap-2">
+                    <Sparkles className="h-3 w-3 text-primary" />
+                    <p className="text-xs text-muted-foreground">
+                      지속적으로 개발 중입니다
+                    </p>
+                    <motion.div
+                      animate={{
+                        rotate: [0, 360],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: "linear"
+                      }}
+                    >
+                      🚀
+                    </motion.div>
+                  </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           )}
