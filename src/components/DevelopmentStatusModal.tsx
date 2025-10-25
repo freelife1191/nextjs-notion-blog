@@ -122,7 +122,7 @@ const FEATURES: FeatureStatus[] = [
   {
     name: '🧪 Vitest + Playwright',
     status: 'completed',
-    description: '170개 테스트 (Unit + E2E)',
+    description: '359개 Unit + 5개 E2E 테스트',
     isSubFeature: true,
     completedDate: '2025-10-25',
   },
@@ -383,6 +383,41 @@ const FEATURES: FeatureStatus[] = [
     description: '동적 import 최적화',
     isSubFeature: true,
     completedDate: '2025-10-24',
+  },
+  {
+    name: '🛡️ 품질 보증',
+    status: 'completed',
+    description: '테스트 & 안정성',
+    isSection: true,
+    completedDate: '2025-10-25',
+  },
+  {
+    name: '🧪 Unit Tests',
+    status: 'completed',
+    description: '359개 테스트 (14개 파일)',
+    isSubFeature: true,
+    completedDate: '2025-10-25',
+  },
+  {
+    name: '🎭 E2E Tests',
+    status: 'completed',
+    description: 'Playwright (5개 파일)',
+    isSubFeature: true,
+    completedDate: '2025-10-25',
+  },
+  {
+    name: '🔄 회귀 테스트',
+    status: 'completed',
+    description: '이전 버그 재발 방지',
+    isSubFeature: true,
+    completedDate: '2025-10-25',
+  },
+  {
+    name: '✅ 100% 테스트 통과',
+    status: 'completed',
+    description: 'CI/CD 자동 검증',
+    isSubFeature: true,
+    completedDate: '2025-10-25',
   },
 ]
 
