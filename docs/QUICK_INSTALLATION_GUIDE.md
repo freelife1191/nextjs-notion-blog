@@ -37,55 +37,59 @@ Notion에서 글 작성 → Status를 "Publish"로 변경
 ---
 
 <!-- TOC -->
-* [빠른 설치 가이드](#빠른-설치-가이드)
-  * [📚 Notion CMS 블로그란?](#-notion-cms-블로그란)
-  * [🎨 1. Notion 준비하기](#-1-notion-준비하기)
-    * [🔑 1.1 Notion 가입 및 API Key 발급](#-11-notion-가입-및-api-key-발급)
-      * [1️⃣ Notion 가입](#1-notion-가입)
-      * [2️⃣ Notion API Integration 생성](#2-notion-api-integration-생성)
-      * [3️⃣ Integration 정보 입력](#3-integration-정보-입력)
-      * [4️⃣ API Key 복사](#4-api-key-복사)
-    * [📄 1.2 블로그 템플릿 복사하기](#-12-블로그-템플릿-복사하기)
-      * [1️⃣ 템플릿 페이지 복사](#1-템플릿-페이지-복사)
-      * [2️⃣ Integration 연결](#2-integration-연결)
-    * [🆔 1.3 데이터베이스 ID 추출하기](#-13-데이터베이스-id-추출하기)
-      * [1️⃣ About me 페이지 ID 추출](#1-about-me-페이지-id-추출)
-      * [2️⃣ 데이터베이스 ID 추출 (Site, Profile, Posts)](#2-데이터베이스-id-추출-site-profile-posts)
-  * [🐙 2. GitHub 준비하기](#-2-github-준비하기)
-    * [🚀 2.1 GitHub 가입 및 Fork](#-21-github-가입-및-fork)
-      * [1️⃣ GitHub 가입](#1-github-가입)
-      * [2️⃣ 블로그 템플릿 Fork](#2-블로그-템플릿-fork)
-      * [3️⃣ Repository 이름 설정](#3-repository-이름-설정)
-    * [⚡ 2.2 Actions 및 Pages 활성화](#-22-actions-및-pages-활성화)
-      * [1️⃣ Actions 활성화](#1-actions-활성화)
-      * [2️⃣ GitHub Pages 설정](#2-github-pages-설정)
-    * [🔐 2.3 Notion 정보 등록 (Secrets)](#-23-notion-정보-등록-secrets)
-      * [1️⃣ Secrets 페이지 이동](#1-secrets-페이지-이동)
-      * [2️⃣ 필수 Secrets 등록](#2-필수-secrets-등록)
-  * [💬 3. 댓글 시스템 설정 (선택)](#-3-댓글-시스템-설정-선택)
-    * [🗣️ 3.1 GitHub Discussions 활성화](#-31-github-discussions-활성화)
-      * [1️⃣ Discussions 기능 활성화](#1-discussions-기능-활성화)
-    * [📦 3.2 giscus 앱 설치](#-32-giscus-앱-설치)
-      * [1️⃣ giscus 앱 설치](#1-giscus-앱-설치)
-    * [⚙️ 3.3 giscus 설정값 생성](#-33-giscus-설정값-생성)
-      * [1️⃣ giscus 설정 페이지 접속](#1-giscus-설정-페이지-접속)
-      * [2️⃣ 저장소 및 설정 입력](#2-저장소-및-설정-입력)
-      * [3️⃣ 설정값 복사](#3-설정값-복사)
-      * [4️⃣ GitHub Secrets에 값 등록](#4-github-secrets에-값-등록)
-  * [🚀 4. 배포 실행하기](#-4-배포-실행하기)
-    * [▶️ 4.1 배포 Workflow 실행](#-41-배포-workflow-실행)
-      * [1️⃣ Actions 탭 이동](#1-actions-탭-이동)
-      * [2️⃣ 배포 실행](#2-배포-실행)
-      * [3️⃣ 배포 진행 확인](#3-배포-진행-확인)
-  * [✨ 5. 블로그 확인하기](#-5-블로그-확인하기)
-    * [🌐 5.1 블로그 접속](#-51-블로그-접속)
-    * [📝 5.2 블로그 운영](#-52-블로그-운영)
-      * [✍️ 새 글 작성하기](#-새-글-작성하기)
-      * [⚡ 즉시 반영하기](#-즉시-반영하기)
-  * [🎉 설치 완료!](#-설치-완료)
-    * [📋 다음 단계](#-다음-단계)
-    * [🎯 추가 기능 가이드](#-추가-기능-가이드)
-  * [📚 참고 문서](#-참고-문서)
+- [빠른 설치 가이드](#빠른-설치-가이드)
+  - [📚 Notion CMS 블로그란?](#-notion-cms-블로그란)
+  - [🎨 1. Notion 준비하기](#-1-notion-준비하기)
+    - [🔑 1.1 Notion 가입 및 API Key 발급](#-11-notion-가입-및-api-key-발급)
+      - [1️⃣ Notion 가입](#1️⃣-notion-가입)
+      - [2️⃣ Notion API Integration 생성](#2️⃣-notion-api-integration-생성)
+      - [3️⃣ Integration 정보 입력](#3️⃣-integration-정보-입력)
+      - [4️⃣ API Key 복사](#4️⃣-api-key-복사)
+    - [📄 1.2 블로그 템플릿 복사하기](#-12-블로그-템플릿-복사하기)
+      - [1️⃣ 템플릿 페이지 복사](#1️⃣-템플릿-페이지-복사)
+      - [2️⃣ Integration 연결](#2️⃣-integration-연결)
+    - [🆔 1.3 데이터베이스 ID 추출하기](#-13-데이터베이스-id-추출하기)
+      - [1️⃣ About me 페이지 ID 추출](#1️⃣-about-me-페이지-id-추출)
+      - [2️⃣ 데이터베이스 ID 추출 (Site, Profile, Posts)](#2️⃣-데이터베이스-id-추출-site-profile-posts)
+  - [🐙 2. GitHub 준비하기](#-2-github-준비하기)
+    - [🚀 2.1 GitHub 가입 및 Fork](#-21-github-가입-및-fork)
+      - [1️⃣ GitHub 가입](#1️⃣-github-가입)
+      - [2️⃣ 블로그 템플릿 Fork](#2️⃣-블로그-템플릿-fork)
+      - [3️⃣ Repository 이름 설정](#3️⃣-repository-이름-설정)
+    - [⚡ 2.2 Actions 및 Pages 활성화](#-22-actions-및-pages-활성화)
+      - [1️⃣ Actions 활성화](#1️⃣-actions-활성화)
+      - [2️⃣ GitHub Pages 설정](#2️⃣-github-pages-설정)
+    - [🔐 2.3 Notion 정보 등록 (Secrets)](#-23-notion-정보-등록-secrets)
+      - [1️⃣ Secrets 페이지 이동](#1️⃣-secrets-페이지-이동)
+      - [2️⃣ 필수 Secrets 등록](#2️⃣-필수-secrets-등록)
+  - [💬 3. 댓글 시스템 설정 (선택)](#-3-댓글-시스템-설정-선택)
+    - [🗣️ 3.1 GitHub Discussions 활성화](#️-31-github-discussions-활성화)
+      - [1️⃣ Discussions 기능 활성화](#1️⃣-discussions-기능-활성화)
+    - [📦 3.2 giscus 앱 설치](#-32-giscus-앱-설치)
+      - [1️⃣ giscus 앱 설치](#1️⃣-giscus-앱-설치)
+    - [⚙️ 3.3 giscus 설정값 생성](#️-33-giscus-설정값-생성)
+      - [1️⃣ giscus 설정 페이지 접속](#1️⃣-giscus-설정-페이지-접속)
+      - [2️⃣ 저장소 및 설정 입력](#2️⃣-저장소-및-설정-입력)
+      - [3️⃣ 설정값 복사](#3️⃣-설정값-복사)
+      - [4️⃣ GitHub Secrets에 값 등록](#4️⃣-github-secrets에-값-등록)
+  - [🚀 4. 배포 실행하기](#-4-배포-실행하기)
+    - [▶️ 4.1 배포 Workflow 실행](#️-41-배포-workflow-실행)
+      - [1️⃣ Actions 탭 이동](#1️⃣-actions-탭-이동)
+      - [2️⃣ 배포 실행](#2️⃣-배포-실행)
+      - [3️⃣ 배포 진행 확인](#3️⃣-배포-진행-확인)
+  - [✨ 5. 블로그 확인하기](#-5-블로그-확인하기)
+    - [🌐 5.1 블로그 접속](#-51-블로그-접속)
+    - [📝 5.2 블로그 운영](#-52-블로그-운영)
+      - [✍️ 새 글 작성하기](#️-새-글-작성하기)
+      - [⚡ 즉시 반영하기](#-즉시-반영하기)
+  - [🎉 설치 완료!](#-설치-완료)
+    - [📋 다음 단계](#-다음-단계)
+    - [🎯 추가 기능 가이드](#-추가-기능-가이드)
+  - [🔄 6. 블로그 업데이트하기 (Sync Fork)](#-6-블로그-업데이트하기-sync-fork)
+    - [🔁 6.1 Fork 저장소 동기화](#-61-fork-저장소-동기화)
+      - [1️⃣ 업데이트 실행](#1️⃣-업데이트-실행)
+      - [3️⃣ 동기화 완료 확인](#3️⃣-동기화-완료-확인)
+  - [📚 참고 문서](#-참고-문서)
 <!-- TOC -->
 
 ---
@@ -683,6 +687,65 @@ https://your-username.github.io
   - 자주 묻는 질문 (FAQ)
   - 배포 실패 해결 방법
   - Notion API 오류 해결
+
+---
+
+## 🔄 6. 블로그 업데이트하기 (Sync Fork)
+
+> 💡 **언제 필요한가요?**
+> 원본 저장소(freelife1191/nextjs-notion-blog)에 새로운 기능이나 버그 수정이 추가되었을 때, fork한 저장소를 최신 상태로 업데이트하기 위해 필요합니다.
+
+### 🔁 6.1 Fork 저장소 동기화
+
+**📌 필요한 것:**
+- Fork한 GitHub 저장소 접속
+- 원본 저장소에 새로운 업데이트가 있는 경우
+
+---
+
+#### 1️⃣ 업데이트 실행
+
+1. fork한 저장소 메인 페이지 접속
+   - 예: `https://github.com/your-username/your-username.github.io`
+2. 저장소 이름 아래에 다음 메시지 확인:
+   - `This branch is X commits behind freelife1191:main`
+3. 우측의 `Sync fork` 버튼 확인
+
+> ⚠️ **주의:** 업데이트가 없는 경우 "This branch is up to date" 메시지가 표시되며, Sync fork 버튼이 비활성화됩니다.
+
+4. `Sync fork` 버튼 클릭
+5. 드롭다운 메뉴에서 `Update branch` 버튼 클릭
+6. 자동으로 원본 저장소의 최신 변경사항이 병합됩니다
+
+![스크린샷: Update branch 실행](./attachments/43.jpg)
+
+> 💡 **팁:** 충돌(conflict)이 발생하는 경우 `Discard changes` 또는 `Compare` 옵션을 선택할 수 있습니다.
+> - `Discard changes`: 내 변경사항을 버리고 원본 저장소 내용으로 덮어씁니다
+> - `Compare`: 충돌을 수동으로 해결합니다 (개발자용)
+
+---
+
+#### 3️⃣ 동기화 완료 확인
+
+1. 페이지가 새로고침되며 "This branch is up to date" 메시지 표시
+2. 자동으로 GitHub Actions가 트리거되어 새로운 배포가 시작됩니다
+3. `Actions` 탭에서 배포 진행 상황 확인 가능
+
+![스크린샷: Sync fork 완료](./attachments/44.jpg)
+
+**✅ 완료 확인:**
+- [ ] "This branch is up to date" 메시지 확인
+- [ ] GitHub Actions 자동 실행 확인
+- [ ] 배포 완료 후 블로그에서 업데이트 내용 확인
+
+> 📖 **자동 배포:** Sync fork 완료 후 GitHub Actions가 자동으로 실행되어 블로그가 업데이트됩니다. 별도로 배포를 실행할 필요가 없습니다.
+
+**🔔 업데이트 알림 받기:**
+
+원본 저장소의 업데이트를 받으려면:
+1. 원본 저장소([freelife1191/nextjs-notion-blog](https://github.com/freelife1191/nextjs-notion-blog)) 방문
+2. 우측 상단 `Watch` → `Custom` → `Releases` 선택
+3. 새로운 릴리즈가 발표되면 이메일로 알림을 받습니다
 
 ---
 
