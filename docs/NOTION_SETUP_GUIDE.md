@@ -3,6 +3,30 @@
 이 문서는 Notion을 이용한 블로그 운영을 위한 전체 설정 방법을 **처음부터 끝까지** 설명합니다.
 Notion을 처음 사용하시는 분도 따라하실 수 있도록 작성되었습니다.
 
+## 📚 Notion CMS 블로그 이해하기
+
+**Notion CMS(Content Management System)**는 Notion을 블로그의 콘텐츠 관리 시스템으로 활용하는 방식입니다.
+
+**핵심 원리:**
+- 📝 **Notion 데이터베이스** = 블로그 글 목록
+- 🔄 **Notion API** = Notion과 블로그를 연결하는 다리
+- 🏗️ **Next.js** = Notion 데이터를 웹 페이지로 변환
+- 🌐 **GitHub Pages** = 생성된 블로그를 인터넷에 공개
+
+**왜 Notion을 CMS로 사용하나요?**
+- ✅ **익숙한 도구** - 별도의 블로그 관리자 페이지 학습 불필요
+- ✅ **무료** - Notion 무료 플랜으로 충분
+- ✅ **자동 백업** - Notion에 모든 콘텐츠가 안전하게 저장
+- ✅ **협업 가능** - Notion 공유 기능으로 팀 블로그 운영 가능
+
+**Notion API 무료 조회 제한:**
+- ⚠️ **Rate Limit**: 초당 3회 요청 제한
+- ⚠️ **대량 데이터**: 1,000개 이상의 글이 있으면 빌드 시간 증가
+- ✅ **무료 사용 가능**: 요금은 무료지만 속도 제한이 있음
+- ✅ **소~중형 블로그에 최적**: 100~500개 글 수준에서 가장 효율적
+
+💡 **이 가이드를 따라하면 Notion 데이터베이스를 블로그와 연결**할 수 있습니다!
+
 ## 📋 설정 전 준비사항
 
 시작하기 전에 다음 항목들을 준비해주세요:
@@ -90,7 +114,7 @@ graph TD
       - [4. 페이지별 Integration 연결 관리](#4-페이지별-integration-연결-관리)
       - [5. API 사용량 모니터링](#5-api-사용량-모니터링)
       - [6. 의심스러운 활동 감지](#6-의심스러운-활동-감지)
-  - [2. 포스팅 데이터베이스 설정](#2-포스팅-데이터베이스-설정)
+  - [2. Posts 데이터베이스 설정](#2-블로그-데이터베이스-설정)
     - [2.1 데이터베이스 생성](#21-데이터베이스-생성)
     - [2.2 필수 속성 추가](#22-필수-속성-추가)
     - [2.3 Status 속성 설정](#23-status-속성-설정)
@@ -183,7 +207,7 @@ graph TD
       - [데이터 손실 방지 팁](#데이터-손실-방지-팁)
       - [비상 상황 대응](#비상-상황-대응)
   - [부록: 속성 이름 참조표](#부록-속성-이름-참조표)
-    - [포스팅 데이터베이스](#포스팅-데이터베이스)
+    - [Posts 데이터베이스](#블로그-데이터베이스)
   - [9. 다음 단계](#9-다음-단계)
     - [9.1 포스트 작성하기](#91-포스트-작성하기)
     - [9.2 GitHub Pages 배포](#92-github-pages-배포)
@@ -382,7 +406,7 @@ Notion API는 **Rate Limit**이 있습니다:
 
 ---
 
-## 2. 포스팅 데이터베이스 설정
+## 2. Posts 데이터베이스 설정
 
 ### 2.1 데이터베이스 생성
 
@@ -405,7 +429,6 @@ Notion API는 **Rate Limit**이 있습니다:
 | **Tags** | Multi-select | ⬜ | 태그 목록 |
 | **Description** | Text | ⬜ | 포스트 요약/설명 |
 | **CoverImage** | Files | ⬜ | 커버 이미지 |
-| **Language** | Select | ⬜ | 언어 (예: "ko", "en") |
 | **Author** | Person 또는 Text | ⬜ | 작성자 (Notion 사용자 선택 또는 직접 입력) |
 
 ### 2.3 Status 속성 설정
@@ -594,7 +617,7 @@ a1b2c3d4e5f6789012345678abcdef12
 #### 상세 단계
 
 1. **데이터베이스 페이지 열기**
-   - 포스팅 데이터베이스 페이지로 이동
+   - Posts 데이터베이스 페이지로 이동
 
 2. **연결 메뉴 찾기**
    - 방법 1: 페이지 우측 상단의 **⋯** (점 3개) 메뉴 클릭
@@ -814,7 +837,7 @@ a1b2c3d4e5f6789012345678abcdef12
 
 **방법 2: CoverImage 속성 사용**
 
-1. 포스팅 데이터베이스에서 포스트 선택
+1. Posts 데이터베이스에서 포스트 선택
 2. `CoverImage` 속성에 이미지 업로드
 3. 이미지 파일 선택 또는 URL 입력
 
@@ -1329,7 +1352,7 @@ cp .env.example .env.local
 # Notion Integration API Key (필수)
 NOTION_API_KEY=secret_your_notion_api_key_here
 
-# 포스팅 데이터베이스 ID (필수)
+# Posts 데이터베이스 ID (필수)
 NOTION_DATABASE_ID=your_database_id_here
 
 # 프로필 설정 데이터베이스 ID (선택사항)
@@ -1395,7 +1418,7 @@ NOTION_ABOUT_PAGE_ID=9876543210abcdef123456789xyz1234
 | 변수명 | 필수 | 설명 |
 |--------|------|------|
 | `NOTION_API_KEY` | ✅ | Notion Integration의 Internal Token |
-| `NOTION_DATABASE_ID` | ✅ | 포스팅 데이터베이스의 ID |
+| `NOTION_DATABASE_ID` | ✅ | Posts 데이터베이스의 ID |
 | `NOTION_PROFILE_DATABASE_ID` | ⬜ | 프로필 설정 데이터베이스의 ID (없으면 기본값 사용) |
 | `NOTION_SITE_DATABASE_ID` | ⬜ | 사이트 설정 데이터베이스의 ID (없으면 기본값 사용) |
 | `NOTION_ABOUT_PAGE_ID` | ⬜ | About 페이지의 ID (없으면 About 페이지 미표시) |
@@ -1671,7 +1694,7 @@ Notion 데이터는 귀중한 자산입니다. 정기적인 백업으로 데이�
 6. ZIP 파일 다운로드
 
 **언제 사용:**
-- 블로그 포스팅 데이터베이스만 백업
+- 블로그 Posts 데이터베이스만 백업
 - 특정 포스트 그룹만 별도 보관
 - 빠른 백업이 필요한 경우
 
@@ -1855,7 +1878,7 @@ notion-backup-YYYY-MM-DD.zip
 
 ## 부록: 속성 이름 참조표
 
-### 포스팅 데이터베이스
+### Posts 데이터베이스
 
 ```javascript
 {
@@ -1867,7 +1890,6 @@ notion-backup-YYYY-MM-DD.zip
   date: 'Date',          // 날짜
   description: 'Description',  // 설명
   coverImage: 'CoverImage',    // 커버 이미지
-  language: 'Language',        // 언어
   author: 'Author',            // 작성자
 }
 ```
@@ -1886,7 +1908,7 @@ notion-backup-YYYY-MM-DD.zip
 ### 9.1 포스트 작성하기
 
 1. **Notion 데이터베이스 열기**
-   - 앞서 만든 포스팅 데이터베이스로 이동
+   - 앞서 만든 Posts 데이터베이스로 이동
 
 2. **새 포스트 추가**
    - 데이터베이스 하단에 "New" 버튼 클릭

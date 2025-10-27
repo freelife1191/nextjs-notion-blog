@@ -16,67 +16,25 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 
 ---
 
-## 🚀 주요 기능 및 기술
+## 🚀 빠른 시작 (20분이면 완성!)
 
-| 기능 | 상태 | 설명 | 완료 일자 |
-|------|------|------|----------|
-| **💰 무료 운영** | | **100% 무료 블로그** | |
-| └─ 📝 Notion | ✅ **완료** | 무료 CMS | 2025-10-24 |
-| └─ 🐙 GitHub | ✅ **완료** | 무료 저장소 | 2025-10-24 |
-| └─ 🔄 GitHub Actions | ✅ **완료** | 무료 CI/CD | 2025-10-24 |
-| └─ 🌐 GitHub Pages | ✅ **완료** | 무료 호스팅 | 2025-10-24 |
-| └─ ⏰ Cron Workflow | ✅ **완료** | 1시간마다 자동 빌드 | 2025-10-24 |
-| **🛠️ 핵심 기술** | | **주요 기술 스택** | |
-| └─ ⚛️ Next.js 15 | ✅ **완료** | App Router, RSC | 2025-10-24 |
-| └─ 📘 TypeScript | ✅ **완료** | Strict Mode, Type Safety | 2025-10-24 |
-| └─ 🎨 Tailwind CSS | ✅ **완료** | Typography, Utility-first | 2025-10-24 |
-| └─ 🧩 shadcn/ui | ✅ **완료** | UI 컴포넌트 시스템 | 2025-10-24 |
-| └─ ✨ Lucide React | ✅ **완료** | 1000+ 아이콘 라이브러리 | 2025-10-24 |
-| └─ 🎬 Framer Motion | ✅ **완료** | 부드러운 애니메이션 | 2025-10-24 |
-| └─ ✅ Zod | ✅ **완료** | 스키마 검증 | 2025-10-24 |
-| └─ 🧪 Vitest + Playwright | ✅ **완료** | 359개 Unit + 5개 E2E 테스트 | 2025-10-25 |
-| **✨ 핵심 기능** | | **블로그 핵심 기능** | |
-| └─ 🔄 Notion 동기화 | ✅ **완료** | 1시간마다 자동 동기화 | 2025-10-24 |
-| └─ 💬 댓글 | ✅ **완료** | Giscus 댓글 시스템 | 2025-10-22 |
-| └─ 👤 About Me | ✅ **완료** | Notion 페이지 동기화 | 2025-10-22 |
-| └─ ⚙️ 프로필 설정 | ✅ **완료** | 15개 소셜 링크, Bio 마크다운 | 2025-10-25 |
-| └─ 📝 블로그 포스팅 | ✅ **완료** | Notion DB 동기화 | 2025-10-25 |
-| └─ 📦 기본 블록 (7개) | ✅ **완료** | 단락, 제목, 목록, 체크리스트 | 2025-10-25 |
-| └─ 🎬 미디어 블록 (5개) | ✅ **완료** | 이미지, 비디오, 오디오, PDF | 2025-10-25 |
-| └─ 💻 고급 블록 (7개) | ✅ **완료** | 코드, 수식, 표, 콜아웃 | 2025-10-25 |
-| └─ 🔗 임베드 블록 (3개) | ✅ **완료** | Bookmark, Embed, Link Preview | 2025-10-25 |
-| └─ 📂 DB & 페이지 (5개) | ✅ **완료** | 하위 페이지, DB, 동기화 블록 | 2025-10-25 |
-| └─ 🔧 기타 (2개) | ✅ **완료** | 브레드크럼, 미지원 블록 | 2025-10-25 |
-| └─ 🔗 앵커 링크 | ✅ **완료** | 헤딩 URL 복사, 부드러운 스크롤 | 2025-10-25 |
-| └─ 📝 마크다운 지원 | ✅ **완료** | Bio, 홈, 포스트 마크다운 | 2025-10-25 |
-| **🎨 사이트 설정** | | **Notion 기반 사이트 설정** | |
-| └─ 🔐 보안 설정 | ✅ **완료** | API 키 Secrets 암호화 | 2025-10-24 |
-| └─ 📄 기본 정보 | ✅ **완료** | 사이트 제목, 설명, 파비콘 | 2025-10-24 |
-| └─ 📊 분석 도구 | ✅ **완료** | Google Analytics 4 연동 | 2025-10-24 |
-| └─ 💰 수익화 | ✅ **완료** | Google AdSense Auto Ads | 2025-10-25 |
-| └─ 🔍 SEO 최적화 | ✅ **완료** | 메타 태그, sitemap, RSS | 2025-10-24 |
-| └─ 🖼️ Open Graph | ✅ **완료** | OG 이미지, 소셜 미리보기 | 2025-10-25 |
-| **🌐 사이트 URL 설정** | | **도메인 및 경로 설정** | |
-| └─ 🏠 커스텀 도메인 | ⚠️ **검증중** | 개인 도메인 연결 가이드 | - |
-| └─ 🔒 HTTPS | ✅ **완료** | 자동 SSL 인증서 (GitHub Pages) | 2025-10-22 |
-| **🎯 UX/UI 기능** | | **사용자 경험 향상** | |
-| └─ 🌓 다크 모드 | ✅ **완료** | 시스템 설정 기반 자동 전환 | 2025-10-22 |
-| └─ 📱 반응형 디자인 | ✅ **완료** | 모바일/태블릿/데스크톱 지원 | 2025-10-22 |
-| └─ 🔍 스마트 필터링 | ✅ **완료** | 월별, 태그, 라벨 필터 | 2025-10-23 |
-| └─ 📄 페이지네이션 | ✅ **완료** | 포스트 목록 페이징 | 2025-10-23 |
-| └─ 🖼️ 이미지 줌 | ✅ **완료** | 이미지 확대 모달 | 2025-10-24 |
-| **⚡ 성능 최적화** | | **성능 개선 기능** | |
-| └─ 🚀 이미지 최적화 | ✅ **완료** | Priority, Blur, Preload | 2025-10-25 |
-| └─ ⚡ Static Export | ✅ **완료** | SSG 사전 빌드 | 2025-10-24 |
-| └─ 💾 캐싱 시스템 | ✅ **완료** | 빌드 타임 캐싱 | 2025-10-24 |
-| └─ 🔄 Prefetch | ✅ **완료** | 자동 페이지 프리페치 | 2025-10-25 |
-| └─ ⚙️ Turbopack | ✅ **완료** | 초고속 번들러 | 2025-10-24 |
-| └─ 🎯 Code Splitting | ✅ **완료** | 동적 import 최적화 | 2025-10-24 |
-| **🛡️ 품질 보증** | | **테스트 & 안정성** | |
-| └─ 🧪 Unit Tests | ✅ **완료** | 359개 테스트 (14개 파일) | 2025-10-25 |
-| └─ 🎭 E2E Tests | ✅ **완료** | Playwright (5개 파일) | 2025-10-25 |
-| └─ 🔄 회귀 테스트 | ✅ **완료** | 이전 버그 재발 방지 | 2025-10-25 |
-| └─ ✅ 100% 테스트 통과 | ✅ **완료** | CI/CD 자동 검증 | 2025-10-25 |
+**📘 [빠른 설치 가이드](./docs/QUICK_INSTALLATION_GUIDE.md)** ⭐ **가장 빠른 방법!**
+- ⏱️ **20분 완성** - 가장 간단하고 빠른 가이드
+- 💻 **코딩 불필요** - 웹 브라우저에서 클릭만으로 완료
+- 📸 **스크린샷 제공** - 모든 단계를 이미지와 함께 안내
+- ✅ **즉시 시작 가능** - Node.js, Git 등 개발 도구 설치 불필요
+
+**또는 [비개발자를 위한 완전 가이드](./docs/NON_DEVELOPER_GUIDE.md)** (30분)
+- 더 자세한 설명이 필요하다면 이 가이드를 선택하세요
+
+---
+
+**👨‍💻 개발자이신가요?**
+
+로컬 개발 환경을 설정하고 커스터마이징하고 싶다면 **[개발자 가이드](./docs/DEVELOPER_GUIDE.md)** (60분)를 참고하세요.
+- Node.js 20+, Git 필요
+- 로컬 개발 환경 설정
+- 테스트 실행 및 커스터마이징
 
 ---
 
@@ -105,34 +63,181 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 
 **💡 사용 방법:** Notion에서 글 작성 → Status를 "Publish"로 변경 → 완료! 나머지는 자동입니다.
 
-## 📖 목차
-
-- [💡 프로젝트 소개](#-프로젝트-소개)
-- [⚡ 빠른 시작 가이드](#-빠른-시작-가이드)
-- [🛠️ 기술 스택](#️-기술-스택)
-- [🎯 주요 기능](#-주요-기능)
-- [🏗️ 아키텍처](#️-아키텍처)
-- [🚀 시작하기](#-시작하기)
-  - [1. 사전 준비](#1-사전-준비)
-  - [2. 프로젝트 Fork 및 Clone](#2-프로젝트-fork-및-clone)
-  - [3. Notion 설정](#3-notion-설정)
-  - [4. GitHub 설정](#4-github-설정)
-  - [5. 로컬 개발 환경 설정](#5-로컬-개발-환경-설정)
-  - [6. 블로그 배포](#6-블로그-배포)
-- [📝 블로그 운영 가이드](#-블로그-운영-가이드)
-- [⚙️ 고급 설정](#️-고급-설정)
-- [👨‍💻 개발자 가이드](#-개발자-가이드)
-- [🔧 트러블슈팅](#-트러블슈팅)
-- [❓ FAQ](#-faq)
-- [🤝 개발 참여](#-개발-참여)
-- [📄 라이센스](#-라이센스)
-- [🙏 감사의 말](#-감사의-말)
+<!-- TOC -->
+* [Next.js Notion Blog](#nextjs-notion-blog)
+  * [🚀 빠른 시작 (20분이면 완성!)](#-빠른-시작-20분이면-완성)
+  * [✨ 핵심 기능](#-핵심-기능)
+    * [🎯 **Notion에서 모든 것을 관리**](#-notion에서-모든-것을-관리)
+    * [⚡ **완전 자동 동기화**](#-완전-자동-동기화)
+  * [💡 프로젝트 소개](#-프로젝트-소개)
+    * [📚 Notion CMS란?](#-notion-cms란)
+    * [⚖️ Notion CMS 블로그의 장단점](#-notion-cms-블로그의-장단점)
+    * [📊 규모별 적합성](#-규모별-적합성)
+    * [왜 이 프로젝트를 사용해야 하나요?](#왜-이-프로젝트를-사용해야-하나요)
+    * [데모](#데모)
+    * [버그 제보 및 기능 요청](#버그-제보-및-기능-요청)
+  * [🛠️ 기술 스택](#-기술-스택)
+    * [🎨 프론트엔드](#-프론트엔드)
+    * [⚙️ 백엔드 & 인프라](#-백엔드--인프라)
+    * [🧪 개발 도구 & 품질 보증](#-개발-도구--품질-보증)
+    * [🔌 추가 기능](#-추가-기능)
+  * [🎯 주요 기능](#-주요-기능)
+    * [📝 콘텐츠 관리](#-콘텐츠-관리)
+    * [🎨 블로그 기능](#-블로그-기능)
+    * [🚀 SEO & 성능](#-seo--성능)
+    * [🎨 사이트 설정](#-사이트-설정)
+    * [💰 분석 & 수익화](#-분석--수익화)
+    * [🛡️ 품질 보증](#-품질-보증)
+  * [📁 디렉토리 구조](#-디렉토리-구조)
+  * [📝 블로그 운영 가이드](#-블로그-운영-가이드)
+    * [새 글 작성하기](#새-글-작성하기)
+    * [글 수정하기](#글-수정하기)
+    * [글 삭제/숨기기](#글-삭제숨기기)
+    * [태그 관리](#태그-관리)
+    * [커버 이미지 설정](#커버-이미지-설정)
+    * [프로필 업데이트](#프로필-업데이트)
+    * [About 페이지 수정](#about-페이지-수정)
+    * [필터링 기능 사용하기](#필터링-기능-사용하기)
+      * [1. 월별 필터링](#1-월별-필터링)
+      * [2. 라벨 필터링](#2-라벨-필터링)
+      * [3. 태그 필터링](#3-태그-필터링)
+      * [필터 초기화](#필터-초기화)
+      * [페이지네이션과 필터링](#페이지네이션과-필터링)
+  * [⚙️ 고급 설정](#-고급-설정)
+    * [댓글 시스템 (Giscus)](#댓글-시스템-giscus)
+    * [SEO & 분석](#seo--분석)
+  * [👨‍💻 개발자 가이드](#-개발자-가이드)
+  * [🔧 트러블슈팅](#-트러블슈팅)
+    * [자주 발생하는 문제](#자주-발생하는-문제)
+  * [❓ FAQ](#-faq)
+    * [Q: 완전 무료인가요?](#q-완전-무료인가요)
+    * [Q: 댓글 기능이 있나요?](#q-댓글-기능이-있나요)
+    * [Q: 여러 명이 함께 운영할 수 있나요?](#q-여러-명이-함께-운영할-수-있나요)
+    * [Q: 비공개 글 작성이 가능한가요?](#q-비공개-글-작성이-가능한가요)
+    * [Q: HTTPS를 지원하나요?](#q-https를-지원하나요)
+  * [🤝 개발 참여](#-개발-참여)
+  * [📢 사용 시 출처 표시 부탁드립니다](#-사용-시-출처-표시-부탁드립니다)
+    * [출처 표시 방법 (권장)](#출처-표시-방법-권장)
+    * [왜 출처 표시가 중요한가요?](#왜-출처-표시가-중요한가요)
+  * [📄 라이센스](#-라이센스)
+  * [🙏 감사의 말](#-감사의-말)
+    * [핵심 프레임워크](#핵심-프레임워크)
+    * [CMS & 데이터](#cms--데이터)
+    * [UI & 스타일링](#ui--스타일링)
+    * [테스팅](#테스팅)
+    * [디자인 참고](#디자인-참고)
+<!-- TOC -->
 
 ---
 
 ## 💡 프로젝트 소개
 
 이 프로젝트는 **Notion을 CMS로 활용**하여 블로그를 자동으로 생성하고 **GitHub Pages에 배포**하는 시스템입니다.
+
+### 📚 Notion CMS란?
+
+**Notion CMS(Content Management System)** 는 문서 작성 도구인 Notion을 블로그의 콘텐츠 관리 시스템으로 사용하는 방식입니다.
+
+**전통적인 블로그 vs Notion CMS 블로그:**
+
+| 구분 | 전통적인 블로그 | Notion CMS 블로그 |
+|------|--------------|------------------|
+| **글 작성** | WordPress 관리자 페이지 | 익숙한 Notion 에디터 |
+| **에디터** | 별도 학습 필요 | Notion 사용 경험 그대로 |
+| **이미지 업로드** | 별도 업로드 절차 | Notion에 붙여넣기만 |
+| **백업** | 별도 백업 필요 | Notion에 자동 저장 |
+| **협업** | 제한적 | Notion 공유 기능 활용 |
+| **비용** | 호스팅 비용 발생 | 완전 무료 |
+
+**Notion CMS 아키텍처:**
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         사용자                               │
+│                     (콘텐츠 작성자)                          │
+└────────────────────────┬────────────────────────────────────┘
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │      📝 Notion       │ ← 콘텐츠 작성 및 관리
+              │        (CMS)         │   - 글 작성 (29가지 블록)
+              │                      │   - Status: Publish 설정
+              └──────────┬───────────┘   - 태그, 카테고리 관리
+                         │
+                         │ Notion API
+                         │ (초당 3회 제한)
+                         ▼
+              ┌──────────────────────┐
+              │  🔄 GitHub Actions   │ ← 1시간마다 자동 동기화
+              │   (Cron: 0 */1 *)    │   - Cron 스케줄링
+              │                      │   - 자동 빌드 트리거
+              └──────────┬───────────┘   - 환경 변수 관리
+                         │
+                         │ Build & Deploy
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │    🏗️ Next.js 15     │ ← Static Export 빌드
+              │       (SSG)          │   - getStaticProps
+              │                      │   - generateStaticParams
+              └──────────┬───────────┘   - Notion 블록 → React
+                         │
+                         │ HTML/CSS/JS
+                         │ (out/ 디렉토리)
+                         ▼
+              ┌──────────────────────┐
+              │  🌐 GitHub Pages     │ ← 무료 호스팅
+              │       (CDN)          │   - HTTPS 자동 인증서
+              │                      │   - 전 세계 CDN 배포
+              └──────────┬───────────┘   - 빠른 로딩 속도
+                         │
+                         ▼
+              ┌──────────────────────┐
+              │     👥 독자          │ ← 블로그 방문
+              │  https://username    │   - 정적 페이지 (매우 빠름)
+              │    .github.io        │   - SEO 최적화
+              └──────────────────────┘   - 다크모드, 댓글 등
+```
+
+**데이터 흐름:**
+1. **📝 Notion** → 글 작성 & Status를 "Publish"로 변경
+2. **⏰ 1시간 대기** → GitHub Actions Cron이 자동 실행
+3. **🔄 GitHub Actions** → Notion API 호출하여 콘텐츠 조회
+4. **🏗️ Next.js** → Notion 데이터를 HTML/CSS/JS로 변환 (SSG)
+5. **📦 빌드** → `out/` 디렉토리에 정적 파일 생성
+6. **🚀 배포** → GitHub Pages에 자동 업로드
+7. **🌐 공개** → `https://username.github.io`에서 접속 가능
+
+### ⚖️ Notion CMS 블로그의 장단점
+
+**✅ 장점:**
+- **편리한 글 작성** - Notion의 직관적인 에디터로 HTML/CSS 지식 없이 글 작성 가능
+- **완전 무료** - Notion 무료 플랜 + GitHub 무료 서비스로 운영 비용 0원
+- **자동 백업** - Notion에 모든 콘텐츠가 저장되어 안전
+- **협업 친화적** - Notion 공유 기능으로 팀 블로그 운영 가능
+- **버전 관리** - Notion의 페이지 기록으로 이전 버전 복구 가능
+- **빠른 성능** - 정적 사이트 생성(SSG)으로 매우 빠른 로딩 속도
+
+**⚠️ 단점 및 제약사항:**
+- **빌드 시간** - 페이지가 많을수록 빌드 시간 증가 (100개 글 기준 약 2-3분)
+- **Notion API 제한** - 초당 3회 요청 제한 (Rate Limit)
+- **실시간 반영 불가** - 글 작성 후 1시간 이내 반영 (수동 배포로 즉시 가능)
+- **대규모 사이트** - 1,000개 이상의 글이 있는 경우 빌드 시간이 길어질 수 있음
+
+### 📊 규모별 적합성
+
+이 프로젝트는 **소~중형 블로그**에 최적화되어 있습니다:
+
+| 블로그 규모 | 글 개수 | 빌드 시간 | 권장사항 |
+|-----------|--------|---------|---------|
+| **소형** | ~100개 | 1-3분 | ✅ **매우 적합** - 빠른 빌드, 무료 운영 |
+| **중형** | 100~500개 | 3-10분 | ✅ **적합** - ISR 방식 권장 |
+| **대형** | 500~1,000개 | 10-30분 | ⚠️ **주의** - 캐싱 최적화 필수 |
+| **초대형** | 1,000개+ | 30분+ | ❌ **비권장** - Headless CMS 검토 |
+
+💡 **대규모 블로그를 운영하고 싶다면?**
+- Notion CMS 최적화 서비스: [Feather.so](https://feather.so), [Super.so](https://super.so)
+- 또는 Contentful, Strapi, Sanity 같은 전문 Headless CMS 고려
 
 ### 왜 이 프로젝트를 사용해야 하나요?
 
@@ -157,62 +262,6 @@ YOUR-REPO-NAME을 본인의 저장소 이름으로 교체하세요.
 - 📖 **문서 개선**: 오타나 불명확한 설명이 있다면 PR을 보내주세요
 
 여러분의 피드백이 프로젝트를 더 좋게 만듭니다!
-
----
-
-## ⚡ 빠른 시작 가이드
-
-사용자 유형에 따라 적합한 가이드를 선택하세요:
-
-### 👨‍💻 개발자이신가요?
-
-기술적인 배경이 있고 로컬 개발 환경 설정이 가능하시다면:
-- **[개발자용 상세 가이드](#시작하기)** (아래 "시작하기" 섹션)
-- Node.js, Git, 터미널 명령어 사용
-- 로컬에서 미리보기 및 커스터마이징
-
-### 👤 비개발자이신가요?
-
-프로그래밍 지식이 없어도 괜찮습니다! 웹 브라우저만으로 모든 설정이 가능합니다:
-- **📘 [비개발자를 위한 완전 가이드](./docs/NON_DEVELOPER_GUIDE.md)**
-- GitHub 웹사이트에서 모든 작업 진행
-- 로컬 개발 환경 불필요
-- 단계별 스크린샷과 자세한 설명
-- 약 30분 소요
-
-### 📚 Notion 설정이 처음이신가요?
-
-Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
-- **[Notion 설정 가이드](./docs/NOTION_SETUP_GUIDE.md)**
-- Posts 데이터베이스 생성 방법
-- Settings 데이터베이스 설정 (선택)
-- About 페이지 설정 (선택)
-
-### 💬 댓글 기능을 추가하고 싶으신가요?
-
-블로그에 무료 댓글 시스템을 추가하려면:
-- **📘 [Giscus 댓글 시스템 설정 가이드](./docs/GISCUS_SETUP_GUIDE.md)**
-- GitHub Discussions 기반 무료 댓글
-- 스팸 방지 및 마크다운 지원
-- 다크 모드 자동 전환
-- 약 1시간 소요
-
-### 🔧 문제가 발생했나요?
-
-설정 중 오류가 발생하거나 궁금한 점이 있다면:
-- **📘 [트러블슈팅 가이드](./docs/TROUBLESHOOTING_GUIDE.md)**
-- 자주 발생하는 문제와 해결 방법
-- 빌드 실패, 배포 오류, 포스트 미표시 등
-- 단계별 디버깅 가이드
-
-### ⚙️ 더 많은 기능이 필요하신가요?
-
-블로그를 더욱 강력하게 만들고 싶다면:
-- **📘 [고급 기능 설정 가이드](./docs/ADVANCED_FEATURES_GUIDE.md)**
-- Google Analytics 4 설정
-- Google AdSense 수익화
-- 커스텀 도메인 연결
-- SEO 최적화
 
 ---
 
@@ -242,10 +291,16 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 ### ⚙️ 백엔드 & 인프라
 - **Notion API** - 콘텐츠 관리 시스템 (CMS)
   - `@notionhq/client` - 공식 Notion SDK
+  - 무료 CMS (Notion 무료 플랜 사용 가능)
+  - Rate Limit: 초당 3회 요청 제한
 - **GitHub Actions** - CI/CD 자동화
   - Cron 스케줄링 (1시간마다 자동 동기화)
   - 자동 빌드 및 배포
+  - 무료 CI/CD (GitHub 무료 플랜)
 - **GitHub Pages** - 정적 사이트 호스팅
+  - 무료 호스팅
+  - 자동 SSL/HTTPS 인증서 제공
+  - CDN을 통한 빠른 전송
 
 ### 🧪 개발 도구 & 품질 보증
 - **Vitest** - 단위 테스트 프레임워크
@@ -341,6 +396,8 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
 ### 🎨 블로그 기능
 - ✅ **반응형 디자인** - 모바일, 태블릿, 데스크톱 완벽 지원
 - ✅ **다크 모드** - 시스템 설정 기반 자동 전환
+- ✅ **About Me 페이지** - Notion 페이지 동기화로 자동 생성
+- ✅ **댓글 시스템** - Giscus 댓글 시스템 (GitHub Discussions 기반)
 - ✅ **프로필 사이드바** - 좌측 고정 프로필 영역
   - 프로필 사진 및 이름, 직함 표시
   - Bio (자기소개) - 마크다운 지원
@@ -363,16 +420,34 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
   - 목차에서 헤딩으로 바로 이동
 - ✅ **코드 하이라이팅** - Prism.js 기반 다양한 언어 지원
 - ✅ **유튜브 임베드** - 북마크로 유튜브 영상 자동 임베드
+- ✅ **이미지 줌** - 이미지 확대 모달 뷰어
 
 ### 🚀 SEO & 성능
 - ✅ **완벽한 SEO** - Open Graph, Twitter Cards, JSON-LD
+  - 메타 태그 자동 생성
+  - 소셜 미디어 미리보기 (Open Graph 이미지)
+  - 구조화된 데이터 (JSON-LD)
 - ✅ **사이트맵 자동 생성** - 검색 엔진 크롤링 최적화
 - ✅ **RSS 피드** - 구독자를 위한 RSS 지원
 - ✅ **빠른 로딩** - Static Export로 CDN을 통한 즉시 로딩
+  - Static Site Generation (SSG) - 사전 빌드
+  - 빌드 타임 캐싱 시스템
+  - 자동 페이지 프리페치 (Prefetch)
+  - 동적 import 최적화 (Code Splitting)
+  - Turbopack 초고속 번들러
 - ✅ **이미지 최적화** - Priority loading, Blur placeholder, Preload 지원
   - 첫 3개 이미지 우선 로딩 (LCP 개선)
   - 로딩 중 Blur placeholder 표시 (CLS 방지)
   - 중요 이미지 Preload (초기 로딩 속도 향상)
+- ✅ **보안 설정** - API 키 GitHub Secrets 암호화 저장
+- ✅ **커스텀 도메인** - 개인 도메인 연결 가능
+- ✅ **HTTPS** - 자동 SSL 인증서 (GitHub Pages 제공)
+
+### 🎨 사이트 설정
+- ✅ **Notion 기반 사이트 설정** - Site 데이터베이스로 관리
+  - 사이트 제목, 설명, 파비콘 설정
+  - SEO 메타 정보 관리
+  - 환경별 설정 분리 (개발/프로덕션)
 
 ### 💰 분석 & 수익화
 - ✅ **Google Analytics 4** - 방문자 추적 및 분석
@@ -382,50 +457,23 @@ Notion 데이터베이스 생성 및 Integration 설정이 필요하시다면:
   - 반응형 광고 (모바일/데스크톱 최적화)
   - 프로덕션 환경에서만 활성화
   - afterInteractive 전략으로 페이지 로딩 성능 최적화
-- ✅ **환경별 설정** - 개발/프로덕션 환경 분리
+
+### 🛡️ 품질 보증
+- ✅ **Unit Tests** - 359개 테스트 케이스 (14개 테스트 파일)
+  - Vitest 기반 단위 테스트
+  - 캐싱, 검증, 오류 처리, Notion 클라이언트 등 핵심 로직 검증
+  - 회귀 테스트로 이전 버그 재발 방지
+- ✅ **E2E Tests** - Playwright (5개 테스트 파일)
+  - 홈페이지, 포스트 페이지, 성능, UI 검증
+  - 멀티 브라우저 지원 (Chromium, Firefox, WebKit)
+  - 모바일 디바이스 테스트 (Pixel 5, iPhone 12)
+- ✅ **CI/CD 자동 검증** - GitHub Actions에서 모든 테스트 자동 실행
+  - 배포 전 품질 검증 (100% 테스트 통과 필수)
+  - 빌드 실패 시 자동 알림
 
 ---
 
-## 🏗️ 아키텍처
-
-### 🔄 시스템 구조
-
-```
-┌─────────────────┐
-│     Notion      │ ← 콘텐츠 작성 및 관리
-│   (CMS)         │
-└────────┬────────┘
-         │ Notion API
-         ▼
-┌─────────────────┐
-│ GitHub Actions  │ ← 1시간마다 자동 동기화
-│  (Cron: */10)   │
-└────────┬────────┘
-         │ Build & Deploy
-         ▼
-┌─────────────────┐
-│   Next.js       │ ← Static Export 빌드
-│   (SSG)         │
-└────────┬────────┘
-         │ HTML/CSS/JS
-         ▼
-┌─────────────────┐
-│ GitHub Pages    │ ← 무료 호스팅
-│  (CDN)          │
-└─────────────────┘
-```
-
-### 📊 데이터 흐름
-
-1. **콘텐츠 작성**: 노션 데이터베이스에 글 작성
-2. **상태 변경**: Status를 "Publish"로 설정
-3. **자동 동기화**: GitHub Actions가 1시간마다 실행
-4. **데이터 가져오기**: Notion API를 통해 발행된 글 목록 조회
-5. **정적 빌드**: Next.js가 모든 페이지를 HTML로 사전 생성
-6. **자동 배포**: GitHub Pages에 빌드 결과물 업로드
-7. **글 게시**: `https://<username>.github.io/<repo-name>` 에서 확인 가능
-
-### 📁 디렉토리 구조
+## 📁 디렉토리 구조
 
 ```
 nextjs-notion-blog/
@@ -472,697 +520,6 @@ nextjs-notion-blog/
 
 ---
 
-## 🚀 시작하기
-
-### 1. 사전 준비
-
-시작하기 전에 다음 항목들을 준비해주세요:
-
-#### 필수 요구사항
-
-- ✅ **GitHub 계정** - 코드 저장소 및 호스팅
-- ✅ **Notion 계정** (무료) - 콘텐츠 관리
-- ✅ **Node.js 20+** - 로컬 개발 환경 (선택사항)
-- ✅ **Git** - 버전 관리 (선택사항)
-
-#### 선택 요구사항
-
-- ⭕ **Google Analytics 계정** - 방문자 추적을 원하는 경우
-- ⭕ **Google AdSense 계정** - 광고 수익을 원하는 경우
-
----
-
-### 2. 프로젝트 Fork 및 Clone
-
-#### Step 1: GitHub에서 Fork
-
-1. 이 저장소 페이지 우측 상단의 **Fork** 버튼 클릭
-2. Repository name을 원하는 이름으로 변경 (예: `my-blog`, `nextjs-notion-blog`)
-3. **Create fork** 클릭
-
-#### Step 2: Repository 이름 확인
-
-Fork가 완료되면 주소가 다음과 같은 형태가 됩니다:
-```
-https://github.com/<your-username>/<repo-name>
-```
-
-예시:
-- `https://github.com/john-doe/my-blog`
-- `https://github.com/jane-smith/nextjs-notion-blog`
-
-**중요**: `<repo-name>` 부분을 기억해두세요. 나중에 설정에서 사용됩니다.
-
-#### Step 3: 로컬에 Clone (개발자만)
-
-**⚠️ 비개발자는 이 단계를 건너뛰세요!**
-
-로컬에서 개발하려는 개발자만:
-
-```bash
-# 1. Clone
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
-
-# 2. 의존성 설치
-npm install
-```
-
----
-
-### 3. Notion 설정
-
-Notion을 CMS(콘텐츠 관리 시스템)로 사용하기 위한 설정입니다.
-
-#### 📚 Notion 구조 이해하기
-
-블로그는 Notion의 다음 요소들로 구성됩니다:
-
-| 구성 요소 | 용도 | 필수 여부 | 설명 |
-|----------|------|----------|------|
-| **📝 Posts 데이터베이스** | 블로그 글 관리 | ✅ 필수 | 제목, 본문, 태그 등을 관리. **Status가 "Publish"인 글만 공개**됨 |
-| **🔑 Integration** | API 연결 | ✅ 필수 | 블로그가 Notion 데이터를 읽을 수 있도록 권한 부여 |
-| **👤 Profile 데이터베이스** | 프로필 정보 | ⬜ 선택 | 이름, 직함, 소셜 링크 등 관리. 없으면 기본값 사용 |
-| **⚙️ Site 데이터베이스** | 사이트 설정 | ⬜ 선택 | 사이트 제목, Analytics, AdSense 등 관리. 없으면 기본값 사용 |
-| **📄 About 페이지** | 소개 페이지 | ⬜ 선택 | 자기소개 콘텐츠. 없으면 About 메뉴 미표시 |
-
-**핵심 동작 방식:**
-- Notion에서 글을 작성하고 **Status를 "Publish"로 설정**하면 블로그에 표시됩니다
-- Draft, Hidden, Wait 상태는 모두 비공개로 처리됩니다
-- 1시간마다 GitHub Actions가 자동으로 Notion 데이터를 가져와 배포합니다
-
----
-
-> 📖 **처음부터 끝까지 상세한 설정 방법**
->
-> [**📘 Notion 설정 가이드**](./docs/NOTION_SETUP_GUIDE.md)에서 다음을 확인하세요:
-> - 🔑 [Integration 생성 및 권한 설정](./docs/NOTION_SETUP_GUIDE.md#1-notion-integration-생성)
-> - 📝 [Posts 데이터베이스 구성](./docs/NOTION_SETUP_GUIDE.md#2-포스팅-데이터베이스-설정)
-> - 👤 [Profile 데이터베이스 구성](./docs/NOTION_SETUP_GUIDE.md#3-프로필-설정-데이터베이스-구성)
-> - ⚙️ [Site 데이터베이스 구성](./docs/NOTION_SETUP_GUIDE.md#4-사이트-설정-데이터베이스-구성)
-> - 📄 [About 페이지 구성](./docs/NOTION_SETUP_GUIDE.md#5-about-페이지-구성)
-> - 🔧 [환경 변수 설정](./docs/NOTION_SETUP_GUIDE.md#6-환경-변수-설정)
-> - 🧪 [로컬 테스트](./docs/NOTION_SETUP_GUIDE.md#7-로컬-테스트)
-
----
-
-#### ⚡ 빠른 설정 (필수만)
-
-최소한으로 빠르게 시작하려면 다음만 설정하면 됩니다:
-
-1. **Integration 생성**
-   - [Notion Integrations](https://www.notion.so/my-integrations) 접속
-   - "New integration" 클릭
-   - API Key 복사 (나중에 사용)
-
-2. **Posts 데이터베이스 생성**
-   - Notion에서 새 페이지 생성
-   - `/database` 입력하여 데이터베이스 추가
-   - 필수 속성 추가: `Title`, `Slug`, `Status`, `Date`
-   - Status 옵션: `Publish`, `Draft`, `Hidden`, `Wait`
-
-3. **Integration 연결**
-   - 데이터베이스 우측 상단 `⋯` 메뉴 → "Add connections"
-   - 만든 Integration 선택
-
-4. **데이터베이스 ID 복사**
-   - 데이터베이스 URL에서 32자리 ID 추출
-   - GitHub Secrets에 저장 (다음 단계에서 사용)
-
-**이것만으로도 블로그가 작동합니다!** 프로필/사이트 설정은 나중에 추가할 수 있습니다.
-
----
-
-#### 🎨 전체 설정 (권장)
-
-더 완전한 블로그를 원한다면:
-
-**필수 설정:**
-- ✅ Integration + Posts 데이터베이스 (위 빠른 설정 참고)
-
-**추가 설정 (선택):**
-- 👤 **Profile 데이터베이스**: 프로필 사진, 이름, 직함, 소셜 링크 관리
-- ⚙️ **Site 데이터베이스**: 사이트 제목, 설명, Google Analytics, AdSense 설정
-- 📄 **About 페이지**: 자기소개 및 경력 페이지
-
-**예상 소요 시간:**
-- 빠른 설정 (필수만): 약 10분
-- 전체 설정: 약 30분
-
-💡 **Notion이 처음이신가요?** 걱정 마세요! [Notion 설정 가이드](./docs/NOTION_SETUP_GUIDE.md)는 Notion을 한 번도 사용해보지 않은 분도 따라할 수 있도록 스크린샷과 함께 작성되었습니다.
-
----
-
-### 4. GitHub 설정
-
-#### Step 1: Repository 설정 변경
-
-**⚠️ GitHub Pages 배포 방식 선택**
-
-GitHub Pages는 두 가지 배포 방식을 제공합니다:
-
-| 배포 방식 | URL 형식 | Repository 이름 | 특징 |
-|----------|---------|----------------|-----|
-| **User Site** (권장) | `https://username.github.io` | `username.github.io` | ✅ 루트 경로, 깔끔한 URL<br>✅ **Google AdSense 필수** |
-| **Project Site** | `https://username.github.io/repo-name` | 자유롭게 설정 | ⚠️ 서브패스 필요 (basePath 설정 필요)<br>❌ AdSense 사이트 확인 불가 |
-
-**현재 이 프로젝트는 User Site (루트 경로) 방식으로 설정되어 있습니다.**
-
-> **💰 Google AdSense를 사용하시나요?**
->
-> Google AdSense 사이트 확인을 위해서는 **반드시 User Site 방식**으로 배포해야 합니다. AdSense는 루트 도메인의 HTML `<head>` 태그에서 스크립트를 확인하므로, Project Site (`/repo-name/`) 방식에서는 사이트 확인이 실패합니다.
->
-> 자세한 내용은 [Google AdSense 설정 가이드](./docs/ADVANCED_FEATURES_GUIDE.md#-필수-repository-이름-설정)를 참고하세요.
-
-**User Site로 배포하려면 (권장):**
-
-1. Fork한 Repository 이름을 `<your-username>.github.io`로 변경
-   - Settings → Repository name → `<your-username>.github.io`로 변경
-   - 예: GitHub 사용자명이 `john-doe`인 경우 → `john-doe.github.io`
-
-2. `.env.local` 파일에서 `NEXT_PUBLIC_SITE_URL` 수정:
-   ```env
-   NEXT_PUBLIC_SITE_URL=https://<your-username>.github.io
-   ```
-
-3. 완료! 추가 설정 없이 `https://<your-username>.github.io`에서 블로그 접속 가능
-
-**Project Site로 배포하려면 (서브패스 사용):**
-
-프로젝트를 서브패스에 배포하려면 추가 설정이 필요합니다:
-
-1. `next.config.ts` 파일 수정:
-   ```typescript
-   const isDev = process.env.NODE_ENV === 'development';
-   const repoBase = "/<your-repo-name>"; // 예: "/my-blog"
-
-   const nextConfig: NextConfig = {
-     output: isDev ? undefined : "export",
-     basePath: isDev ? undefined : repoBase,
-     assetPrefix: isDev ? undefined : repoBase,
-     // ... 나머지 설정
-   };
-   ```
-
-2. `src/app/layout.tsx` 파일 수정:
-   ```typescript
-   const basePath = isDev ? '' : '/<your-repo-name>';
-
-   return {
-     // ...
-     icons: {
-       icon: basePath + '/favicon.ico',
-       apple: basePath + '/favicon.ico',
-     },
-   };
-   ```
-
-3. `src/app/manifest.ts` 파일 수정:
-   ```typescript
-   const basePath = isDev ? '' : '/<your-repo-name>';
-
-   return {
-     // ...
-     start_url: basePath + '/',
-     icons: [
-       {
-         src: basePath + '/favicon.ico',
-         // ...
-       },
-     ],
-   };
-   ```
-
-4. `.env.local` 파일에서 `NEXT_PUBLIC_SITE_URL` 수정:
-   ```env
-   NEXT_PUBLIC_SITE_URL=https://<your-username>.github.io/<your-repo-name>
-   ```
-
-**README.md 배지 URL 수정 (선택사항)**
-
-1. `README.md` 파일 상단의 배포 배지 URL 수정
-2. `YOUR-USERNAME`과 `YOUR-REPO-NAME`을 본인의 정보로 교체:
-   ```markdown
-   // 변경 전
-   https://github.com/YOUR-USERNAME/YOUR-REPO-NAME/actions/workflows/gh-pages.yml/badge.svg
-
-   // 변경 후 (본인의 GitHub 정보로)
-   https://github.com/john-doe/my-blog/actions/workflows/gh-pages.yml/badge.svg
-   ```
-   - `YOUR-USERNAME`: 본인의 GitHub 사용자명
-   - `YOUR-REPO-NAME`: 본인의 Repository 이름
-
-3. 두 곳 모두 수정 (이미지 URL과 링크 URL)
-
-#### Step 2: GitHub Actions Secrets 설정
-
-**⚠️ 필수 단계!** 이 설정이 없으면 블로그가 작동하지 않습니다.
-
-GitHub Actions가 자동으로 Notion에서 콘텐츠를 가져오려면 접근 권한이 필요합니다.
-다음 Secrets를 설정해야 합니다.
-
-1. GitHub Repository 페이지 이동
-2. **Settings** 탭 클릭
-3. 왼쪽 사이드바에서 **Secrets and variables** → **Actions** 클릭
-4. **New repository secret** 버튼 클릭
-5. 다음 Secrets를 하나씩 추가:
-
-**필수 Secrets**:
-
-| Name | Value | 설명 |
-|------|-------|------|
-| `NOTION_API_KEY` | `secret_xxxxxxxxxxxx` | [3. Notion 설정](#3-notion-설정)에서 발급받은 Integration Secret |
-| `NOTION_DATABASE_ID` | `a1b2c3d4...` | Posts 데이터베이스 ID ([Notion 설정 가이드](./docs/NOTION_SETUP_GUIDE.md#26-데이터베이스-id-가져오기) 참고) |
-
-**선택 Secrets** (해당하는 경우에만):
-
-| Name | Value | 설명 |
-|------|-------|------|
-| `NOTION_PROFILE_DATABASE_ID` | `e5f6g7h8...` | Profile 데이터베이스 ID ([가이드](./docs/NOTION_SETUP_GUIDE.md#34-데이터베이스-id-가져오기)) |
-| `NOTION_SITE_DATABASE_ID` | `i9j0k1l2...` | Site 데이터베이스 ID ([가이드](./docs/NOTION_SETUP_GUIDE.md#44-데이터베이스-id-가져오기)) |
-| `NOTION_ABOUT_PAGE_ID` | `m3n4o5p6...` | About 페이지 ID ([가이드](./docs/NOTION_SETUP_GUIDE.md#53-페이지-id-가져오기)) |
-
-**Secret 추가 방법**:
-- **Name**: 위 표의 Name 정확히 입력
-- **Secret**: 해당 값 붙여넣기
-- **Add secret** 클릭
-
-#### Step 3: GitHub Pages 설정
-
-1. Repository **Settings** → **Pages** (왼쪽 사이드바)
-2. **Source** 섹션에서:
-   - **Source**: `GitHub Actions` 선택
-   - ⚠️ **주의**: `Deploy from a branch`가 아닌 `GitHub Actions`를 선택해야 합니다!
-
-#### Step 4: GitHub Actions 권한 설정
-
-1. Repository **Settings** → **Actions** → **General**
-2. **Workflow permissions** 섹션에서:
-   - ✅ **Read and write permissions** 선택
-   - ✅ **Allow GitHub Actions to create and approve pull requests** 체크
-3. **Save** 클릭
-
-#### Step 5: 첫 배포 실행
-
-1. Repository의 **Actions** 탭 클릭
-2. 왼쪽에서 **Deploy to GitHub Pages** 워크플로우 선택
-3. 우측 **Run workflow** 드롭다운 클릭
-4. **Run workflow** 버튼 클릭
-5. 진행 상황 확인:
-   - 노란색 원: 진행 중
-   - 초록색 체크: 성공
-   - 빨간색 X: 실패 (로그 확인 필요)
-
-배포가 성공하면 약 2-5분 후 다음 주소에서 블로그 확인 가능:
-
-**User Site (루트 경로) 배포 시:**
-```
-https://<your-username>.github.io/
-```
-
-예시:
-- `https://john-doe.github.io/`
-- `https://jane-smith.github.io/`
-
-**Project Site (서브패스) 배포 시:**
-```
-https://<your-username>.github.io/<repo-name>/
-```
-
-예시:
-- `https://john-doe.github.io/my-blog/`
-- `https://jane-smith.github.io/nextjs-notion-blog/`
-
----
-
-### 5. 로컬 개발 환경 설정
-
-**⚠️ 이 섹션은 개발자만 필요합니다!**
-
-비개발자이거나 로컬에서 코드를 수정할 계획이 없다면 이 단계를 **건너뛰어도** 됩니다.
-GitHub에서 직접 모든 작업을 할 수 있습니다.
-
-로컬에서 블로그를 개발하고 미리보기하려면:
-
-#### Step 1: 환경 변수 설정
-
-1. `.env.local` 파일 생성
-2. 다음 내용 추가:
-
-```env
-# ============================================
-# 필수 환경 변수
-# ============================================
-
-# Notion Integration Secret Key
-# 발급 방법: https://www.notion.so/my-integrations → New integration → Secrets 탭
-# 형식: secret_로 시작하는 긴 문자열
-NOTION_API_KEY=secret_xxxxxxxxxxxx
-
-# Posts 데이터베이스 ID (블로그 글 목록)
-# 찾는 방법: Notion에서 Posts 데이터베이스 열기 → 주소창의 32자리 문자열
-# 예: https://notion.so/myworkspace/a1b2c3d4... → a1b2c3d4 부분
-NOTION_DATABASE_ID=a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6
-
-# ============================================
-# 사이트 URL 설정 (권장)
-# ============================================
-
-# 배포된 사이트의 전체 URL
-# - User Site (권장): https://your-username.github.io
-# - Project Site: https://your-username.github.io/your-repo-name
-# - 커스텀 도메인: https://yourdomain.com
-# SEO, Open Graph, RSS 피드에서 사용됨
-NEXT_PUBLIC_SITE_URL=https://your-username.github.io
-
-# ============================================
-# 선택 환경 변수 (기능별 설정)
-# ============================================
-
-# Profile 데이터베이스 ID (프로필 정보, 소셜 링크)
-# 없으면 기본 프로필 정보 사용
-NOTION_PROFILE_DATABASE_ID=e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0
-
-# Site 데이터베이스 ID (사이트 설정, Analytics, AdSense)
-# 없으면 기본 사이트 설정 사용
-NOTION_SITE_DATABASE_ID=i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4
-
-# About 페이지 ID (자기소개 페이지)
-# 없으면 About 메뉴 표시 안 함
-NOTION_ABOUT_PAGE_ID=m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8
-
-# ============================================
-# Giscus 댓글 시스템 (선택)
-# ============================================
-# 설정 방법: docs/GISCUS_SETUP_GUIDE.md 참고
-# https://giscus.app 에서 설정값 자동 생성 가능
-
-# GitHub 저장소 (owner/repo 형식)
-# 예: john-doe/my-blog
-NEXT_PUBLIC_GISCUS_REPO=your-username/your-repo-name
-
-# Giscus 저장소 ID
-# https://giscus.app 에서 자동 생성됨
-NEXT_PUBLIC_GISCUS_REPO_ID=R_kgDOGxxxxxxx
-
-# Discussions 카테고리 이름
-# GitHub Discussions에서 생성한 카테고리 (예: General, Announcements)
-NEXT_PUBLIC_GISCUS_CATEGORY=General
-
-# Discussions 카테고리 ID
-# https://giscus.app 에서 자동 생성됨
-NEXT_PUBLIC_GISCUS_CATEGORY_ID=DIC_kwDOGxxxxxxx
-```
-
-⚠️ **주의**: `.env.local` 파일은 절대로 Git에 커밋하지 마세요! (`.gitignore`에 이미 포함됨)
-
-#### Step 2: 개발 서버 실행
-
-```bash
-npm run dev
-```
-
-브라우저에서 [http://localhost:3000](http://localhost:3000) 접속
-
-**유용한 명령어**:
-```bash
-# 개발 서버 (Turbopack - 초고속)
-npm run dev
-
-# 프로덕션 빌드 테스트
-npm run build
-npm run start
-
-# 린팅
-npm run lint
-
-# 단위 테스트 (Vitest)
-npm run test              # 전체 테스트 실행 (170개 테스트)
-npm run test -- --watch   # Watch 모드 (파일 변경 시 자동 실행)
-
-# E2E 테스트 (Playwright)
-npm run test:e2e          # 전체 E2E 테스트 실행
-npm run test:e2e:ui       # UI 모드 (시각적 디버깅)
-npm run test:e2e:headed   # 브라우저 표시 모드
-npm run test:e2e:debug    # 디버그 모드 (단계별 실행)
-npm run test:e2e:report   # 테스트 리포트 확인
-```
-
-**테스트 전략**:
-- **단위 테스트 (Vitest)**:
-  - 총 170개 테스트 케이스 실행
-  - 유틸리티 함수 및 데이터 변환 로직 검증
-  - 캐싱, 에러 처리, 검증 로직, Notion 클라이언트 테스트
-  - 테스트 위치: `src/lib/__tests__/`, `src/services/notion/__tests__/`
-- **E2E 테스트 (Playwright)**:
-  - 전체 사용자 플로우 검증 (홈페이지, 포스트 페이지, 필터링, 성능 등)
-  - 테스트 위치: `tests/e2e/`
-  - 다중 브라우저 지원 (Chromium, Firefox, WebKit)
-- **MCP 통합**: Playwright MCP 서버로 AI 지원 테스팅 가능
-
----
-
-### 6. 블로그 배포
-
-#### 🚀 배포 간단 요약
-
-블로그는 다음과 같이 자동으로 배포됩니다:
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  1️⃣  Notion에서 글 작성 (Status = "Publish")                       │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  2️⃣  GitHub Actions 자동 실행 (1시간마다 또는 Push 시)                │
-│     • Notion API로 최신 데이터 가져오기                              │
-│     • Next.js 정적 빌드 (HTML/CSS/JS 생성)                         │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  3️⃣  GitHub Pages에 자동 배포                                      │
-│     • CDN을 통해 전 세계에서 빠르게 접근                               │
-│     • HTTPS 자동 적용                                             │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│  🎉 완료! https://your-username.github.io                        │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-**핵심 포인트:**
-- ✅ Notion에서 글만 쓰면 됩니다 (나머지는 자동)
-- ✅ 1시간 이내 자동 배포 (기다리기만 하면 됨)
-- ✅ 코드 수정 시 즉시 배포 (git push만 하면 됨)
-
----
-
-#### 📋 배포 프로세스 상세 설명
-
-GitHub Actions가 어떻게 Notion 데이터를 가져와서 정적 사이트로 배포하는지 자세히 이해해봅시다.
-
-**전체 배포 프로세스:**
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    GitHub Actions 트리거                         │
-│  • 1시간마다 자동 실행 (Cron: 0 * * * *)                          │
-│  • main 브랜치에 Push                                             │
-│  • 수동 실행 (workflow_dispatch)                                  │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              Step 1: 환경 설정 (Ubuntu 가상 서버)                   │
-│  • Node.js 20 설치                                               │
-│  • 코드 체크아웃 (git clone)                                       │
-│  • npm 의존성 설치 (npm ci)                                       │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              Step 2: 품질 검증                                    │
-│  • 단위 테스트 실행 (Vitest - 170개 테스트)                           │
-│  • 린터 검사 (ESLint)                                             │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              Step 3: Notion 데이터 가져오기 & 빌드                   │
-│                                                                 │
-│  환경 변수 주입:                                                   │
-│  ├─ NOTION_API_KEY          (Notion API 인증)                    │
-│  ├─ NOTION_DATABASE_ID      (Posts 데이터베이스)                   │
-│  ├─ NOTION_PROFILE_DATABASE_ID (프로필 정보)                      │
-│  ├─ NOTION_SITE_DATABASE_ID    (사이트 설정)                      │
-│  └─ NOTION_ABOUT_PAGE_ID       (About 페이지)                    │
-│                                                                │
-│  Next.js 빌드 프로세스:                                            │
-│  ┌──────────────────────────────────────────────────┐          │
-│  │ 1. Notion API 호출                                │          │
-│  │    └─> NotionClient.fetchPosts()                 │          │
-│  │         • Status = "Publish"인 글만 가져오기         │          │
-│  │         • 제목, 본문, 태그, 커버 이미지 등              │          │
-│  │                                                  │          │
-│  │ 2. 블록 데이터 → HTML 변환                           │          │
-│  │    └─> notionRenderer.renderBlocks()             │          │
-│  │         • Heading, Paragraph, Code, Image 등      │          │
-│  │         • React 컴포넌트로 변환                      │          │
-│  │                                                  │          │
-│  │ 3. 정적 페이지 생성 (Static Export)                  │          │
-│  │    └─> generateStaticParams()                    │          │
-│  │         • 모든 포스트 페이지 사전 생성                  │          │
-│  │         • out/ 디렉토리에 HTML/CSS/JS 출력           │          │
-│  │                                                  │          │
-│  │ 4. 메타데이터 생성                                   │          │
-│  │    • sitemap.xml (SEO용)                          │          │
-│  │    • rss.xml (구독용)                              │          │
-│  │    • robots.txt                                  │           │
-│  └──────────────────────────────────────────────────┘           │
-│                                                                 │
-│  결과물: out/ 디렉토리                                              │
-│  ├── index.html                (홈페이지)                         │
-│  ├── posts/                                                     │
-│  │   ├── my-first-post.html   (개별 포스트)                        │
-│  │   └── another-post.html                                      │
-│  ├── about.html                (About 페이지)                     │
-│  ├── sitemap.xml                                                │
-│  ├── rss.xml                                                    │
-│  └── _next/ (CSS, JS, 이미지)                                     │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              Step 4: 빌드 검증                                    │
-│  • out/index.html 존재 확인                                       │
-│  • 파일 개수 및 디렉토리 크기 확인                                     │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              Step 5: GitHub Pages 배포                           │
-│  • out/ 디렉토리를 Artifact로 업로드                                 │
-│  • actions/deploy-pages@v4 실행                                  │
-│  • GitHub Pages CDN에 배포                                        │
-└────────────────────┬────────────────────────────────────────────┘
-                     │
-                     ▼
-┌─────────────────────────────────────────────────────────────────┐
-│              🎉 배포 완료!                                        │
-│  https://your-username.github.io/your-repo-name                 │
-│                                                                 │
-│  • 전 세계 CDN을 통해 빠른 전송                                      │
-│  • HTTPS 자동 적용 (Let's Encrypt)                                │
-│  • 캐싱으로 초고속 로딩                                              │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-#### 🔑 핵심 원리
-
-**1. GitHub Secrets로 안전한 인증**
-```yaml
-env:
-  NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-  NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-```
-- Secrets는 GitHub에 암호화되어 저장
-- 워크플로우 실행 시에만 환경 변수로 주입
-- 빌드 과정에서 Notion API에 안전하게 접근
-
-**2. 빌드 타임에 모든 데이터 가져오기**
-```typescript
-// Next.js 빌드 시 실행 (런타임 X)
-export async function generateStaticParams() {
-  const posts = await notionClient.fetchPosts();
-  return posts.map(post => ({ slug: post.slug }));
-}
-```
-- 사용자가 페이지를 볼 때가 아닌, **빌드할 때** Notion API 호출
-- 모든 페이지를 HTML로 사전 생성
-- 배포 후에는 Notion API 호출 없음 (초고속!)
-
-**3. 정적 파일만 배포**
-- Next.js 서버 불필요
-- HTML/CSS/JS 파일만 GitHub Pages에 업로드
-- CDN을 통해 전 세계에서 빠르게 접근
-
-#### 🔄 자동 배포
-
-다음 경우에 자동으로 배포됩니다:
-
-1. **1시간마다 자동 동기화** (Cron)
-   ```yaml
-   schedule:
-     - cron: '0 * * * *'  # 1시간마다 실행
-   ```
-   - GitHub Actions가 1시간마다 자동 실행
-   - Notion에서 최신 데이터 가져오기
-   - 변경사항이 있으면 자동 빌드 및 배포
-
-2. **main 브랜치에 Push**
-   ```yaml
-   on:
-     push:
-       branches: [main]
-   ```
-   - 코드 변경 후 `git push origin main`
-   - 자동으로 빌드 및 배포
-
-#### 🎯 수동 배포
-
-즉시 배포하고 싶다면:
-
-1. GitHub Repository → **Actions** 탭
-2. **Deploy to GitHub Pages** 선택
-3. **Run workflow** → **Run workflow** 클릭
-4. 약 2-5분 후 배포 완료
-
-#### ✅ 배포 확인
-
-배포가 성공했는지 확인:
-
-1. **Actions** 탭에서 워크플로우 상태 확인
-   - 🟡 노란색 원: 진행 중
-   - 🟢 초록색 체크: 성공
-   - 🔴 빨간색 X: 실패 (로그 확인 필요)
-
-2. 빌드 로그에서 상세 정보 확인:
-   ```
-   ✅ index.html exists
-   Total files: 156
-   Directory size: 8.2M
-   ```
-
-3. 블로그 URL 접속하여 변경사항 확인:
-   ```
-   https://<your-username>.github.io/<repo-name>/
-   ```
-
-#### 🐛 배포 실패 시 체크리스트
-
-배포가 실패하면 다음을 확인하세요:
-
-1. **Secrets 설정 확인**
-   - Settings → Secrets and variables → Actions
-   - `NOTION_API_KEY`, `NOTION_DATABASE_ID` 값이 올바른지 확인
-
-2. **Notion Integration 권한 확인**
-   - Notion 데이터베이스에 Integration이 초대되었는지 확인
-   - "Connect to" 버튼으로 Integration 추가
-
-3. **빌드 로그 확인**
-   - Actions 탭 → 실패한 워크플로우 클릭 → "Build (static export)" 단계 로그 확인
-   - Notion API 에러 메시지 확인
-
-4. **Posts 데이터베이스 확인**
-   - Status가 "Publish"인 글이 최소 1개 이상 있는지 확인
-   - Slug 필드가 비어있지 않은지 확인
-
----
-
 ## 📝 블로그 운영 가이드
 
 > 📖 **더 자세한 설정 방법을 원하신다면?**
@@ -1170,7 +527,7 @@ export async function generateStaticParams() {
 
 ### 새 글 작성하기
 
-> 💡 **Posts 데이터베이스 구성 및 속성 설명**은 [Notion 설정 가이드 > 2. 포스팅 데이터베이스 설정](./docs/NOTION_SETUP_GUIDE.md#2-포스팅-데이터베이스-설정)을 참고하세요.
+> 💡 **Posts 데이터베이스 구성 및 속성 설명**은 [Notion 설정 가이드 > 2. Posts 데이터베이스 설정](./docs/NOTION_SETUP_GUIDE.md#2-블로그 -데이터베이스-설정)을 참고하세요.
 
 1. Notion의 `Blog Posts` 데이터베이스 열기
 2. 새 행 추가 (`+ New` 버튼)
@@ -1318,7 +675,7 @@ https://your-blog.github.io/your-repo/?tag=Next.js
 > 이 섹션은 **모든 사용자**를 위한 고급 기능 설정 가이드입니다.
 > 개발자 전용 커스터마이징은 아래 [개발자 가이드](#개발자-가이드) 섹션을 참고하세요.
 
-더 자세한 고급 설정 방법은 **📖 [고급 기능 가이드](./docs/ADVANCED_FEATURES_GUIDE.md)**를 참고하세요.
+더 자세한 고급 설정 방법은 **📖 [고급 기능 가이드](./docs/ADVANCED_FEATURES_GUIDE.md)** 를 참고하세요.
 
 ### 댓글 시스템 (Giscus)
 
@@ -1366,78 +723,26 @@ https://your-blog.github.io/your-repo/?tag=Next.js
 
 ## 👨‍💻 개발자 가이드
 
-> 이 섹션은 **개발자**를 위한 커스터마이징 및 개발 가이드입니다.
-> 코드 수정이나 로컬 개발이 필요하지 않다면 건너뛰어도 됩니다.
+로컬 개발 환경을 설정하고 프로젝트를 커스터마이징하려는 개발자를 위한 가이드입니다.
 
-### 📚 기술 문서 참고
+**📘 [개발자 가이드 전체 문서 보기](./docs/DEVELOPER_GUIDE.md)** (60분)
 
-**핵심 프레임워크**
+**포함 내용:**
+- ✅ 사전 준비 (Node.js 20+, Git)
+- ✅ 프로젝트 Fork 및 Clone
+- ✅ Notion 설정
+- ✅ GitHub 설정 (Secrets, Pages, Actions)
+- ✅ 로컬 개발 환경 설정 (`.env.local`)
+- ✅ 블로그 배포
+- ✅ 커스터마이징 (프로필, 테마, 페이지네이션)
+- ✅ 테스트 (Unit & E2E)
+- ✅ 문제 해결
+
+**핵심 기술 문서:**
 - [Next.js 공식 문서](https://nextjs.org/docs) - App Router, Static Export
-- [React 공식 문서](https://react.dev/) - Server Components, Hooks
-- [TypeScript 핸드북](https://www.typescriptlang.org/docs/) - 타입 시스템
-- [Tailwind CSS 문서](https://tailwindcss.com/docs) - 유틸리티 클래스
-
-**UI 라이브러리**
+- [Tailwind Typography 가이드](./docs/TAILWIND_TYPOGRAPHY_GUIDE.md) - 스타일링 규칙과 패턴
 - [shadcn/ui 컴포넌트](https://ui.shadcn.com/docs/components) - UI 컴포넌트 시스템
-- [Lucide Icons](https://lucide.dev/icons) - 아이콘 라이브러리
-- [Framer Motion 문서](https://www.framer.com/motion/) - 애니메이션
-
-**데이터 & 검증**
-- [Zod 문서](https://zod.dev/) - 스키마 검증
 - [Notion API 참조](https://developers.notion.com/) - Notion SDK
-
-**테스팅**
-- [Vitest 가이드](https://vitest.dev/guide/) - 단위 테스트
-- [Playwright 문서](https://playwright.dev/docs/intro) - E2E 테스트
-
-### 스타일링 가이드
-
-**IMPORTANT**: 스타일 작업을 시작하기 전에 반드시 읽어야 할 문서:
-
-📖 **[Tailwind Typography 가이드](./docs/TAILWIND_TYPOGRAPHY_GUIDE.md)** - 프로젝트의 핵심 스타일링 규칙과 패턴
-
-**핵심 원칙:**
-- **shadcn/ui 우선 사용**: 새로운 UI 컴포넌트 구현 전 [shadcn/ui](https://ui.shadcn.com/docs/components) 확인 필수
-- **Lucide React 아이콘**: 모든 아이콘은 [Lucide](https://lucide.dev/icons) 라이브러리 사용
-- **CSS 변수 패턴**: `hsl(var(--color-name))` 형식으로 테마 색상 관리
-- **Tailwind 유틸리티 클래스**: 인라인 스타일보다 Tailwind 클래스 우선
-
-### 핵심 라이브러리
-
-이 프로젝트는 일관성을 위해 특정 라이브러리를 필수로 사용합니다:
-
-**데이터 검증 - [Zod](https://zod.dev/)**
-- 환경 변수, API 응답 검증에 사용
-- 참고: `src/lib/env.ts`, `src/lib/validation.ts`
-- 문서: [Zod 공식 가이드](https://zod.dev/)
-
-**애니메이션 - [Framer Motion](https://www.framer.com/motion/)**
-- 모든 UI 애니메이션에 사용 (CSS transition 대신)
-- 프리셋: `src/lib/motion.ts`
-- 사용 예시: ArticleListItem, TagChips, ThemeToggle 등
-- 문서: [Framer Motion API](https://www.framer.com/motion/introduction/)
-
-### 커스터마이징
-
-**테마 & 스타일:**
-- 색상: `src/app/globals.css` 파일의 CSS 변수 수정
-- 폰트: `src/app/layout.tsx` 파일에서 Google Fonts 변경
-- Typography: `tailwind.config.js`의 `prose` 스타일 커스터마이징
-
-**레이아웃:**
-- 홈: `src/app/page.tsx`
-- 포스트: `src/app/posts/[slug]/page.tsx`
-- About: `src/app/about/page.tsx`
-
-**동기화 주기:**
-`.github/workflows/gh-pages.yml`에서 cron 설정 변경 (기본: 1시간)
-
-**컴포넌트 개발:**
-- shadcn/ui 패턴 따르기
-- 서버 컴포넌트 우선 (필요시 `"use client"` 명시)
-- TypeScript strict mode 준수
-- **Zod**로 데이터 검증
-- **Framer Motion**으로 애니메이션 구현
 
 ---
 
@@ -1514,17 +819,22 @@ https://your-blog.github.io/your-repo/?tag=Next.js
 
 **방법 1: 간단한 텍스트 링크**
 ```
-Powered by nextjs-notion-blog
+Powered by freelife1191/nextjs-notion-blog
 ```
 
 **방법 2: GitHub 링크 포함**
 ```
-Built with nextjs-notion-blog by @freelife1191
+Built with nextjs-notion-blog by freelife1191
 ```
 
 **방법 3: 블로그 About 페이지나 README에 언급**
 ```markdown
-이 블로그는 [nextjs-notion-blog](https://github.com/freelife1191/nextjs-notion-blog)를 기반으로 제작되었습니다.
+이 블로그는 [freelife1191/nextjs-notion-blog](https://github.com/freelife1191/nextjs-notion-blog)를 기반으로 제작되었습니다.
+```
+
+**방법 4: 링크로 연결**
+```markdown
+Powered by [nextjs-notion-blog](https://github.com/freelife1191/nextjs-notion-blog)
 ```
 
 ### 왜 출처 표시가 중요한가요?
@@ -1540,27 +850,7 @@ Built with nextjs-notion-blog by @freelife1191
 
 ## 📄 라이센스
 
-MIT License
-
-Copyright (c) 2025 Your Name
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+이 프로젝트는 [MIT 라이센스](./LICENSE) 하에 배포됩니다.
 
 ---
 

@@ -98,7 +98,7 @@ async function searchDatabases() {
         `${name} (${properties[name].type})`
       )
 
-      // 블로그 데이터베이스인지 확인
+      // Posts 데이터베이스인지 확인
       const hasTitle = propertyNames.some(p => properties[p].type === 'title')
       const hasStatus = propertyNames.some(p => p.toLowerCase().includes('status'))
       const hasSlug = propertyNames.some(p => p.toLowerCase().includes('slug'))
